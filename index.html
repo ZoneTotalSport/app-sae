@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Banque de SAÉ PFEQ pour l'éducation physique et santé — Maternelle à Secondaire 5, conforme au programme québécois." />
+  <meta name="theme-color" content="#00e5a0" />
+  <title>📚 SAÉ PFEQ — Zone Total Sport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Canvas gradient animé -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Loading screen -->
+  <div id="loading">
+    <div class="loading-inner">
+      <div class="loading-logo">📚</div>
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Chargement des SAÉ PFEQ…</p>
+    </div>
+  </div>
+
+  <!-- Application principale -->
+  <div id="app" class="hidden">
+
+    <!-- HEADER FIXE -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <span class="brand-icon">📚</span>
+          <div class="brand-text">
+            <span class="brand-name">ZONE TOTAL SPORT</span>
+            <span class="brand-tag">SAÉ PFEQ</span>
+          </div>
+        </div>
+        <div class="header-stats">
+          <div class="hstat">
+            <span id="hstat-sae" class="hstat-num">0<span>SAÉ</span></span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">5<span>cycles</span></span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">7<span>compétences</span></span>
+          </div>
+        </div>
+        <nav class="header-nav">
+          <a href="#browser" class="nav-link">Parcourir</a>
+          <a href="#filtres" class="nav-link">Filtres</a>
+          <a href="https://zonetotalsport.ca" class="nav-link nav-external" target="_blank" rel="noopener">Site Web ↗</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-badge">✦ Conforme PFEQ Québec</span>
+          <span class="eyebrow-badge">✦ Maternelle → Secondaire 5</span>
+        </div>
+        <h1 class="hero-title">
+          BANQUE DE<br />
+          <span class="hero-title-accent">SAÉ PFEQ</span>
+        </h1>
+        <p class="hero-desc">
+          Situations d'Apprentissage et d'Évaluation pour l'éducation physique et santé québécoise.<br />
+          Des ressources pédagogiques complètes, adaptées et prêtes à utiliser en classe.
+        </p>
+        <div class="hero-counters">
+          <div class="counter-item">
+            <span class="counter-num" data-count="0" id="counter-sae">0</span>
+            <span class="counter-label">SAÉ disponibles</span>
+          </div>
+          <div class="counter-divider"></div>
+          <div class="counter-item">
+            <span class="counter-num">5</span>
+            <span class="counter-label">Cycles scolaires</span>
+          </div>
+          <div class="counter-divider"></div>
+          <div class="counter-item">
+            <span class="counter-num">6</span>
+            <span class="counter-label">Moyens d'action</span>
+          </div>
+          <div class="counter-divider"></div>
+          <div class="counter-item">
+            <span class="counter-num">7</span>
+            <span class="counter-label">Compétences PFEQ</span>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#browser" class="btn-primary">Explorer les SAÉ ↓</a>
+          <a href="#filtres" class="btn-secondary">Filtrer par critères</a>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>↓</span>
+      </div>
+    </section>
+
+    <!-- BROWSER MOYENS D'ACTION -->
+    <section class="section-browser" id="browser">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Parcourir par moyen d'action</h2>
+          <p class="section-subtitle">Sélectionnez une catégorie pour filtrer les SAÉ correspondantes</p>
+        </div>
+        <div class="moyens-grid" id="moyens-grid">
+          <!-- Rempli par JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRE DE FILTRES -->
+    <section class="section-filters" id="filtres">
+      <div class="container">
+        <div class="filters-bar">
+          <div class="filter-group filter-search">
+            <span class="filter-icon">🔍</span>
+            <input
+              type="text"
+              id="sae-search"
+              class="filter-input"
+              placeholder="Rechercher une SAÉ…"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sae-cycle">Cycle</label>
+            <select id="sae-cycle" class="filter-select">
+              <option value="">Tous les cycles</option>
+              <option value="Préscolaire">Préscolaire</option>
+              <option value="1er cycle">1er cycle primaire</option>
+              <option value="2e cycle">2e cycle primaire</option>
+              <option value="3e cycle">3e cycle primaire</option>
+              <option value="Secondaire">Secondaire</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sae-moyen">Moyen d'action</label>
+            <select id="sae-moyen" class="filter-select">
+              <option value="">Tous les moyens</option>
+              <optgroup label="Manipulation">
+                <option value="manipulation">Manipulation d'objets</option>
+                <option value="raquette">Raquette / Outil</option>
+                <option value="ballon">Ballon</option>
+              </optgroup>
+              <optgroup label="Locomotion">
+                <option value="locomotion">Locomotion</option>
+                <option value="poursuite">Jeux de poursuite</option>
+              </optgroup>
+              <optgroup label="Stabilisation">
+                <option value="mobilite">Mobilité / Stabilisation</option>
+                <option value="conditionnement">Conditionnement physique</option>
+              </optgroup>
+              <optgroup label="Opposition">
+                <option value="opposition">Opposition / Duel</option>
+                <option value="dodgeball">Ballon chasseur</option>
+              </optgroup>
+              <optgroup label="Coopération">
+                <option value="cooperation">Coopération</option>
+                <option value="collectif">Sports collectifs</option>
+              </optgroup>
+              <optgroup label="Expression">
+                <option value="expression">Expression corporelle</option>
+                <option value="artistique">Expression artistique</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sae-competence">Compétence PFEQ</label>
+            <select id="sae-competence" class="filter-select">
+              <option value="">Toutes les compétences</option>
+              <option value="Manipulation">Manipulation</option>
+              <option value="Locomotion">Locomotion</option>
+              <option value="Mobilité">Mobilité / Stabilisation</option>
+              <option value="Coopération">Coopération</option>
+              <option value="Opposition">Opposition</option>
+              <option value="Expression">Expression</option>
+              <option value="Conditionnement">Conditionnement</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sae-clientele">Clientèle spéciale</label>
+            <select id="sae-clientele" class="filter-select">
+              <option value="">Toutes les clientèles</option>
+              <option value="tsa">TSA</option>
+              <option value="handicap">Handicap moteur</option>
+              <option value="déficience">Déficience intellectuelle</option>
+              <option value="maternelle">Maternelle 4 ans</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="stats-bar" id="stats-bar">
+          <div class="stats-pill" id="sae-count">0 SAÉ</div>
+          <div class="stats-pills-cycles">
+            <span class="stats-pill stats-pill-green">Préscolaire</span>
+            <span class="stats-pill stats-pill-blue">Primaire</span>
+            <span class="stats-pill stats-pill-purple">Secondaire</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRILLE SAÉ -->
+    <section class="section-grid">
+      <div class="container">
+        <div class="sae-grid" id="sae-grid">
+          <!-- Rempli par JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <span class="footer-icon">📚</span>
+            <span class="footer-name">Zone Total Sport — SAÉ PFEQ</span>
+          </div>
+          <p class="footer-desc">
+            Ressources pédagogiques conformes au Programme de formation de l'école québécoise (PFEQ).<br />
+            Conçu pour les enseignants en éducation physique et santé du Québec.
+          </p>
+          <div class="footer-links">
+            <a href="https://zonetotalsport.ca" target="_blank" rel="noopener">zonetotalsport.ca</a>
+            <span class="footer-sep">·</span>
+            <span>© 2026 Zone Total Sport</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /#app -->
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    <div class="modal-container">
+      <div id="modal-body">
+        <!-- Rempli par JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
