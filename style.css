@@ -241,6 +241,12 @@ ul li {
   color: var(--primary);
 }
 
+.nav-active {
+  background: var(--primary-dim);
+  color: var(--primary) !important;
+  border: 1px solid rgba(0, 229, 160, 0.25);
+}
+
 .nav-external {
   color: var(--secondary);
   border: 1px solid rgba(8, 145, 178, 0.25);
@@ -799,6 +805,93 @@ ul li {
   margin-top: 8px;
 }
 
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 24px 0;
+}
+
+.pagination:empty {
+  display: none;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.page-btn:hover:not(.disabled):not(.active) {
+  background: var(--primary-dim);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--primary-glow);
+}
+
+.page-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.35);
+}
+
+.page-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.page-prev,
+.page-next {
+  padding: 0 20px;
+  font-weight: 600;
+}
+
+.page-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 40px;
+  color: var(--text-faint);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.page-info {
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
 /* ===== ÉTAT VIDE ===== */
 .empty-state {
   grid-column: 1 / -1;
@@ -1132,6 +1225,23 @@ ul li {
   .stats-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .pagination {
+    gap: 8px;
+  }
+
+  .page-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    font-size: 0.82rem;
+  }
+
+  .page-prev,
+  .page-next {
+    padding: 0 14px;
+    font-size: 0.8rem;
   }
 }
 

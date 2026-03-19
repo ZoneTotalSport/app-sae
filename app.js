@@ -43,6 +43,8 @@ const MOYENS_ACTION = [
 let allSAE = [];
 let filtered = [];
 let activeMoyen = null;
+let currentPage = 0;
+const ITEMS_PER_PAGE = 30;
 
 // Safety timer to hide loading if fetch hangs
 const safetyTimer = setTimeout(hideLoading, 8000);
@@ -176,6 +178,7 @@ function applyFilters() {
   const competence = document.getElementById('sae-competence')?.value || '';
   const clientele = document.getElementById('sae-clientele')?.value || '';
 
+  currentPage = 0;
   filtered = allSAE.filter(s => {
 
     // Filtre recherche textuelle
@@ -296,12 +299,17 @@ function renderSAE() {
         <p style="font-size:1.1rem;color:var(--text-muted)">Aucune SAÉ trouvée</p>
         <p style="font-size:0.85rem;color:var(--text-faint);margin-top:8px">Essayez de modifier les filtres ou la recherche</p>
       </div>`;
+    renderPagination();
     updateStats();
     return;
   }
 
+  const start = currentPage * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const pageItems = filtered.slice(start, end);
+
   const fragment = document.createDocumentFragment();
-  filtered.forEach(s => fragment.appendChild(renderCard(s)));
+  pageItems.forEach(s => fragment.appendChild(renderCard(s)));
   grid.appendChild(fragment);
 
   // Animation IntersectionObserver
@@ -315,7 +323,91 @@ function renderSAE() {
   }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
   grid.querySelectorAll('.sae-card').forEach(c => observer.observe(c));
+  renderPagination();
   updateStats();
+}
+
+function renderPagination() {
+  const container = document.getElementById('pagination');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  if (totalPages <= 1) return;
+
+  // Previous button
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'page-btn page-prev' + (currentPage === 0 ? ' disabled' : '');
+  prevBtn.textContent = '\u2190 Précédent';
+  prevBtn.disabled = currentPage === 0;
+  prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+  container.appendChild(prevBtn);
+
+  // Page numbers
+  const pagesDiv = document.createElement('div');
+  pagesDiv.className = 'page-numbers';
+
+  const maxVisible = 7;
+  let pages = [];
+
+  if (totalPages <= maxVisible) {
+    for (let i = 0; i < totalPages; i++) pages.push(i);
+  } else {
+    pages.push(0);
+    let start = Math.max(1, currentPage - 2);
+    let end = Math.min(totalPages - 2, currentPage + 2);
+    if (currentPage <= 3) { start = 1; end = 4; }
+    if (currentPage >= totalPages - 4) { start = totalPages - 5; end = totalPages - 2; }
+    if (start > 1) pages.push(-1); // ellipsis
+    for (let i = start; i <= end; i++) pages.push(i);
+    if (end < totalPages - 2) pages.push(-1); // ellipsis
+    pages.push(totalPages - 1);
+  }
+
+  pages.forEach(p => {
+    if (p === -1) {
+      const dots = document.createElement('span');
+      dots.className = 'page-dots';
+      dots.textContent = '\u2026';
+      pagesDiv.appendChild(dots);
+    } else {
+      const btn = document.createElement('button');
+      btn.className = 'page-btn page-num' + (p === currentPage ? ' active' : '');
+      btn.textContent = p + 1;
+      btn.addEventListener('click', () => goToPage(p));
+      pagesDiv.appendChild(btn);
+    }
+  });
+
+  container.appendChild(pagesDiv);
+
+  // Next button
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'page-btn page-next' + (currentPage >= totalPages - 1 ? ' disabled' : '');
+  nextBtn.textContent = 'Suivant \u2192';
+  nextBtn.disabled = currentPage >= totalPages - 1;
+  nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+  container.appendChild(nextBtn);
+
+  // Info text
+  const info = document.createElement('div');
+  info.className = 'page-info';
+  const start = currentPage * ITEMS_PER_PAGE + 1;
+  const end = Math.min((currentPage + 1) * ITEMS_PER_PAGE, filtered.length);
+  info.textContent = `${start}\u2013${end} sur ${filtered.length} SAÉ`;
+  container.appendChild(info);
+}
+
+function goToPage(page) {
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  if (page < 0 || page >= totalPages) return;
+  currentPage = page;
+  renderSAE();
+  // Scroll to grid section
+  const grid = document.getElementById('sae-grid');
+  if (grid) {
+    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 function updateStats() {
