@@ -26,9 +26,9 @@ const SAE_SOURCES = [
   { key: 'individuelles_part8', path: 'data/sae/individuelles_part8.json', label: 'Individuelles', cycle: 'Mat → Sec 5' },
   { key: 'nonloc_gainage', path: 'data/sae/nonloc_gainage.json', label: 'Gainage et non-locomoteur', cycle: 'Mat → Sec 5' },
   { key: 'variees_extra', path: 'data/sae/variees_extra.json', label: 'Variées (extra)', cycle: 'Mat → Sec 5' },
-  { key: 'plein_air', path: 'data/sae/plein_air.json', label: 'Plein air et aventure', cycle: 'Mat → Sec 5' },
-  { key: 'raquette_filet', path: 'data/sae/raquette_filet.json', label: 'Raquette et filet', cycle: 'Mat → Sec 5' },
-  { key: 'athletisme', path: 'data/sae/athletisme.json', label: 'Athlétisme et course', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_gen', path: 'data/sae/cooperation_gen.json', label: 'Coopération (génération)', cycle: 'Mat → Sec 5' },
+  { key: 'poursuite_gen', path: 'data/sae/poursuite_gen.json', label: 'Poursuite (génération)', cycle: 'Mat → Sec 5' },
+  { key: 'prescolaire_primaire_gen', path: 'data/sae/prescolaire_primaire_gen.json', label: 'Préscolaire-Primaire (génération)', cycle: 'Mat → Sec 5' },
 ];
 
 const MOYENS_ACTION = [
