@@ -181,7 +181,7 @@ ul li {
 }
 
 .brand-name {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: 0.85rem;
   font-weight: 800;
   color: var(--primary);
@@ -203,7 +203,7 @@ ul li {
 }
 
 .hstat-num {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--text);
@@ -310,7 +310,7 @@ ul li {
 }
 
 .hero-title {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 800;
   line-height: 1.05;
@@ -354,7 +354,7 @@ ul li {
 }
 
 .counter-num {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: 2.2rem;
   font-weight: 800;
   color: var(--primary);
@@ -444,7 +444,7 @@ ul li {
 }
 
 .section-title {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 800;
   color: var(--text);
@@ -480,7 +480,7 @@ ul li {
   cursor: pointer;
   transition: var(--transition);
   color: var(--text);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   font-size: 0.9rem;
   font-weight: 600;
   backdrop-filter: blur(10px);
@@ -570,7 +570,7 @@ ul li {
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   color: var(--text);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   font-size: 0.9rem;
   transition: var(--transition);
   outline: none;
@@ -593,7 +593,7 @@ ul li {
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   color: var(--text);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   font-size: 0.88rem;
   transition: var(--transition);
   outline: none;
@@ -744,7 +744,7 @@ ul li {
 
 /* ===== CONTENU CARTE ===== */
 .card-title {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: 1.05rem;
   font-weight: 700;
   margin: 10px 0 6px;
@@ -837,7 +837,7 @@ ul li {
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   color: var(--text-muted);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
@@ -970,7 +970,7 @@ ul li {
 }
 
 .modal-title {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text);
@@ -1030,7 +1030,7 @@ ul li {
 }
 
 .modal-section h3 {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--primary);
@@ -1084,7 +1084,7 @@ ul li {
 }
 
 .footer-name {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Bangers', cursive;
   font-weight: 700;
   font-size: 1rem;
   color: var(--text);
@@ -1273,7 +1273,7 @@ ul li {
 /* ===== FAVORIS FILTER BUTTON ===== */
 .favoris-filter-btn {
   cursor: pointer;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   transition: var(--transition);
 }
 
@@ -1305,7 +1305,7 @@ ul li {
   border: 1px solid var(--card-border);
   border-radius: 100px;
   color: var(--text-muted);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
@@ -1334,7 +1334,7 @@ ul li {
   color: #fff;
   padding: 12px 28px;
   border-radius: 100px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Barriecito', cursive;
   font-size: 0.9rem;
   font-weight: 600;
   z-index: 9999;
