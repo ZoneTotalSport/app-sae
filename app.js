@@ -43,6 +43,7 @@ const MOYENS_ACTION = [
 let allSAE = [];
 let filtered = [];
 let activeMoyen = null;
+let favorisFilterActive = false;
 let currentPage = 0;
 const ITEMS_PER_PAGE = 30;
 
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderSAE();
   hideLoading();
   animateCounters();
+  checkDeepLink();
 });
 
 // ===== CHARGEMENT DES DONNÉES =====
@@ -181,6 +183,11 @@ function applyFilters() {
   currentPage = 0;
   filtered = allSAE.filter(s => {
 
+    // Filtre favoris
+    if (favorisFilterActive) {
+      if (!isFavori(s)) return false;
+    }
+
     // Filtre recherche textuelle
     if (search) {
       const text = [
@@ -238,6 +245,48 @@ function applyFilters() {
   renderSAE();
 }
 
+// ===== FAVORIS (localStorage) =====
+
+function getSaeId(s) {
+  return s.id || s.titre || s.nom || '';
+}
+
+function getFavoris() {
+  try {
+    return JSON.parse(localStorage.getItem('favoris-sae') || '[]');
+  } catch { return []; }
+}
+
+function setFavoris(arr) {
+  localStorage.setItem('favoris-sae', JSON.stringify(arr));
+}
+
+function isFavori(s) {
+  return getFavoris().includes(getSaeId(s));
+}
+
+function toggleFavori(s) {
+  const id = getSaeId(s);
+  let favs = getFavoris();
+  if (favs.includes(id)) {
+    favs = favs.filter(f => f !== id);
+  } else {
+    favs.push(id);
+  }
+  setFavoris(favs);
+  return favs.includes(id);
+}
+
+function toggleFavorisFilter() {
+  favorisFilterActive = !favorisFilterActive;
+  const btn = document.getElementById('favoris-filter');
+  if (btn) {
+    btn.classList.toggle('active', favorisFilterActive);
+    btn.textContent = favorisFilterActive ? '★ Favoris' : '☆ Favoris';
+  }
+  applyFilters();
+}
+
 // ===== RENDU DES CARTES =====
 
 function getCycleClass(s) {
@@ -266,7 +315,9 @@ function renderCard(s) {
   div.setAttribute('tabindex', '0');
   div.setAttribute('aria-label', `Ouvrir la SAÉ: ${titre}`);
 
+  const fav = isFavori(s);
   div.innerHTML = `
+    <button class="fav-star ${fav ? 'active' : ''}" aria-label="Ajouter aux favoris" title="Favori">${fav ? '★' : '☆'}</button>
     <span class="pfeq-badge">PFEQ</span>
     ${cycle ? `<span class="cycle-badge ${getCycleClass(s)}">${escapeHtml(cycle)}</span>` : ''}
     <div class="card-title">${escapeHtml(titre)}</div>
@@ -278,6 +329,17 @@ function renderCard(s) {
     </div>
     ${duree ? `<div class="duree-badge">⏱ ${escapeHtml(String(duree))} période${parseInt(duree) > 1 ? 's' : ''}</div>` : ''}
   `;
+
+  // Star click handler (stop propagation so card doesn't open)
+  const starBtn = div.querySelector('.fav-star');
+  starBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const nowFav = toggleFavori(s);
+    starBtn.textContent = nowFav ? '★' : '☆';
+    starBtn.classList.toggle('active', nowFav);
+    // If favoris filter is active, re-render to remove unfavorited cards
+    if (favorisFilterActive) applyFilters();
+  });
 
   div.addEventListener('click', () => openModal(s));
   div.addEventListener('keydown', e => {
@@ -502,6 +564,9 @@ function openModal(s) {
       </div>`,
   ].filter(Boolean).join('');
 
+  const modalFav = isFavori(s);
+  const saeId = getSaeId(s);
+
   body.innerHTML = `
     <div class="modal-header">
       <h2 class="modal-title" id="modal-title">📚 ${escapeHtml(titre)}</h2>
@@ -515,8 +580,18 @@ function openModal(s) {
       ${s.espace ? `<span class="modal-badge">📍 ${escapeHtml(s.espace)}</span>` : ''}
       ${s.nb_eleves ? `<span class="modal-badge">👥 ${escapeHtml(String(s.nb_eleves))}</span>` : ''}
     </div>
+    <div class="modal-actions">
+      <button class="modal-action-btn ${modalFav ? 'fav-active' : ''}" id="modal-fav-btn" onclick="handleModalFavori()">
+        ${modalFav ? '★' : '☆'} Favori
+      </button>
+      <button class="modal-action-btn" onclick="handlePrint()">🖨️ Imprimer</button>
+      <button class="modal-action-btn" onclick="handleShare('${escapeHtml(saeId).replace(/'/g, "\\'")}')">🔗 Partager</button>
+    </div>
     ${sections || '<p style="color:var(--text-muted);text-align:center;padding:24px">Aucun détail supplémentaire disponible.</p>'}
   `;
+
+  // Store reference to current SAÉ for modal actions
+  window._currentModalSAE = s;
 
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
@@ -642,6 +717,69 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+// ===== MODAL ACTIONS =====
+
+function handleModalFavori() {
+  const s = window._currentModalSAE;
+  if (!s) return;
+  const nowFav = toggleFavori(s);
+  const btn = document.getElementById('modal-fav-btn');
+  if (btn) {
+    btn.classList.toggle('fav-active', nowFav);
+    btn.innerHTML = `${nowFav ? '★' : '☆'} Favori`;
+  }
+  // Update the corresponding card star if visible
+  renderSAE();
+}
+
+function handlePrint() {
+  window.print();
+}
+
+function handleShare(saeId) {
+  const url = `https://sae.zonetotalsport.ca/?id=${encodeURIComponent(saeId)}`;
+  navigator.clipboard.writeText(url).then(() => {
+    showToast('Lien copié !');
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Lien copié !');
+  });
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.remove('hidden');
+  // Force reflow
+  void toast.offsetWidth;
+  toast.classList.add('visible');
+  setTimeout(() => {
+    toast.classList.remove('visible');
+    setTimeout(() => toast.classList.add('hidden'), 300);
+  }, 2000);
+}
+
+// ===== DEEP LINK (partage) =====
+
+function checkDeepLink() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) return;
+  const sae = allSAE.find(s => getSaeId(s) === id);
+  if (sae) {
+    setTimeout(() => openModal(sae), 300);
+  }
 }
 
 // ===== ÉVÉNEMENTS GLOBAUX =====

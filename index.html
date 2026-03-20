@@ -206,6 +206,7 @@
         <!-- Stats bar -->
         <div class="stats-bar" id="stats-bar">
           <div class="stats-pill" id="sae-count">0 SAÉ</div>
+          <button class="stats-pill favoris-filter-btn" id="favoris-filter" onclick="toggleFavorisFilter()">☆ Favoris</button>
           <div class="stats-pills-cycles">
             <span class="stats-pill stats-pill-green">Préscolaire</span>
             <span class="stats-pill stats-pill-blue">Primaire</span>
@@ -257,6 +258,9 @@
       </div>
     </div>
   </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden">Lien copié !</div>
 
   <script src="app.js"></script>
 </body>
