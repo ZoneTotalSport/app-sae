@@ -151,6 +151,16 @@ ul li {
 /* ===== HELPER ===== */
 .hidden { display: none !important; }
 
+/* === BACKGROUND — GYMNASE === */
+#gymBg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url('gym-bg.png') center/cover no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
 /* ===== CONTAINER ===== */
 .container {
   max-width: 1280px;
