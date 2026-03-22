@@ -737,39 +737,7 @@ function handleModalFavori() {
 }
 
 function handleModalCours() {
-  const s = window._currentModalSAE;
-  if (!s) return;
-  const btn = document.getElementById('modal-cours-btn');
-  if (isInCours(s)) {
-    // Remove from cours
-    const cours = getMonCours();
-    const idx = cours.findIndex(e => e && e.titre === (s.titre || s.nom));
-    if (idx >= 0) {
-      cours[idx] = null;
-      setMonCours(cours);
-    }
-    if (btn) {
-      btn.classList.remove('fav-active');
-      btn.textContent = '📋 Ajouter a ma SAE';
-    }
-    showToast('Retire de ma SAE');
-  } else {
-    // Add to next empty slot
-    const cours = getMonCours();
-    const emptyIdx = cours.findIndex(e => !e || !e.titre);
-    if (emptyIdx < 0) {
-      showToast('Tous les cours sont remplis !');
-      return;
-    }
-    cours[emptyIdx] = buildSlotData(s);
-    setMonCours(cours);
-    if (btn) {
-      btn.classList.add('fav-active');
-      btn.textContent = '✓ Dans ma SAE';
-    }
-    showToast('Ajoutee au Cours ' + (emptyIdx + 1) + ' !');
-  }
-  refreshCardCoursState(s);
+  showToast('Ouvre "Concevoir ma SAE" pour ajouter des SAE aux cours');
 }
 
 function handlePrint() {
@@ -993,49 +961,30 @@ function setEvalConfig(config) {
 }
 
 function isInCours(s) {
-  const id = getSaeId(s);
+  const titre = s.titre || s.nom;
   const cours = getMonCours();
-  return cours.some(e => e && (e.titre === (s.titre || s.nom)));
+  return cours.some(function(slot) {
+    if (!Array.isArray(slot)) return false;
+    return slot.some(function(e) { return e && e.titre === titre; });
+  });
 }
 
 function updateCoursFab() {
   const cours = getMonCours();
-  const filled = cours.filter(e => e && e.titre).length;
+  let total = 0;
+  cours.forEach(function(slot) {
+    if (Array.isArray(slot)) total += slot.length;
+  });
   const badge = document.getElementById('cours-fab-count');
   if (badge) {
-    badge.textContent = filled;
-    badge.classList.toggle('hidden', filled === 0);
+    badge.textContent = total;
+    badge.classList.toggle('hidden', total === 0);
   }
 }
 
 function toggleCoursItem(s, btn) {
-  const cours = getMonCours();
-  const existingIdx = cours.findIndex(e => e && e.titre === (s.titre || s.nom));
-
-  if (existingIdx >= 0) {
-    cours[existingIdx] = null;
-    setMonCours(cours);
-    if (btn) {
-      btn.classList.remove('added');
-      btn.textContent = '+';
-      btn.title = 'Ajouter a ma SAE';
-    }
-    showToast('Retire de ma SAE');
-  } else {
-    const emptyIdx = cours.findIndex(e => !e || !e.titre);
-    if (emptyIdx < 0) {
-      showToast('Tous les cours sont remplis !');
-      return;
-    }
-    cours[emptyIdx] = buildSlotData(s);
-    setMonCours(cours);
-    if (btn) {
-      btn.classList.add('added');
-      btn.textContent = '\u2713';
-      btn.title = 'Retirer de ma SAE';
-    }
-    showToast('Ajoutee au Cours ' + (emptyIdx + 1) + ' !');
-  }
+  // Not used in multi-SAE mode — card + button has no effect without knowing which slot
+  showToast('Ouvre "Concevoir ma SAE" pour ajouter des SAE aux cours');
 }
 
 function refreshCardCoursState(s) {
@@ -1133,9 +1082,15 @@ function onNbCoursChange() {
   const cours = getMonCours();
 
   if (nb > cours.length) {
-    while (cours.length < nb) cours.push(null);
+    while (cours.length < nb) cours.push([]);
   } else if (nb < cours.length) {
     cours.length = nb;
+  }
+  // Migrate old format (single object) to array
+  for (var i = 0; i < cours.length; i++) {
+    if (!Array.isArray(cours[i])) {
+      cours[i] = cours[i] && cours[i].titre ? [cours[i]] : [];
+    }
   }
   setMonCours(cours);
   renderSlots();
@@ -1144,12 +1099,12 @@ function onNbCoursChange() {
 // ===== RENDER SLOTS =====
 
 function renderSlots() {
-  const config = getCoursConfig();
-  const nb = parseInt(config.nbCours || '0');
-  const slotsSection = document.getElementById('cours-slots-section');
-  const slotsContainer = document.getElementById('cours-slots');
-  const actionsEl = document.getElementById('cours-actions');
-  const totalCountEl = document.getElementById('cours-total-count');
+  var config = getCoursConfig();
+  var nb = parseInt(config.nbCours || '0');
+  var slotsSection = document.getElementById('cours-slots-section');
+  var slotsContainer = document.getElementById('cours-slots');
+  var actionsEl = document.getElementById('cours-actions');
+  var totalCountEl = document.getElementById('cours-total-count');
 
   if (nb === 0) {
     if (slotsSection) slotsSection.classList.add('hidden');
@@ -1160,53 +1115,79 @@ function renderSlots() {
 
   if (slotsSection) slotsSection.classList.remove('hidden');
 
-  const cours = getMonCours();
-  while (cours.length < nb) cours.push(null);
+  var cours = getMonCours();
+  while (cours.length < nb) cours.push([]);
   if (cours.length > nb) cours.length = nb;
+  // Migrate old format
+  for (var m = 0; m < cours.length; m++) {
+    if (!Array.isArray(cours[m])) {
+      cours[m] = cours[m] && cours[m].titre ? [cours[m]] : [];
+    }
+  }
   setMonCours(cours);
 
   slotsContainer.innerHTML = '';
 
-  let filledCount = 0;
+  var filledCount = 0;
 
-  cours.forEach((sae, index) => {
-    const slot = document.createElement('div');
-    slot.className = 'cours-slot' + (sae && sae.titre ? ' filled' : '');
+  cours.forEach(function(slotSaes, index) {
+    var slot = document.createElement('div');
+    var hasSaes = slotSaes.length > 0;
+    slot.className = 'cours-slot' + (hasSaes ? ' filled' : '');
 
-    const numBadge = '<div class="cours-slot-num">Cours ' + (index + 1) + '</div>';
+    var numBadge = '<div class="cours-slot-num">Cours ' + (index + 1) + '</div>';
 
-    if (sae && sae.titre) {
+    if (hasSaes) {
       filledCount++;
-      slot.innerHTML = numBadge +
-        '<button class="cours-slot-remove" title="Retirer cette SAE" data-idx="' + index + '">\u2715</button>' +
-        '<div class="cours-slot-title">' + escapeHtml(sae.titre) + '</div>' +
-        '<button class="cours-slot-change" data-idx="' + index + '">Changer</button>';
 
-      slot.querySelector('.cours-slot-remove').addEventListener('click', function(e) {
-        e.stopPropagation();
-        var c = getMonCours();
-        c[index] = null;
-        setMonCours(c);
-        renderSlots();
-        showToast('SAE retiree du cours ' + (index + 1));
+      // Build list of SAE titles with duration
+      var saesListHTML = '';
+      slotSaes.forEach(function(sae, saeIdx) {
+        var duree = sae.duree_periodes ? ' <span class="cours-slot-duree">(' + sae.duree_periodes + ' per.)</span>' : '';
+        saesListHTML +=
+          '<div class="cours-slot-sae-row" data-slot="' + index + '" data-sae="' + saeIdx + '">' +
+            '<span class="cours-slot-sae-title">' + escapeHtml(sae.titre) + duree + '</span>' +
+            '<button class="cours-slot-sae-remove" title="Retirer">\u2715</button>' +
+          '</div>';
       });
 
-      slot.querySelector('.cours-slot-change').addEventListener('click', function(e) {
+      slot.innerHTML = numBadge + saesListHTML +
+        '<button class="cours-slot-add-more" data-idx="' + index + '">+ Ajouter une SAE</button>';
+
+      // Click title to open modal
+      slot.querySelectorAll('.cours-slot-sae-title').forEach(function(titleEl, saeIdx) {
+        titleEl.style.cursor = 'pointer';
+        titleEl.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var found = allSAE.find(function(ss) { return (ss.titre || ss.nom) === slotSaes[saeIdx].titre; });
+          if (found) openModal(found);
+        });
+      });
+
+      // Remove individual SAE
+      slot.querySelectorAll('.cours-slot-sae-remove').forEach(function(removeBtn, saeIdx) {
+        removeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var c = getMonCours();
+          if (Array.isArray(c[index])) {
+            c[index].splice(saeIdx, 1);
+          }
+          setMonCours(c);
+          renderSlots();
+          showToast('SAE retiree du cours ' + (index + 1));
+        });
+      });
+
+      // Add more button
+      slot.querySelector('.cours-slot-add-more').addEventListener('click', function(e) {
         e.stopPropagation();
         openSlotBrowser(index);
-      });
-
-      var titleEl = slot.querySelector('.cours-slot-title');
-      titleEl.style.cursor = 'pointer';
-      titleEl.addEventListener('click', function() {
-        var found = allSAE.find(function(ss) { return (ss.titre || ss.nom) === sae.titre; });
-        if (found) openModal(found);
       });
 
     } else {
       slot.innerHTML = numBadge +
         '<div class="cours-slot-empty-icon">\u2795</div>' +
-        '<div class="cours-slot-empty">Cliquer pour choisir une SAE</div>';
+        '<div class="cours-slot-empty">Cliquer pour ajouter des SAE</div>';
       slot.addEventListener('click', function() { openSlotBrowser(index); });
     }
 
@@ -1216,7 +1197,8 @@ function renderSlots() {
   if (totalCountEl) totalCountEl.textContent = filledCount;
   if (actionsEl) actionsEl.classList.toggle('hidden', filledCount === 0);
 
-  if (filledCount === nb && nb > 0) {
+  // Show eval when at least 1 slot has SAEs
+  if (filledCount > 0) {
     showEvalSection();
   } else {
     hideEvalSection();
@@ -1324,11 +1306,19 @@ function updateCoursBrowser() {
     btn.addEventListener('click', function() {
       if (_activeSlotIndex < 0) return;
       var cours = getMonCours();
-      cours[_activeSlotIndex] = buildSlotData(s);
+      if (!Array.isArray(cours[_activeSlotIndex])) cours[_activeSlotIndex] = [];
+      // Check if already in this slot
+      var already = cours[_activeSlotIndex].some(function(e) { return e.titre === (s.titre || s.nom); });
+      if (already) {
+        showToast('Deja dans ce cours !');
+        return;
+      }
+      cours[_activeSlotIndex].push(buildSlotData(s));
       setMonCours(cours);
-      closeSlotBrowser();
+      btn.textContent = '\u2713 Ajoutee';
+      btn.classList.add('already-added');
       renderSlots();
-      showToast('SAE assignee au Cours ' + (_activeSlotIndex + 1) + ' !');
+      showToast('SAE ajoutee au Cours ' + (_activeSlotIndex + 1) + ' !');
     });
 
     container.appendChild(item);
@@ -1363,14 +1353,17 @@ function renderEvalObservables() {
   var allCriteres = [];
   var seen = new Set();
 
-  cours.forEach(function(sae, idx) {
-    if (!sae || !sae.titre) return;
-    var criteres = sae.criteres_evaluation || [];
-    (Array.isArray(criteres) ? criteres : [criteres]).forEach(function(c) {
-      if (typeof c === 'string' && c.trim() && !seen.has(c)) {
-        seen.add(c);
-        allCriteres.push({ text: c, source: 'Cours ' + (idx + 1) });
-      }
+  cours.forEach(function(slotSaes, idx) {
+    if (!Array.isArray(slotSaes)) return;
+    slotSaes.forEach(function(sae) {
+      if (!sae || !sae.titre) return;
+      var criteres = sae.criteres_evaluation || [];
+      (Array.isArray(criteres) ? criteres : [criteres]).forEach(function(c) {
+        if (typeof c === 'string' && c.trim() && !seen.has(c)) {
+          seen.add(c);
+          allCriteres.push({ text: c, source: 'Cours ' + (idx + 1) });
+        }
+      });
     });
   });
 
@@ -1548,13 +1541,22 @@ function buildCoursHTML() {
   var evalCfg = getEvalConfig();
 
   var coursHTML = '';
-  cours.forEach(function(sae, i) {
-    if (!sae || !sae.titre) return;
-    var saeUrl = 'https://sae.zonetotalsport.ca/?id=' + encodeURIComponent(sae.titre);
+  cours.forEach(function(slotSaes, i) {
+    if (!Array.isArray(slotSaes) || slotSaes.length === 0) return;
+    var saesLinksHTML = '';
+    slotSaes.forEach(function(sae) {
+      var saeUrl = 'https://sae.zonetotalsport.ca/?id=' + encodeURIComponent(sae.titre);
+      var dureeStr = sae.duree_periodes ? ' <span style="font-weight:400; color:#666; font-size:0.9rem;">(' + sae.duree_periodes + ' per.)</span>' : '';
+      saesLinksHTML +=
+        '<div style="padding:3px 0;">' +
+          '<a href="' + saeUrl + '" target="_blank" style="font-family:\'Fredoka\',sans-serif; font-size:1rem; font-weight:700; color:#0077CC; text-decoration:none; border-bottom:1px dashed #0077CC;">' + escapeHtml(sae.titre) + '</a>' +
+          dureeStr +
+        '</div>';
+    });
     coursHTML +=
-      '<div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid #eee;">' +
-        '<div style="width:32px; height:32px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Fredoka\',sans-serif; font-weight:700; font-size:0.95rem; flex-shrink:0;">' + (i + 1) + '</div>' +
-        '<a href="' + saeUrl + '" target="_blank" style="font-family:\'Fredoka\',sans-serif; font-size:1.1rem; font-weight:700; color:#0077CC; text-decoration:none; border-bottom:1px dashed #0077CC;">' + escapeHtml(sae.titre) + '</a>' +
+      '<div style="display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid #eee;">' +
+        '<div style="width:32px; height:32px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Fredoka\',sans-serif; font-weight:700; font-size:0.95rem; flex-shrink:0; margin-top:2px;">' + (i + 1) + '</div>' +
+        '<div>' + saesLinksHTML + '</div>' +
       '</div>';
   });
 
@@ -1613,7 +1615,7 @@ function buildCoursHTML() {
       '</div>';
   }
 
-  var filledCount = cours.filter(function(s) { return s && s.titre; }).length;
+  var filledCount = cours.filter(function(s) { return Array.isArray(s) && s.length > 0; }).length;
 
   return '<!DOCTYPE html>' +
 '<html lang="fr"><head><meta charset="UTF-8">' +
@@ -1681,7 +1683,10 @@ function shareCours() {
     n: config.niveau || '',
     nb: config.nbCours || '0',
     no: config.notes || '',
-    e: cours.map(function(e) { return e ? { t: e.titre, nt: e._note || '' } : null; })
+    e: cours.map(function(slot) {
+      if (!Array.isArray(slot) || slot.length === 0) return [];
+      return slot.map(function(sae) { return { t: sae.titre }; });
+    })
   };
 
   var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(shareData))));
@@ -1717,13 +1722,19 @@ function checkCoursDeepLink() {
     });
 
     var entries = data.e || [];
-    var cours = entries.map(function(item) {
-      if (!item) return null;
-      var found = allSAE.find(function(s) { return (s.titre || s.nom) === item.t; });
-      if (!found) return null;
-      var slot = buildSlotData(found);
-      slot._note = item.nt || '';
-      return slot;
+    var cours = entries.map(function(slotItems) {
+      if (!Array.isArray(slotItems)) {
+        // Legacy single item format
+        if (slotItems && slotItems.t) {
+          var f = allSAE.find(function(s) { return (s.titre || s.nom) === slotItems.t; });
+          return f ? [buildSlotData(f)] : [];
+        }
+        return [];
+      }
+      return slotItems.map(function(item) {
+        var found = allSAE.find(function(s) { return (s.titre || s.nom) === item.t; });
+        return found ? buildSlotData(found) : null;
+      }).filter(Boolean);
     });
     setMonCours(cours);
     openCours();
