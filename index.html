@@ -52,12 +52,6 @@
             <span class="hstat-num">7<span>competences</span></span>
           </div>
         </div>
-        <nav class="header-nav">
-          <a href="https://jeux.zonetotalsport.ca" class="nav-link">Jeux</a>
-          <a href="#hero" class="nav-link nav-active">SAE</a>
-          <a href="https://educatifs.zonetotalsport.ca" class="nav-link">Educatifs</a>
-          <a href="https://musique.zonetotalsport.ca" class="nav-link">Musique</a>
-        </nav>
       </div>
     </header>
 
@@ -289,12 +283,13 @@
           Retour aux SAE
         </button>
         <h2 class="cours-title">📋 Conception de ma SAE</h2>
-        <p class="cours-subtitle">Organise tes SAE pour creer un plan de cours personnalise</p>
+        <p class="cours-subtitle">Planifie ta SAE cours par cours, ajoute ta grille d'evaluation et imprime le tout</p>
       </div>
 
+      <!-- ETAPE 1 : Configuration -->
       <div class="cours-config">
         <div class="cours-config-row">
-          <div class="cours-field">
+          <div class="cours-field" style="flex:2">
             <label class="cours-label">Titre de la SAE</label>
             <input type="text" id="cours-titre" class="cours-input" placeholder="Ex: SAE Manipulation — 2e cycle" />
           </div>
@@ -311,19 +306,46 @@
             </select>
           </div>
           <div class="cours-field">
-            <label class="cours-label">Duree totale</label>
-            <input type="text" id="cours-duree" class="cours-input cours-input-sm" placeholder="Ex: 60 min" />
+            <label class="cours-label">Nombre de cours</label>
+            <select id="cours-nb" class="cours-select" onchange="onNbCoursChange()">
+              <option value="0">Choisir...</option>
+              <option value="1">1 cours</option>
+              <option value="2">2 cours</option>
+              <option value="3">3 cours</option>
+              <option value="4">4 cours</option>
+              <option value="5">5 cours</option>
+              <option value="6">6 cours</option>
+              <option value="7">7 cours</option>
+              <option value="8">8 cours</option>
+              <option value="9">9 cours</option>
+              <option value="10">10 cours</option>
+              <option value="12">12 cours</option>
+              <option value="15">15 cours</option>
+              <option value="20">20 cours</option>
+            </select>
           </div>
         </div>
         <div class="cours-field">
           <label class="cours-label">Notes / consignes generales</label>
-          <textarea id="cours-notes" class="cours-textarea" rows="3" placeholder="Ajoute tes notes, objectifs ou consignes pour cette SAE..."></textarea>
+          <textarea id="cours-notes" class="cours-textarea" rows="2" placeholder="Ajoute tes notes, objectifs ou consignes pour cette SAE..."></textarea>
         </div>
       </div>
 
-      <!-- Browser de SAE disponibles -->
-      <div class="cours-browser">
-        <h3 class="cours-browser-title">🔍 Ajouter des SAE a ta planification</h3>
+      <!-- ETAPE 2 : Cases par cours -->
+      <div id="cours-slots-section" class="cours-slots-section hidden">
+        <h3 class="cours-section-title">📅 Planification par cours</h3>
+        <p class="cours-section-hint">Clique sur chaque cours pour y assigner une SAE depuis la banque.</p>
+        <div id="cours-slots" class="cours-slots">
+          <!-- Rempli par JS -->
+        </div>
+      </div>
+
+      <!-- Browser de SAE (modal-like, s'ouvre quand on clique un slot) -->
+      <div id="slot-browser" class="slot-browser hidden">
+        <div class="slot-browser-header">
+          <h3>🔍 Choisir une SAE pour le <span id="slot-browser-label">Cours 1</span></h3>
+          <button class="slot-browser-close" onclick="closeSlotBrowser()">✕</button>
+        </div>
         <div class="cours-browser-filters">
           <div class="cours-field">
             <label class="cours-label">Moyen d'action</label>
@@ -341,21 +363,44 @@
         </div>
       </div>
 
-      <div class="cours-list-header">
-        <h3>SAE selectionnees (<span id="cours-count">0</span>)</h3>
-        <button class="cours-clear-btn" onclick="clearCours()" title="Vider la SAE">🗑️ Tout vider</button>
-      </div>
+      <!-- ETAPE 3 : Grille d'evaluation -->
+      <div id="eval-section" class="eval-section hidden">
+        <h3 class="cours-section-title">📊 Grille d'evaluation</h3>
+        <p class="cours-section-hint">Coche les observables que tu souhaites evaluer, puis configure ton echelle de notation.</p>
 
-      <div id="cours-list" class="cours-list">
-        <div class="cours-empty">
-          <div class="cours-empty-icon">📭</div>
-          <p>Aucune SAE ajoutee. Retourne a la banque et clique sur le <strong>+</strong> des cartes pour ajouter des SAE a ta planification.</p>
+        <!-- Observables -->
+        <div class="eval-observables">
+          <h4 class="eval-sub-title">Observables / Criteres d'evaluation</h4>
+          <div id="eval-observables-list" class="eval-observables-list">
+            <!-- Rempli par JS -->
+          </div>
+          <div class="eval-add-custom">
+            <input type="text" id="eval-custom-input" class="cours-input" placeholder="Ajouter un observable personnalise..." />
+            <button class="eval-add-btn" onclick="addCustomObservable()">+ Ajouter</button>
+          </div>
+        </div>
+
+        <!-- Echelle de notation -->
+        <div class="eval-scale">
+          <h4 class="eval-sub-title">Echelle de notation</h4>
+          <div class="eval-scale-selector">
+            <label class="eval-scale-option">
+              <input type="radio" name="eval-scale" value="ABCDE" onchange="onScaleChange()" checked /> A B C D E
+            </label>
+            <label class="eval-scale-option">
+              <input type="radio" name="eval-scale" value="12345" onchange="onScaleChange()" /> 1 2 3 4 5
+            </label>
+          </div>
+          <div id="eval-scale-descriptions" class="eval-scale-descriptions">
+            <!-- Rempli par JS -->
+          </div>
         </div>
       </div>
 
+      <!-- ACTIONS EXPORT -->
       <div id="cours-actions" class="cours-actions hidden">
         <div class="cours-total-duration">
-          Duree estimee : <strong><span id="cours-total-min">0</span> periodes</strong>
+          <strong><span id="cours-total-count">0</span> cours planifies</strong>
         </div>
         <div class="cours-export-btns">
           <button class="cours-btn cours-btn-print" onclick="printCours()">🖨️ Imprimer</button>

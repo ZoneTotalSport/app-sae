@@ -741,19 +741,33 @@ function handleModalCours() {
   if (!s) return;
   const btn = document.getElementById('modal-cours-btn');
   if (isInCours(s)) {
-    removeFromCours(getSaeId(s));
+    // Remove from cours
+    const cours = getMonCours();
+    const idx = cours.findIndex(e => e && e.titre === (s.titre || s.nom));
+    if (idx >= 0) {
+      cours[idx] = null;
+      setMonCours(cours);
+    }
     if (btn) {
       btn.classList.remove('fav-active');
       btn.textContent = '📋 Ajouter a ma SAE';
     }
     showToast('Retire de ma SAE');
   } else {
-    addToCours(s);
+    // Add to next empty slot
+    const cours = getMonCours();
+    const emptyIdx = cours.findIndex(e => !e || !e.titre);
+    if (emptyIdx < 0) {
+      showToast('Tous les cours sont remplis !');
+      return;
+    }
+    cours[emptyIdx] = buildSlotData(s);
+    setMonCours(cours);
     if (btn) {
       btn.classList.add('fav-active');
       btn.textContent = '✓ Dans ma SAE';
     }
-    showToast('Ajoute a ma SAE !');
+    showToast('Ajoutee au Cours ' + (emptyIdx + 1) + ' !');
   }
   refreshCardCoursState(s);
 }
@@ -853,8 +867,99 @@ document.addEventListener('keydown', e => {
 });
 
 // =============================================
-// CONCEPTION DE MA SAE
+// CONCEPTION DE MA SAE — V2 (cours par slots)
 // =============================================
+
+// Intentions pedagogiques PFEQ primaire par cycle
+const INTENTIONS_PFEQ = {
+  'Prescolaire': [
+    'Developper sa motricite globale par des actions locomotrices variees',
+    'Explorer differentes facons de manipuler des objets',
+    'Prendre conscience de son corps et de ses possibilites motrices',
+    'Participer a des jeux cooperatifs simples',
+    'Developper son equilibre statique et dynamique',
+    'Explorer des actions non locomotrices (pousser, tirer, tourner)',
+    'Decouvrir des activites rythmiques et expressives'
+  ],
+  '1er cycle': [
+    'Executer des actions de locomotion variees (courir, sauter, grimper, ramper)',
+    'Manipuler differents objets (lancer, attraper, frapper, dribler)',
+    'Realiser des enchainements de mouvements simples',
+    'Adopter un comportement securitaire lors de la pratique d\'activites',
+    'Reconnaitre les effets de l\'activite physique sur son corps',
+    'Cooperer avec un partenaire dans une tache motrice',
+    'Executer des actions de stabilisation (equilibre, rotations)',
+    'S\'orienter dans l\'espace de jeu',
+    'Respecter les regles de fonctionnement et de securite',
+    'Identifier les principales parties du corps sollicitees'
+  ],
+  '2e cycle': [
+    'Enchainer des actions motrices de locomotion et de manipulation',
+    'Adapter ses actions motrices en fonction d\'obstacles ou de contraintes',
+    'Appliquer des strategies cooperatives simples',
+    'Developper sa coordination et sa dissociation segmentaire',
+    'Elaborer et executer un plan d\'action moteur',
+    'Evaluer sa demarche et ses resultats',
+    'Reconnaitre des principes d\'equilibre et de coordination',
+    'Participer a des activites d\'opposition avec respect de l\'adversaire',
+    'Identifier les determinants de la condition physique',
+    'Appliquer des regles d\'ethique sportive',
+    'Utiliser des strategies offensives et defensives de base'
+  ],
+  '3e cycle': [
+    'Planifier et executer des sequences d\'actions motrices complexes',
+    'Appliquer des principes tactiques en situation de jeu',
+    'Analyser et ajuster ses actions pour ameliorer sa performance',
+    'Cooperer a l\'elaboration d\'un plan d\'action collectif',
+    'Demontrer des habiletes de manipulation avec precision et controle',
+    'Evaluer sa condition physique et etablir des objectifs personnels',
+    'Integrer des concepts de biomecanique dans ses mouvements',
+    'Respecter et valoriser les differences individuelles dans le groupe',
+    'Appliquer des strategies d\'attaque et de defense en sports collectifs',
+    'Developper sa perseverance et son engagement dans l\'effort',
+    'Pratiquer des activites favorisant un mode de vie sain et actif',
+    'Demontrer un esprit sportif et une ethique de jeu exemplaire'
+  ],
+  'Secondaire 1-2': [
+    'Planifier une demarche d\'apprentissage en activite physique',
+    'Executer des habiletes motrices complexes dans divers contextes',
+    'Adopter des strategies collectives et individuelles en situation de jeu',
+    'Evaluer et ajuster sa performance motrice',
+    'Appliquer un programme de conditionnement physique personnel',
+    'Connaitre les determinants de la condition physique et les principes d\'entrainement',
+    'Gerer les risques lies a la pratique d\'activites physiques',
+    'Developper sa capacite d\'analyse critique en situation de jeu'
+  ],
+  'Secondaire 3-5': [
+    'Concevoir et mettre en oeuvre un programme d\'activites physiques personnalise',
+    'Analyser et reguler sa pratique d\'activites physiques de facon autonome',
+    'Integrer des principes tactiques avances en contexte de competition',
+    'Developper un mode de vie sain et physiquement actif durable',
+    'Evaluer les impacts de ses choix sur sa sante et son bien-etre',
+    'Exercer un leadership positif dans les activites physiques de groupe',
+    'Appliquer des strategies d\'arbitrage et de gestion de conflits'
+  ]
+};
+
+// Echelles par defaut
+const SCALES = {
+  ABCDE: [
+    { label: 'A', desc: 'Excellent — Depasse les attentes' },
+    { label: 'B', desc: 'Tres bien — Repond pleinement aux attentes' },
+    { label: 'C', desc: 'Bien — Repond aux attentes avec quelques lacunes' },
+    { label: 'D', desc: 'En developpement — Repond partiellement aux attentes' },
+    { label: 'E', desc: 'Debutant — Ne repond pas encore aux attentes' }
+  ],
+  '12345': [
+    { label: '5', desc: 'Excellent — Depasse les attentes' },
+    { label: '4', desc: 'Tres bien — Repond pleinement aux attentes' },
+    { label: '3', desc: 'Bien — Repond aux attentes avec quelques lacunes' },
+    { label: '2', desc: 'En developpement — Repond partiellement aux attentes' },
+    { label: '1', desc: 'Debutant — Ne repond pas encore aux attentes' }
+  ]
+};
+
+let _activeSlotIndex = -1;
 
 function getMonCours() {
   try {
@@ -877,46 +982,39 @@ function setCoursConfig(config) {
   localStorage.setItem('mon-cours-sae-config', JSON.stringify(config));
 }
 
+function getEvalConfig() {
+  try {
+    return JSON.parse(localStorage.getItem('mon-cours-sae-eval') || '{}');
+  } catch { return {}; }
+}
+
+function setEvalConfig(config) {
+  localStorage.setItem('mon-cours-sae-eval', JSON.stringify(config));
+}
+
 function isInCours(s) {
   const id = getSaeId(s);
-  return getMonCours().some(e => (e.id || e.titre || e.nom) === id);
-}
-
-function addToCours(s) {
   const cours = getMonCours();
-  const id = getSaeId(s);
-  if (cours.some(e => (e.id || e.titre || e.nom) === id)) return false;
-  cours.push({
-    titre: s.titre || s.nom || '',
-    description: s.description || s.contexte_apprentissage || '',
-    cycle: s.cycle || s.niveau || '',
-    competence_pfeq: s.competence_pfeq || '',
-    moyen_action: s.moyen_action || s.moyens_action || '',
-    duree_periodes: s.duree_periodes || s.duree || '',
-    _source: s._source || '',
-    _note: ''
-  });
-  setMonCours(cours);
-  return true;
-}
-
-function removeFromCours(id) {
-  const cours = getMonCours().filter(e => (e.titre || e.nom) !== id);
-  setMonCours(cours);
+  return cours.some(e => e && (e.titre === (s.titre || s.nom)));
 }
 
 function updateCoursFab() {
-  const count = getMonCours().length;
+  const cours = getMonCours();
+  const filled = cours.filter(e => e && e.titre).length;
   const badge = document.getElementById('cours-fab-count');
   if (badge) {
-    badge.textContent = count;
-    badge.classList.toggle('hidden', count === 0);
+    badge.textContent = filled;
+    badge.classList.toggle('hidden', filled === 0);
   }
 }
 
 function toggleCoursItem(s, btn) {
-  if (isInCours(s)) {
-    removeFromCours(getSaeId(s));
+  const cours = getMonCours();
+  const existingIdx = cours.findIndex(e => e && e.titre === (s.titre || s.nom));
+
+  if (existingIdx >= 0) {
+    cours[existingIdx] = null;
+    setMonCours(cours);
     if (btn) {
       btn.classList.remove('added');
       btn.textContent = '+';
@@ -924,18 +1022,23 @@ function toggleCoursItem(s, btn) {
     }
     showToast('Retire de ma SAE');
   } else {
-    addToCours(s);
+    const emptyIdx = cours.findIndex(e => !e || !e.titre);
+    if (emptyIdx < 0) {
+      showToast('Tous les cours sont remplis !');
+      return;
+    }
+    cours[emptyIdx] = buildSlotData(s);
+    setMonCours(cours);
     if (btn) {
       btn.classList.add('added');
-      btn.textContent = '✓';
+      btn.textContent = '\u2713';
       btn.title = 'Retirer de ma SAE';
     }
-    showToast('Ajoute a ma SAE !');
+    showToast('Ajoutee au Cours ' + (emptyIdx + 1) + ' !');
   }
 }
 
 function refreshCardCoursState(s) {
-  const id = getSaeId(s);
   document.querySelectorAll('.sae-card').forEach(card => {
     const titleEl = card.querySelector('.card-title');
     if (titleEl && titleEl.textContent === (s.titre || s.nom)) {
@@ -943,47 +1046,61 @@ function refreshCardCoursState(s) {
       if (addBtn) {
         const inC = isInCours(s);
         addBtn.classList.toggle('added', inC);
-        addBtn.textContent = inC ? '✓' : '+';
+        addBtn.textContent = inC ? '\u2713' : '+';
         addBtn.title = inC ? 'Retirer de ma SAE' : 'Ajouter a ma SAE';
       }
     }
   });
 }
 
+function buildSlotData(s) {
+  return {
+    titre: s.titre || s.nom || '',
+    description: s.description || s.contexte_apprentissage || '',
+    cycle: s.cycle || s.niveau || '',
+    competence_pfeq: s.competence_pfeq || '',
+    moyen_action: s.moyen_action || s.moyens_action || '',
+    duree_periodes: s.duree_periodes || s.duree || '',
+    criteres_evaluation: s.criteres_evaluation || [],
+    intentions_pedagogiques: s.intentions_pedagogiques || '',
+    _source: s._source || '',
+    _note: ''
+  };
+}
+
+// ===== OPEN / CLOSE COURS =====
+
 function openCours() {
-  // Hide main content
   const app = document.getElementById('app');
   const fab = document.getElementById('cours-fab');
   if (app) app.classList.add('hidden');
   if (fab) fab.classList.add('hidden');
 
-  // Show cours section
   const section = document.getElementById('cours-section');
   if (!section) return;
   section.classList.remove('hidden');
 
-  // Load config
   const config = getCoursConfig();
   const titreInput = document.getElementById('cours-titre');
   const niveauSelect = document.getElementById('cours-niveau');
-  const dureeInput = document.getElementById('cours-duree');
+  const nbSelect = document.getElementById('cours-nb');
   const notesArea = document.getElementById('cours-notes');
   if (titreInput) titreInput.value = config.titre || '';
   if (niveauSelect) niveauSelect.value = config.niveau || '';
-  if (dureeInput) dureeInput.value = config.duree || '';
+  if (nbSelect) nbSelect.value = config.nbCours || '0';
   if (notesArea) notesArea.value = config.notes || '';
 
-  // Auto-save config on change
-  [titreInput, niveauSelect, dureeInput, notesArea].forEach(el => {
+  [titreInput, niveauSelect, nbSelect, notesArea].forEach(el => {
     if (el) {
       el.removeEventListener('input', saveCoursConfigFromUI);
+      el.removeEventListener('change', saveCoursConfigFromUI);
       el.addEventListener('input', saveCoursConfigFromUI);
+      el.addEventListener('change', saveCoursConfigFromUI);
     }
   });
 
   populateCoursCatSelect();
-  renderCoursList();
-  updateCoursBrowser();
+  renderSlots();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -991,13 +1108,14 @@ function saveCoursConfigFromUI() {
   setCoursConfig({
     titre: document.getElementById('cours-titre')?.value || '',
     niveau: document.getElementById('cours-niveau')?.value || '',
-    duree: document.getElementById('cours-duree')?.value || '',
+    nbCours: document.getElementById('cours-nb')?.value || '0',
     notes: document.getElementById('cours-notes')?.value || ''
   });
 }
 
 function closeCours() {
   saveCoursConfigFromUI();
+  saveEvalFromUI();
   const section = document.getElementById('cours-section');
   const app = document.getElementById('app');
   const fab = document.getElementById('cours-fab');
@@ -1007,314 +1125,599 @@ function closeCours() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function renderCoursList() {
-  const list = document.getElementById('cours-list');
+// ===== NOMBRE DE COURS =====
+
+function onNbCoursChange() {
+  saveCoursConfigFromUI();
+  const nb = parseInt(document.getElementById('cours-nb')?.value || '0');
   const cours = getMonCours();
-  const countEl = document.getElementById('cours-count');
+
+  if (nb > cours.length) {
+    while (cours.length < nb) cours.push(null);
+  } else if (nb < cours.length) {
+    cours.length = nb;
+  }
+  setMonCours(cours);
+  renderSlots();
+}
+
+// ===== RENDER SLOTS =====
+
+function renderSlots() {
+  const config = getCoursConfig();
+  const nb = parseInt(config.nbCours || '0');
+  const slotsSection = document.getElementById('cours-slots-section');
+  const slotsContainer = document.getElementById('cours-slots');
   const actionsEl = document.getElementById('cours-actions');
-  const totalMinEl = document.getElementById('cours-total-min');
+  const totalCountEl = document.getElementById('cours-total-count');
 
-  if (countEl) countEl.textContent = cours.length;
-
-  if (cours.length === 0) {
-    list.innerHTML = `
-      <div class="cours-empty">
-        <div class="cours-empty-icon">📭</div>
-        <p>Aucune SAE ajoutee. Retourne a la banque et clique sur le <strong>+</strong> des cartes pour ajouter des SAE a ta planification.</p>
-      </div>
-    `;
+  if (nb === 0) {
+    if (slotsSection) slotsSection.classList.add('hidden');
     if (actionsEl) actionsEl.classList.add('hidden');
+    hideEvalSection();
     return;
   }
 
-  if (actionsEl) actionsEl.classList.remove('hidden');
+  if (slotsSection) slotsSection.classList.remove('hidden');
 
-  let totalPeriodes = 0;
-  list.innerHTML = '';
+  const cours = getMonCours();
+  while (cours.length < nb) cours.push(null);
+  if (cours.length > nb) cours.length = nb;
+  setMonCours(cours);
+
+  slotsContainer.innerHTML = '';
+
+  let filledCount = 0;
 
   cours.forEach((sae, index) => {
-    totalPeriodes += parseInt(sae.duree_periodes) || 0;
+    const slot = document.createElement('div');
+    slot.className = 'cours-slot' + (sae && sae.titre ? ' filled' : '');
 
-    const item = document.createElement('div');
-    item.className = 'cours-item';
-    item.innerHTML = `
-      <div class="cours-item-num">${index + 1}</div>
-      <div class="cours-item-body">
-        <div class="cours-item-title">${escapeHtml(sae.titre)}</div>
-        <div class="cours-item-meta">
-          <span>${escapeHtml(sae.cycle || '')}</span>
-          <span>${escapeHtml(sae.competence_pfeq || '')}</span>
-          ${sae.duree_periodes ? `<span>⏱ ${sae.duree_periodes} per.</span>` : ''}
-          ${sae.moyen_action ? `<span>${escapeHtml(sae.moyen_action)}</span>` : ''}
-        </div>
-        <div class="cours-item-note">
-          <input type="text" placeholder="Ajouter une note pour cette SAE..." value="${escapeHtml(sae._note || '')}" data-index="${index}" />
-        </div>
-      </div>
-      <div class="cours-item-actions">
-        <button title="Monter" class="cours-up-btn" ${index === 0 ? 'disabled' : ''}>▲</button>
-        <button title="Descendre" class="cours-down-btn" ${index === cours.length - 1 ? 'disabled' : ''}>▼</button>
-        <button title="Retirer" class="cours-remove-btn">✕</button>
-      </div>
-    `;
+    const numBadge = '<div class="cours-slot-num">Cours ' + (index + 1) + '</div>';
 
-    // Click title to view SAE details
-    const titleEl = item.querySelector('.cours-item-title');
-    titleEl.addEventListener('click', () => {
-      const found = allSAE.find(s => (s.titre || s.nom) === sae.titre);
-      if (found) openModal(found);
-    });
+    if (sae && sae.titre) {
+      filledCount++;
+      slot.innerHTML = numBadge +
+        '<button class="cours-slot-remove" title="Retirer cette SAE" data-idx="' + index + '">\u2715</button>' +
+        '<div class="cours-slot-title">' + escapeHtml(sae.titre) + '</div>' +
+        '<div class="cours-slot-meta">' +
+          '<span>' + escapeHtml(sae.cycle || '') + '</span>' +
+          '<span>' + escapeHtml(sae.competence_pfeq || '') + '</span>' +
+          (sae.duree_periodes ? '<span>\u23F1 ' + sae.duree_periodes + ' per.</span>' : '') +
+        '</div>' +
+        '<div class="cours-slot-note">' +
+          '<input type="text" placeholder="Note pour ce cours..." value="' + escapeHtml(sae._note || '') + '" data-idx="' + index + '" />' +
+        '</div>' +
+        '<button class="cours-slot-change" data-idx="' + index + '">Changer la SAE</button>';
 
-    // Note input
-    const noteInput = item.querySelector('.cours-item-note input');
-    noteInput.addEventListener('input', () => {
-      const c = getMonCours();
-      if (c[index]) {
-        c[index]._note = noteInput.value;
+      slot.querySelector('.cours-slot-remove').addEventListener('click', function(e) {
+        e.stopPropagation();
+        var c = getMonCours();
+        c[index] = null;
         setMonCours(c);
-      }
-    });
+        renderSlots();
+        showToast('SAE retiree du cours ' + (index + 1));
+      });
 
-    // Move up
-    item.querySelector('.cours-up-btn').addEventListener('click', () => {
-      if (index > 0) {
-        const c = getMonCours();
-        [c[index - 1], c[index]] = [c[index], c[index - 1]];
-        setMonCours(c);
-        renderCoursList();
-      }
-    });
+      var noteInput = slot.querySelector('.cours-slot-note input');
+      noteInput.addEventListener('click', function(e) { e.stopPropagation(); });
+      noteInput.addEventListener('input', function() {
+        var c = getMonCours();
+        if (c[index]) {
+          c[index]._note = noteInput.value;
+          setMonCours(c);
+        }
+      });
 
-    // Move down
-    item.querySelector('.cours-down-btn').addEventListener('click', () => {
-      if (index < cours.length - 1) {
-        const c = getMonCours();
-        [c[index], c[index + 1]] = [c[index + 1], c[index]];
-        setMonCours(c);
-        renderCoursList();
-      }
-    });
+      slot.querySelector('.cours-slot-change').addEventListener('click', function(e) {
+        e.stopPropagation();
+        openSlotBrowser(index);
+      });
 
-    // Remove
-    item.querySelector('.cours-remove-btn').addEventListener('click', () => {
-      removeFromCours(sae.titre);
-      renderCoursList();
-      updateCoursBrowser();
-      showToast('SAE retiree');
-    });
+      var titleEl = slot.querySelector('.cours-slot-title');
+      titleEl.style.cursor = 'pointer';
+      titleEl.addEventListener('click', function() {
+        var found = allSAE.find(function(ss) { return (ss.titre || ss.nom) === sae.titre; });
+        if (found) openModal(found);
+      });
 
-    list.appendChild(item);
+    } else {
+      slot.innerHTML = numBadge +
+        '<div class="cours-slot-empty-icon">\u2795</div>' +
+        '<div class="cours-slot-empty">Cliquer pour choisir une SAE</div>';
+      slot.addEventListener('click', function() { openSlotBrowser(index); });
+    }
+
+    slotsContainer.appendChild(slot);
   });
 
-  if (totalMinEl) totalMinEl.textContent = totalPeriodes;
+  if (totalCountEl) totalCountEl.textContent = filledCount;
+  if (actionsEl) actionsEl.classList.toggle('hidden', filledCount === 0);
+
+  if (filledCount === nb && nb > 0) {
+    showEvalSection();
+  } else {
+    hideEvalSection();
+  }
 }
 
-function clearCours() {
-  if (getMonCours().length === 0) return;
-  setMonCours([]);
-  renderCoursList();
+// ===== SLOT BROWSER =====
+
+function openSlotBrowser(index) {
+  _activeSlotIndex = index;
+  var browser = document.getElementById('slot-browser');
+  var label = document.getElementById('slot-browser-label');
+  if (browser) browser.classList.remove('hidden');
+  if (label) label.textContent = 'Cours ' + (index + 1);
+
+  var searchInput = document.getElementById('cours-browser-search');
+  if (searchInput) searchInput.value = '';
+
   updateCoursBrowser();
-  showToast('SAE videe');
+  if (browser) browser.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function closeSlotBrowser() {
+  _activeSlotIndex = -1;
+  var browser = document.getElementById('slot-browser');
+  if (browser) browser.classList.add('hidden');
 }
 
 function populateCoursCatSelect() {
-  const select = document.getElementById('cours-cat-select');
+  var select = document.getElementById('cours-cat-select');
   if (!select) return;
   select.innerHTML = '<option value="">— Choisir un moyen d\'action —</option>';
-  MOYENS_ACTION.forEach(m => {
-    const opt = document.createElement('option');
+  MOYENS_ACTION.forEach(function(m) {
+    var opt = document.createElement('option');
     opt.value = m.key;
-    opt.textContent = `${m.emoji} ${m.label.replace(m.emoji + ' ', '')}`;
+    opt.textContent = m.emoji + ' ' + m.label.replace(m.emoji + ' ', '');
     select.appendChild(opt);
   });
 }
 
 function updateCoursBrowser() {
-  const container = document.getElementById('cours-browser-results');
+  var container = document.getElementById('cours-browser-results');
   if (!container) return;
 
-  const catKey = document.getElementById('cours-cat-select')?.value;
-  const search = (document.getElementById('cours-browser-search')?.value || '').toLowerCase().trim();
+  var catKey = document.getElementById('cours-cat-select')?.value;
+  var search = (document.getElementById('cours-browser-search')?.value || '').toLowerCase().trim();
 
   if (!catKey) {
     container.innerHTML = '<p class="cours-browser-hint">Selectionne un moyen d\'action pour voir les SAE disponibles.</p>';
     return;
   }
 
-  const m = MOYENS_ACTION.find(x => x.key === catKey);
+  var m = MOYENS_ACTION.find(function(x) { return x.key === catKey; });
   if (!m) return;
 
-  // Filter allSAE by moyen keywords
-  let results = allSAE.filter(s => {
-    const text = [
+  var results = allSAE.filter(function(s) {
+    var text = [
       s.titre, s.nom, s.moyen_action, s.moyens_action, s._source,
       ...(s.tags || []), s.description
     ].filter(Boolean).join(' ').toLowerCase();
-    return m.keywords.some(kw => text.includes(kw));
+    return m.keywords.some(function(kw) { return text.includes(kw); });
   });
 
-  // Apply search filter
   if (search) {
-    results = results.filter(s => {
-      const text = [s.titre, s.nom, s.description, s.contexte_apprentissage].filter(Boolean).join(' ').toLowerCase();
+    results = results.filter(function(s) {
+      var text = [s.titre, s.nom, s.description, s.contexte_apprentissage].filter(Boolean).join(' ').toLowerCase();
       return text.includes(search);
     });
   }
 
   container.innerHTML = '';
 
-  const countDiv = document.createElement('div');
+  var countDiv = document.createElement('div');
   countDiv.className = 'cours-browser-count';
-  countDiv.innerHTML = `<strong>${results.length}</strong> SAE disponible${results.length > 1 ? 's' : ''}`;
+  countDiv.innerHTML = '<strong>' + results.length + '</strong> SAE disponible' + (results.length > 1 ? 's' : '');
   container.appendChild(countDiv);
 
   if (results.length === 0) {
-    const hint = document.createElement('p');
+    var hint = document.createElement('p');
     hint.className = 'cours-browser-hint';
     hint.textContent = 'Aucune SAE trouvee avec ces criteres.';
     container.appendChild(hint);
     return;
   }
 
-  // Show max 50 results in browser
-  results.slice(0, 50).forEach(s => {
-    const inCours = isInCours(s);
-    const item = document.createElement('div');
+  results.slice(0, 50).forEach(function(s) {
+    var item = document.createElement('div');
     item.className = 'cours-browse-item';
-    item.innerHTML = `
-      <div class="cours-browse-item-info">
-        <div class="cours-browse-item-title">${escapeHtml(s.titre || s.nom || '')}</div>
-        <div class="cours-browse-item-meta">
-          <span>${escapeHtml(s.cycle || s.niveau || '')}</span>
-          <span>${escapeHtml(s.competence_pfeq || '')}</span>
-          ${s.duree_periodes ? `<span>⏱ ${s.duree_periodes} per.</span>` : ''}
-        </div>
-      </div>
-      <button class="cours-browse-add-btn ${inCours ? 'already-added' : ''}">${inCours ? '✓ Ajoutee' : '+ Ajouter'}</button>
-    `;
+    item.innerHTML =
+      '<div class="cours-browse-item-info">' +
+        '<div class="cours-browse-item-title">' + escapeHtml(s.titre || s.nom || '') + '</div>' +
+        '<div class="cours-browse-item-meta">' +
+          '<span>' + escapeHtml(s.cycle || s.niveau || '') + '</span>' +
+          '<span>' + escapeHtml(s.competence_pfeq || '') + '</span>' +
+          (s.duree_periodes ? '<span>\u23F1 ' + s.duree_periodes + ' per.</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<button class="cours-browse-add-btn">+ Choisir</button>';
 
-    // Click on info to open modal
-    const info = item.querySelector('.cours-browse-item-info');
+    var info = item.querySelector('.cours-browse-item-info');
     info.style.cursor = 'pointer';
-    info.addEventListener('click', () => openModal(s));
+    info.addEventListener('click', function() { openModal(s); });
 
-    const btn = item.querySelector('.cours-browse-add-btn');
-    btn.addEventListener('click', () => {
-      if (isInCours(s)) return;
-      addToCours(s);
-      btn.textContent = '✓ Ajoutee';
-      btn.classList.add('already-added');
-      renderCoursList();
-      showToast('Ajoutee a ma SAE !');
+    var btn = item.querySelector('.cours-browse-add-btn');
+    btn.addEventListener('click', function() {
+      if (_activeSlotIndex < 0) return;
+      var cours = getMonCours();
+      cours[_activeSlotIndex] = buildSlotData(s);
+      setMonCours(cours);
+      closeSlotBrowser();
+      renderSlots();
+      showToast('SAE assignee au Cours ' + (_activeSlotIndex + 1) + ' !');
     });
 
     container.appendChild(item);
   });
 }
 
-// ===== EXPORT COURS =====
+// ===== EVALUATION =====
 
-function buildCoursHTML() {
-  const cours = getMonCours();
-  const config = getCoursConfig();
+function showEvalSection() {
+  var section = document.getElementById('eval-section');
+  if (!section) return;
+  section.classList.remove('hidden');
+  renderEvalObservables();
+  renderEvalIntentions();
+  renderEvalScale();
+}
 
-  let totalPeriodes = 0;
-  cours.forEach(e => totalPeriodes += parseInt(e.duree_periodes) || 0);
+function hideEvalSection() {
+  var section = document.getElementById('eval-section');
+  if (section) section.classList.add('hidden');
+}
 
-  let saesHTML = '';
-  cours.forEach((sae, i) => {
-    saesHTML += `
-      <div style="border:1px solid #ddd; border-radius:12px; padding:16px; margin-bottom:12px; page-break-inside:avoid; background:#fafafa;">
-        <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-weight:700; font-size:1.1rem; flex-shrink:0;">${i + 1}</div>
-          <div>
-            <div style="font-family:'Fredoka',sans-serif; font-size:1.2rem; font-weight:700; color:#222;">${escapeHtml(sae.titre)}</div>
-            <div style="font-size:0.85rem; color:#666; font-family:'Nunito',sans-serif;">
-              ${escapeHtml(sae.cycle || '')} · ${escapeHtml(sae.competence_pfeq || '')} ${sae.duree_periodes ? '· ⏱ ' + sae.duree_periodes + ' per.' : ''}
-            </div>
-          </div>
-        </div>
-        ${sae.description ? '<p style="font-size:0.95rem; line-height:1.6; color:#333; font-family:\'Nunito\',sans-serif; margin:8px 0;">' + escapeHtml(sae.description) + '</p>' : ''}
-        ${sae._note ? '<div style="font-size:0.85rem; color:#0077CC; margin-top:6px; font-style:italic;">📝 Note : ' + escapeHtml(sae._note) + '</div>' : ''}
-      </div>
-    `;
+function renderEvalObservables() {
+  var list = document.getElementById('eval-observables-list');
+  if (!list) return;
+
+  var cours = getMonCours();
+  var evalConfig = getEvalConfig();
+  var checkedObs = evalConfig.checkedObservables || [];
+  var customObs = evalConfig.customObservables || [];
+
+  var allCriteres = [];
+  var seen = new Set();
+
+  cours.forEach(function(sae, idx) {
+    if (!sae || !sae.titre) return;
+    var criteres = sae.criteres_evaluation || [];
+    (Array.isArray(criteres) ? criteres : [criteres]).forEach(function(c) {
+      if (typeof c === 'string' && c.trim() && !seen.has(c)) {
+        seen.add(c);
+        allCriteres.push({ text: c, source: 'Cours ' + (idx + 1) });
+      }
+    });
   });
 
-  return `<!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8">
-<title>${escapeHtml(config.titre || 'Ma SAE')} — Zone Total Sport</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  @page { margin: 20mm 15mm 25mm 15mm; }
-  body { font-family: 'Nunito', sans-serif; margin: 0; padding: 30px; color: #222; }
-  .header { text-align: center; margin-bottom: 24px; border-bottom: 3px solid #0077CC; padding-bottom: 16px; }
-  .header h1 { font-family: 'Fredoka', sans-serif; font-size: 2.2rem; color: #0077CC; margin: 0 0 6px; }
-  .header .info { font-size: 0.95rem; color: #555; }
-  .header .info strong { color: #333; }
-  .notes { background: #f0f7ff; border: 1px solid #b3d4fc; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; }
-  .notes-label { font-family: 'Fredoka', sans-serif; font-weight: 700; color: #0077CC; margin-bottom: 4px; }
-  .footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-family: 'Fredoka', sans-serif; font-size: 0.8rem; color: #999; padding: 10px; border-top: 1px solid #ddd; background: #fff; }
-  .footer a { color: #0077CC; text-decoration: none; }
-  @media print { .footer { position: fixed; bottom: 0; } }
-</style></head><body>
-<div class="header">
-  <h1>📋 ${escapeHtml(config.titre || 'Conception de ma SAE')}</h1>
-  <div class="info">
-    ${config.niveau ? '<strong>Niveau :</strong> ' + escapeHtml(config.niveau) + ' · ' : ''}
-    ${config.duree ? '<strong>Duree :</strong> ' + escapeHtml(config.duree) + ' · ' : ''}
-    <strong>${cours.length}</strong> SAE · Duree estimee : <strong>${totalPeriodes} periodes</strong>
-  </div>
-</div>
-${config.notes ? '<div class="notes"><div class="notes-label">📝 Notes</div>' + escapeHtml(config.notes) + '</div>' : ''}
-${saesHTML}
-<div class="footer">
-  <a href="https://zonetotalsport.ca" target="_blank" style="display:inline-block; background:#fff; border-radius:12px; padding:10px 20px;"><img src="${window.location.origin + '/img/logo-zonetotalsport.png'}" alt="ZoneTotalSport.ca" style="max-width:280px; height:auto; display:block;" /></a><br>
-  Cree avec <a href="https://zonetotalsport.ca" target="_blank">zonetotalsport.ca</a> — SAE PFEQ
-</div>
-</body></html>`;
+  list.innerHTML = '';
+
+  if (allCriteres.length === 0 && customObs.length === 0) {
+    list.innerHTML = '<p class="cours-browser-hint">Aucun critere d\'evaluation trouve dans les SAE selectionnees. Ajoute des observables personnalises ci-dessous.</p>';
+  }
+
+  allCriteres.forEach(function(crit) {
+    var isChecked = checkedObs.includes(crit.text);
+    var item = document.createElement('div');
+    item.className = 'eval-observable-item';
+    item.innerHTML =
+      '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' />' +
+      '<span class="eval-observable-text">' + escapeHtml(crit.text) + '</span>' +
+      '<span class="eval-observable-source">' + escapeHtml(crit.source) + '</span>';
+    item.querySelector('input').addEventListener('change', function() { saveEvalFromUI(); });
+    list.appendChild(item);
+  });
+
+  customObs.forEach(function(text, idx) {
+    var isChecked = checkedObs.includes('custom:' + text);
+    var item = document.createElement('div');
+    item.className = 'eval-observable-item custom';
+    item.innerHTML =
+      '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' />' +
+      '<span class="eval-observable-text">' + escapeHtml(text) + '</span>' +
+      '<button class="cours-slot-remove" title="Supprimer" style="position:static;">\u2715</button>';
+    item.querySelector('input').addEventListener('change', function() { saveEvalFromUI(); });
+    item.querySelector('.cours-slot-remove').addEventListener('click', function() {
+      var ec = getEvalConfig();
+      ec.customObservables = (ec.customObservables || []).filter(function(_, i) { return i !== idx; });
+      setEvalConfig(ec);
+      renderEvalObservables();
+    });
+    list.appendChild(item);
+  });
+}
+
+function addCustomObservable() {
+  var input = document.getElementById('eval-custom-input');
+  if (!input || !input.value.trim()) return;
+  var ec = getEvalConfig();
+  if (!ec.customObservables) ec.customObservables = [];
+  ec.customObservables.push(input.value.trim());
+  if (!ec.checkedObservables) ec.checkedObservables = [];
+  ec.checkedObservables.push('custom:' + input.value.trim());
+  setEvalConfig(ec);
+  input.value = '';
+  renderEvalObservables();
+}
+
+function renderEvalIntentions() {
+  var intentionsDiv = document.getElementById('eval-intentions-div');
+  var evalSection = document.getElementById('eval-section');
+  var scaleDiv = evalSection?.querySelector('.eval-scale');
+
+  if (!intentionsDiv) {
+    intentionsDiv = document.createElement('div');
+    intentionsDiv.id = 'eval-intentions-div';
+    intentionsDiv.className = 'eval-intentions';
+    if (scaleDiv) {
+      scaleDiv.parentNode.insertBefore(intentionsDiv, scaleDiv);
+    } else if (evalSection) {
+      evalSection.appendChild(intentionsDiv);
+    }
+  }
+
+  var config = getCoursConfig();
+  var niveau = config.niveau || '';
+  var intentions = INTENTIONS_PFEQ[niveau] || [];
+  var evalCfg = getEvalConfig();
+  var checkedIntentions = evalCfg.checkedIntentions || [];
+
+  if (intentions.length === 0) {
+    intentionsDiv.innerHTML =
+      '<h4 class="eval-sub-title">\uD83C\uDFAF Intentions pedagogiques PFEQ</h4>' +
+      '<p class="cours-browser-hint">Selectionne un niveau scolaire dans la configuration pour voir les intentions pedagogiques du PFEQ.</p>';
+    return;
+  }
+
+  intentionsDiv.innerHTML =
+    '<h4 class="eval-sub-title">\uD83C\uDFAF Intentions pedagogiques PFEQ — ' + escapeHtml(niveau) + '</h4>' +
+    '<div class="eval-intentions-list" id="eval-intentions-list"></div>';
+
+  var listEl = intentionsDiv.querySelector('#eval-intentions-list');
+
+  intentions.forEach(function(intent) {
+    var isChecked = checkedIntentions.includes(intent);
+    var item = document.createElement('div');
+    item.className = 'eval-intention-item';
+    item.innerHTML =
+      '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' />' +
+      '<span class="eval-intention-text">' + escapeHtml(intent) + '</span>';
+    item.querySelector('input').addEventListener('change', function() { saveEvalFromUI(); });
+    listEl.appendChild(item);
+  });
+}
+
+function renderEvalScale() {
+  var container = document.getElementById('eval-scale-descriptions');
+  if (!container) return;
+
+  var evalCfg = getEvalConfig();
+  var scaleType = evalCfg.scaleType || 'ABCDE';
+  var customDescs = evalCfg.scaleDescs || {};
+
+  document.querySelectorAll('input[name="eval-scale"]').forEach(function(r) {
+    r.checked = r.value === scaleType;
+  });
+
+  var scale = SCALES[scaleType] || SCALES.ABCDE;
+
+  container.innerHTML = '';
+  scale.forEach(function(item) {
+    var customDesc = customDescs[item.label] || item.desc;
+    var row = document.createElement('div');
+    row.className = 'eval-scale-row';
+    row.innerHTML =
+      '<div class="eval-scale-label">' + item.label + '</div>' +
+      '<input type="text" class="eval-scale-desc" value="' + escapeHtml(customDesc) + '" data-label="' + item.label + '" />';
+    row.querySelector('input').addEventListener('input', function() { saveEvalFromUI(); });
+    container.appendChild(row);
+  });
+}
+
+function onScaleChange() {
+  var scaleType = document.querySelector('input[name="eval-scale"]:checked')?.value || 'ABCDE';
+  var ec = getEvalConfig();
+  ec.scaleType = scaleType;
+  ec.scaleDescs = {};
+  setEvalConfig(ec);
+  renderEvalScale();
+}
+
+function saveEvalFromUI() {
+  var ec = getEvalConfig();
+
+  var obsItems = document.querySelectorAll('#eval-observables-list .eval-observable-item');
+  ec.checkedObservables = [];
+  obsItems.forEach(function(item) {
+    var cb = item.querySelector('input[type="checkbox"]');
+    var text = item.querySelector('.eval-observable-text')?.textContent || '';
+    var isCustom = item.classList.contains('custom');
+    if (cb?.checked) {
+      ec.checkedObservables.push(isCustom ? 'custom:' + text : text);
+    }
+  });
+
+  var intentItems = document.querySelectorAll('#eval-intentions-list .eval-intention-item');
+  ec.checkedIntentions = [];
+  intentItems.forEach(function(item) {
+    var cb = item.querySelector('input[type="checkbox"]');
+    var text = item.querySelector('.eval-intention-text')?.textContent || '';
+    if (cb?.checked) {
+      ec.checkedIntentions.push(text);
+    }
+  });
+
+  ec.scaleType = document.querySelector('input[name="eval-scale"]:checked')?.value || 'ABCDE';
+  ec.scaleDescs = {};
+  document.querySelectorAll('.eval-scale-desc').forEach(function(input) {
+    ec.scaleDescs[input.dataset.label] = input.value;
+  });
+
+  setEvalConfig(ec);
+}
+
+// ===== EXPORT COURS V2 =====
+
+function buildCoursHTML() {
+  var cours = getMonCours();
+  var config = getCoursConfig();
+  var evalCfg = getEvalConfig();
+
+  var coursHTML = '';
+  cours.forEach(function(sae, i) {
+    if (!sae || !sae.titre) return;
+    coursHTML +=
+      '<div style="border:1px solid #ddd; border-radius:12px; padding:16px; margin-bottom:12px; page-break-inside:avoid; background:#fafafa;">' +
+        '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">' +
+          '<div style="width:36px; height:36px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Fredoka\',sans-serif; font-weight:700; font-size:1.1rem; flex-shrink:0;">' + (i + 1) + '</div>' +
+          '<div>' +
+            '<div style="font-family:\'Fredoka\',sans-serif; font-size:1.2rem; font-weight:700; color:#222;">' + escapeHtml(sae.titre) + '</div>' +
+            '<div style="font-size:0.85rem; color:#666; font-family:\'Nunito\',sans-serif;">' +
+              escapeHtml(sae.cycle || '') + ' \u00B7 ' + escapeHtml(sae.competence_pfeq || '') +
+              (sae.duree_periodes ? ' \u00B7 \u23F1 ' + sae.duree_periodes + ' per.' : '') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        (sae.description ? '<p style="font-size:0.9rem; line-height:1.6; color:#333; font-family:\'Nunito\',sans-serif; margin:8px 0;">' + escapeHtml(sae.description) + '</p>' : '') +
+        (sae._note ? '<div style="font-size:0.85rem; color:#0077CC; margin-top:6px; font-style:italic;">\uD83D\uDCDD Note : ' + escapeHtml(sae._note) + '</div>' : '') +
+      '</div>';
+  });
+
+  // Intentions
+  var intentionsHTML = '';
+  var checkedIntentions = evalCfg.checkedIntentions || [];
+  if (checkedIntentions.length > 0) {
+    intentionsHTML =
+      '<div style="page-break-inside:avoid; margin-top:20px;">' +
+        '<h2 style="font-family:\'Fredoka\',sans-serif; font-size:1.4rem; color:#E91E63; margin-bottom:10px; border-bottom:2px solid #E91E63; padding-bottom:6px;">\uD83C\uDFAF Intentions pedagogiques</h2>' +
+        '<ul style="padding-left:20px; font-family:\'Nunito\',sans-serif; font-size:0.95rem; line-height:1.8;">' +
+          checkedIntentions.map(function(i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') +
+        '</ul>' +
+      '</div>';
+  }
+
+  // Evaluation grid
+  var evalHTML = '';
+  var checkedObs = (evalCfg.checkedObservables || []).map(function(o) { return o.startsWith('custom:') ? o.slice(7) : o; });
+  if (checkedObs.length > 0) {
+    var scaleType = evalCfg.scaleType || 'ABCDE';
+    var scaleItems = SCALES[scaleType] || SCALES.ABCDE;
+    var customDescs = evalCfg.scaleDescs || {};
+
+    var legendHTML = '<div style="margin-bottom:14px; font-family:\'Nunito\',sans-serif; font-size:0.85rem; color:#555;">';
+    scaleItems.forEach(function(s) {
+      var desc = customDescs[s.label] || s.desc;
+      legendHTML += '<strong>' + s.label + '</strong> = ' + escapeHtml(desc) + ' &nbsp;|&nbsp; ';
+    });
+    legendHTML = legendHTML.replace(/&nbsp;\|&nbsp; $/, '') + '</div>';
+
+    var filledCours = cours.filter(function(s) { return s && s.titre; });
+    var colHeaders = filledCours.map(function(_, i) {
+      return '<th style="padding:8px 6px; font-family:\'Fredoka\',sans-serif; font-size:0.8rem; color:#0077CC; min-width:50px; text-align:center;">El. ' + (i + 1) + '</th>';
+    }).join('');
+
+    var rows = '';
+    checkedObs.forEach(function(obs) {
+      var emptyCols = filledCours.map(function() { return '<td style="border:1px solid #ddd; padding:6px; text-align:center; min-width:50px;"></td>'; }).join('');
+      rows += '<tr><td style="border:1px solid #ddd; padding:8px 12px; font-family:\'Nunito\',sans-serif; font-size:0.85rem; color:#333;">' + escapeHtml(obs) + '</td>' + emptyCols + '</tr>';
+    });
+
+    evalHTML =
+      '<div style="page-break-before:always; margin-top:24px;">' +
+        '<h2 style="font-family:\'Fredoka\',sans-serif; font-size:1.4rem; color:#2E7D32; margin-bottom:10px; border-bottom:2px solid #2E7D32; padding-bottom:6px;">\uD83D\uDCCA Grille d\'evaluation</h2>' +
+        legendHTML +
+        '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">' +
+          '<thead>' +
+            '<tr style="background:#f0f7ff;">' +
+              '<th style="padding:10px 12px; text-align:left; font-family:\'Fredoka\',sans-serif; font-size:0.9rem; color:#222; border:1px solid #ddd;">Observable</th>' +
+              colHeaders +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>' + rows + '</tbody>' +
+        '</table>' +
+      '</div>';
+  }
+
+  var filledCount = cours.filter(function(s) { return s && s.titre; }).length;
+
+  return '<!DOCTYPE html>' +
+'<html lang="fr"><head><meta charset="UTF-8">' +
+'<title>' + escapeHtml(config.titre || 'Ma SAE') + ' \u2014 Zone Total Sport</title>' +
+'<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">' +
+'<style>' +
+'  @page { margin: 15mm 12mm 20mm 12mm; }' +
+'  body { font-family: \'Nunito\', sans-serif; margin: 0; padding: 24px; color: #222; }' +
+'  .header { text-align: center; margin-bottom: 20px; border-bottom: 3px solid #0077CC; padding-bottom: 14px; }' +
+'  .header h1 { font-family: \'Fredoka\', sans-serif; font-size: 2rem; color: #0077CC; margin: 0 0 6px; }' +
+'  .header .info { font-size: 0.9rem; color: #555; }' +
+'  .header .info strong { color: #333; }' +
+'  .notes { background: #f0f7ff; border: 1px solid #b3d4fc; border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.9rem; line-height: 1.6; }' +
+'  .notes-label { font-family: \'Fredoka\', sans-serif; font-weight: 700; color: #0077CC; margin-bottom: 4px; }' +
+'  .footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-family: \'Fredoka\', sans-serif; font-size: 0.8rem; color: #999; padding: 8px; border-top: 1px solid #ddd; background: #fff; }' +
+'  .footer a { color: #0077CC; text-decoration: none; }' +
+'  @media print { .footer { position: fixed; bottom: 0; } }' +
+'</style></head><body>' +
+'<div class="header">' +
+'  <h1>\uD83D\uDCCB ' + escapeHtml(config.titre || 'Conception de ma SAE') + '</h1>' +
+'  <div class="info">' +
+    (config.niveau ? '<strong>Niveau :</strong> ' + escapeHtml(config.niveau) + ' \u00B7 ' : '') +
+    '<strong>' + filledCount + '</strong> cours planifies' +
+'  </div>' +
+'</div>' +
+(config.notes ? '<div class="notes"><div class="notes-label">\uD83D\uDCDD Notes</div>' + escapeHtml(config.notes) + '</div>' : '') +
+coursHTML +
+intentionsHTML +
+evalHTML +
+'<div class="footer">' +
+'  <a href="https://zonetotalsport.ca" target="_blank" style="display:inline-block; background:#fff; border-radius:12px; padding:8px 16px;"><img src="' + window.location.origin + '/img/logo-zonetotalsport.png" alt="ZoneTotalSport.ca" style="max-width:260px; height:auto; display:block;" /></a><br>' +
+'  Cree avec <a href="https://zonetotalsport.ca" target="_blank">zonetotalsport.ca</a> \u2014 SAE PFEQ' +
+'</div>' +
+'</body></html>';
 }
 
 function printCours() {
   saveCoursConfigFromUI();
-  const html = buildCoursHTML();
-  const w = window.open('', '_blank');
+  saveEvalFromUI();
+  var html = buildCoursHTML();
+  var w = window.open('', '_blank');
   w.document.write(html);
   w.document.close();
-  setTimeout(() => w.print(), 500);
+  setTimeout(function() { w.print(); }, 500);
 }
 
 function exportCoursPDF() {
   saveCoursConfigFromUI();
-  const html = buildCoursHTML();
-  const w = window.open('', '_blank');
+  saveEvalFromUI();
+  var html = buildCoursHTML();
+  var w = window.open('', '_blank');
   w.document.write(html);
   w.document.close();
-  setTimeout(() => w.print(), 500);
+  setTimeout(function() { w.print(); }, 500);
 }
 
 function shareCours() {
   saveCoursConfigFromUI();
-  const cours = getMonCours();
-  const config = getCoursConfig();
+  saveEvalFromUI();
+  var cours = getMonCours();
+  var config = getCoursConfig();
 
-  const shareData = {
+  var shareData = {
     t: config.titre || '',
     n: config.niveau || '',
-    d: config.duree || '',
+    nb: config.nbCours || '0',
     no: config.notes || '',
-    e: cours.map(e => ({
-      t: e.titre,
-      nt: e._note || ''
-    }))
+    e: cours.map(function(e) { return e ? { t: e.titre, nt: e._note || '' } : null; })
   };
 
-  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(shareData))));
-  const url = `https://sae.zonetotalsport.ca/?cours=${encoded}`;
+  var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(shareData))));
+  var url = 'https://sae.zonetotalsport.ca/?cours=' + encoded;
 
-  navigator.clipboard.writeText(url).then(() => {
+  navigator.clipboard.writeText(url).then(function() {
     showToast('Lien de la SAE copie !');
-  }).catch(() => {
-    const ta = document.createElement('textarea');
+  }).catch(function() {
+    var ta = document.createElement('textarea');
     ta.value = url;
     ta.style.position = 'fixed';
     ta.style.opacity = '0';
@@ -1327,39 +1730,45 @@ function shareCours() {
 }
 
 function checkCoursDeepLink() {
-  const params = new URLSearchParams(window.location.search);
-  const coursParam = params.get('cours');
+  var params = new URLSearchParams(window.location.search);
+  var coursParam = params.get('cours');
   if (!coursParam) return;
 
   try {
-    const data = JSON.parse(decodeURIComponent(escape(atob(coursParam))));
+    var data = JSON.parse(decodeURIComponent(escape(atob(coursParam))));
     setCoursConfig({
       titre: data.t || '',
       niveau: data.n || '',
-      duree: data.d || '',
+      nbCours: data.nb || String((data.e || []).length),
       notes: data.no || ''
     });
 
-    const titres = (data.e || []).map(e => ({ titre: e.t, note: e.nt || '' }));
-    const cours = [];
-    for (const item of titres) {
-      const found = allSAE.find(s => (s.titre || s.nom) === item.titre);
-      if (found) {
-        cours.push({
-          titre: found.titre || found.nom || '',
-          description: found.description || found.contexte_apprentissage || '',
-          cycle: found.cycle || found.niveau || '',
-          competence_pfeq: found.competence_pfeq || '',
-          moyen_action: found.moyen_action || found.moyens_action || '',
-          duree_periodes: found.duree_periodes || found.duree || '',
-          _source: found._source || '',
-          _note: item.note
-        });
-      }
-    }
+    var entries = data.e || [];
+    var cours = entries.map(function(item) {
+      if (!item) return null;
+      var found = allSAE.find(function(s) { return (s.titre || s.nom) === item.t; });
+      if (!found) return null;
+      var slot = buildSlotData(found);
+      slot._note = item.nt || '';
+      return slot;
+    });
     setMonCours(cours);
     openCours();
   } catch (err) {
     console.warn('Cours deep link invalide', err);
   }
 }
+
+// Update intentions when niveau changes
+document.addEventListener('DOMContentLoaded', function() {
+  var niveauEl = document.getElementById('cours-niveau');
+  if (niveauEl) {
+    niveauEl.addEventListener('change', function() {
+      saveCoursConfigFromUI();
+      var evalSection = document.getElementById('eval-section');
+      if (evalSection && !evalSection.classList.contains('hidden')) {
+        renderEvalIntentions();
+      }
+    });
+  }
+});
