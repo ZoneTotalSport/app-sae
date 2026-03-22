@@ -2128,8 +2128,16 @@ ul li {
 }
 
 .sae-complet-filter-bar {
+  display: flex;
+  gap: 16px;
   margin-bottom: 20px;
-  max-width: 320px;
+}
+
+@media (max-width: 600px) {
+  .sae-complet-filter-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .sae-complet-results {

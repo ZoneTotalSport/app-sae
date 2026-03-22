@@ -988,6 +988,7 @@ function setCoursMode(mode) {
     if (saeCompletSection) saeCompletSection.classList.remove('hidden');
     if (coursConfig) coursConfig.classList.add('hidden');
     if (evalSection) evalSection.classList.add('hidden');
+    populateSaeCompletMoyenSelect();
   } else {
     // Educatifs mode: show config + slots, hide SAE complet
     if (saeCompletSection) saeCompletSection.classList.add('hidden');
@@ -995,6 +996,18 @@ function setCoursMode(mode) {
     populateCoursCatSelect();
     renderSlots();
   }
+}
+
+function populateSaeCompletMoyenSelect() {
+  var select = document.getElementById('sae-complet-moyen');
+  if (!select) return;
+  select.innerHTML = '<option value="">Tous les moyens</option>';
+  MOYENS_ACTION.forEach(function(m) {
+    var opt = document.createElement('option');
+    opt.value = m.key;
+    opt.textContent = m.emoji + ' ' + m.label.replace(m.emoji + ' ', '');
+    select.appendChild(opt);
+  });
 }
 
 function filterSaeComplet() {
@@ -1008,9 +1021,24 @@ function filterSaeComplet() {
     return;
   }
 
+  var moyenKey = document.getElementById('sae-complet-moyen')?.value || '';
+
   var results = allSAE.filter(function(s) {
     return s.duree_periodes === duree;
   });
+
+  if (moyenKey) {
+    var m = MOYENS_ACTION.find(function(x) { return x.key === moyenKey; });
+    if (m) {
+      results = results.filter(function(s) {
+        var text = [
+          s.titre, s.nom, s.moyen_action, s.moyens_action, s._source,
+          ...(s.tags || []), s.description
+        ].filter(Boolean).join(' ').toLowerCase();
+        return m.keywords.some(function(kw) { return text.includes(kw); });
+      });
+    }
+  }
 
   container.innerHTML = '';
 
