@@ -360,11 +360,9 @@
 
       <!-- ETAPE 2b : Browser SAE complet (mode SAE complet) -->
       <div id="sae-complet-section" class="sae-complet-section hidden">
-        <h3 class="cours-section-title">📚 Choisir une SAE complete</h3>
-        <p class="cours-section-hint">Selectionne le nombre de cours souhaite pour filtrer les SAE disponibles.</p>
-        <div class="sae-complet-filters">
+        <div class="sae-complet-filter-bar">
           <div class="cours-field">
-            <label class="cours-label">Nombre de cours pour la SAE</label>
+            <label class="cours-label">Nombre de cours souhaite</label>
             <select id="sae-complet-duree" class="cours-select" onchange="filterSaeComplet()">
               <option value="">Choisir...</option>
               <option value="2">2 cours</option>
@@ -380,13 +378,9 @@
               <option value="12">12 cours</option>
             </select>
           </div>
-          <div class="cours-field">
-            <label class="cours-label">Recherche rapide</label>
-            <input type="text" id="sae-complet-search" class="cours-input" placeholder="Filtrer par mot-cle..." oninput="filterSaeComplet()" />
-          </div>
         </div>
-        <div id="sae-complet-results" class="cours-browser-results">
-          <p class="cours-browser-hint">Selectionne un nombre de cours pour voir les SAE disponibles.</p>
+        <div id="sae-complet-results" class="sae-complet-results">
+          <!-- Rempli par JS -->
         </div>
       </div>
 

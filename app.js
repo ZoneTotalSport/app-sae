@@ -1002,10 +1002,9 @@ function filterSaeComplet() {
   if (!container) return;
 
   var duree = parseInt(document.getElementById('sae-complet-duree')?.value || '0');
-  var search = (document.getElementById('sae-complet-search')?.value || '').toLowerCase().trim();
 
   if (!duree) {
-    container.innerHTML = '<p class="cours-browser-hint">Selectionne un nombre de cours pour voir les SAE disponibles.</p>';
+    container.innerHTML = '';
     return;
   }
 
@@ -1013,52 +1012,32 @@ function filterSaeComplet() {
     return s.duree_periodes === duree;
   });
 
-  if (search) {
-    results = results.filter(function(s) {
-      var text = [s.titre, s.nom, s.description, s.contexte_apprentissage, s.moyen_action, s.competence_pfeq, s.cycle].filter(Boolean).join(' ').toLowerCase();
-      return text.includes(search);
-    });
-  }
-
   container.innerHTML = '';
 
-  var countDiv = document.createElement('div');
-  countDiv.className = 'cours-browser-count';
-  countDiv.innerHTML = '<strong>' + results.length + '</strong> SAE de ' + duree + ' cours disponible' + (results.length > 1 ? 's' : '');
-  container.appendChild(countDiv);
-
   if (results.length === 0) {
-    var hint = document.createElement('p');
-    hint.className = 'cours-browser-hint';
-    hint.textContent = 'Aucune SAE trouvee avec ' + duree + ' cours.';
-    container.appendChild(hint);
+    container.innerHTML = '<p class="cours-browser-hint">Aucune SAE trouvee avec ' + duree + ' cours.</p>';
     return;
   }
 
+  var countDiv = document.createElement('div');
+  countDiv.className = 'sae-complet-count';
+  countDiv.innerHTML = '<strong>' + results.length + '</strong> SAE disponible' + (results.length > 1 ? 's' : '');
+  container.appendChild(countDiv);
+
+  var grid = document.createElement('div');
+  grid.className = 'sae-complet-grid';
+
   results.forEach(function(s) {
-    var item = document.createElement('div');
-    item.className = 'cours-browse-item';
-    item.innerHTML =
-      '<div class="cours-browse-item-info">' +
-        '<div class="cours-browse-item-title">' + escapeHtml(s.titre || s.nom || '') + '</div>' +
-        '<div class="cours-browse-item-meta">' +
-          '<span>' + escapeHtml(s.cycle || s.niveau || '') + '</span>' +
-          '<span>' + escapeHtml(s.competence_pfeq || '') + '</span>' +
-          '<span>' + escapeHtml(s.moyen_action || '') + '</span>' +
-          '<span>\u23F1 ' + duree + ' cours</span>' +
-        '</div>' +
-      '</div>' +
-      '<button class="cours-browse-add-btn">👁 Voir</button>';
-
-    var info = item.querySelector('.cours-browse-item-info');
-    info.style.cursor = 'pointer';
-    info.addEventListener('click', function() { openModal(s); });
-
-    var btn = item.querySelector('.cours-browse-add-btn');
-    btn.addEventListener('click', function() { openModal(s); });
-
-    container.appendChild(item);
+    var card = document.createElement('div');
+    card.className = 'sae-complet-card';
+    card.innerHTML =
+      '<div class="sae-complet-card-title">' + escapeHtml(s.titre || s.nom || '') + '</div>' +
+      '<div class="sae-complet-card-moyen">' + escapeHtml(s.moyen_action || s.moyens_action || '') + '</div>';
+    card.addEventListener('click', function() { openModal(s); });
+    grid.appendChild(card);
   });
+
+  container.appendChild(grid);
 }
 
 function fetchEducatifs(catKey) {
