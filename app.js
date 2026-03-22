@@ -1180,15 +1180,7 @@ function renderSlots() {
       slot.innerHTML = numBadge +
         '<button class="cours-slot-remove" title="Retirer cette SAE" data-idx="' + index + '">\u2715</button>' +
         '<div class="cours-slot-title">' + escapeHtml(sae.titre) + '</div>' +
-        '<div class="cours-slot-meta">' +
-          '<span>' + escapeHtml(sae.cycle || '') + '</span>' +
-          '<span>' + escapeHtml(sae.competence_pfeq || '') + '</span>' +
-          (sae.duree_periodes ? '<span>\u23F1 ' + sae.duree_periodes + ' per.</span>' : '') +
-        '</div>' +
-        '<div class="cours-slot-note">' +
-          '<input type="text" placeholder="Note pour ce cours..." value="' + escapeHtml(sae._note || '') + '" data-idx="' + index + '" />' +
-        '</div>' +
-        '<button class="cours-slot-change" data-idx="' + index + '">Changer la SAE</button>';
+        '<button class="cours-slot-change" data-idx="' + index + '">Changer</button>';
 
       slot.querySelector('.cours-slot-remove').addEventListener('click', function(e) {
         e.stopPropagation();
@@ -1197,16 +1189,6 @@ function renderSlots() {
         setMonCours(c);
         renderSlots();
         showToast('SAE retiree du cours ' + (index + 1));
-      });
-
-      var noteInput = slot.querySelector('.cours-slot-note input');
-      noteInput.addEventListener('click', function(e) { e.stopPropagation(); });
-      noteInput.addEventListener('input', function() {
-        var c = getMonCours();
-        if (c[index]) {
-          c[index]._note = noteInput.value;
-          setMonCours(c);
-        }
       });
 
       slot.querySelector('.cours-slot-change').addEventListener('click', function(e) {
@@ -1568,20 +1550,11 @@ function buildCoursHTML() {
   var coursHTML = '';
   cours.forEach(function(sae, i) {
     if (!sae || !sae.titre) return;
+    var saeUrl = 'https://sae.zonetotalsport.ca/?id=' + encodeURIComponent(sae.titre);
     coursHTML +=
-      '<div style="border:1px solid #ddd; border-radius:12px; padding:16px; margin-bottom:12px; page-break-inside:avoid; background:#fafafa;">' +
-        '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">' +
-          '<div style="width:36px; height:36px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Fredoka\',sans-serif; font-weight:700; font-size:1.1rem; flex-shrink:0;">' + (i + 1) + '</div>' +
-          '<div>' +
-            '<div style="font-family:\'Fredoka\',sans-serif; font-size:1.2rem; font-weight:700; color:#222;">' + escapeHtml(sae.titre) + '</div>' +
-            '<div style="font-size:0.85rem; color:#666; font-family:\'Nunito\',sans-serif;">' +
-              escapeHtml(sae.cycle || '') + ' \u00B7 ' + escapeHtml(sae.competence_pfeq || '') +
-              (sae.duree_periodes ? ' \u00B7 \u23F1 ' + sae.duree_periodes + ' per.' : '') +
-            '</div>' +
-          '</div>' +
-        '</div>' +
-        (sae.description ? '<p style="font-size:0.9rem; line-height:1.6; color:#333; font-family:\'Nunito\',sans-serif; margin:8px 0;">' + escapeHtml(sae.description) + '</p>' : '') +
-        (sae._note ? '<div style="font-size:0.85rem; color:#0077CC; margin-top:6px; font-style:italic;">\uD83D\uDCDD Note : ' + escapeHtml(sae._note) + '</div>' : '') +
+      '<div style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid #eee;">' +
+        '<div style="width:32px; height:32px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Fredoka\',sans-serif; font-weight:700; font-size:0.95rem; flex-shrink:0;">' + (i + 1) + '</div>' +
+        '<a href="' + saeUrl + '" target="_blank" style="font-family:\'Fredoka\',sans-serif; font-size:1.1rem; font-weight:700; color:#0077CC; text-decoration:none; border-bottom:1px dashed #0077CC;">' + escapeHtml(sae.titre) + '</a>' +
       '</div>';
   });
 
