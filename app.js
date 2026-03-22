@@ -973,11 +973,92 @@ function setCoursMode(mode) {
   var config = getCoursConfig();
   config.mode = mode;
   setCoursConfig(config);
-  // Re-populate the browser category select
-  populateCoursCatSelect();
-  // Reset browser
-  var container = document.getElementById('cours-browser-results');
-  if (container) container.innerHTML = '<p class="cours-browser-hint">Selectionne une categorie pour voir les activites disponibles.</p>';
+
+  // Show/hide mode-specific sections
+  var slotsSection = document.getElementById('cours-slots-section');
+  var slotBrowser = document.getElementById('slot-browser');
+  var saeCompletSection = document.getElementById('sae-complet-section');
+  var coursConfig = document.querySelector('.cours-config');
+  var evalSection = document.getElementById('eval-section');
+
+  if (mode === 'sae') {
+    // SAE complet mode: hide slots/browser, show SAE complet browser
+    if (slotsSection) slotsSection.classList.add('hidden');
+    if (slotBrowser) slotBrowser.classList.add('hidden');
+    if (saeCompletSection) saeCompletSection.classList.remove('hidden');
+    if (coursConfig) coursConfig.classList.add('hidden');
+    if (evalSection) evalSection.classList.add('hidden');
+  } else {
+    // Educatifs mode: show config + slots, hide SAE complet
+    if (saeCompletSection) saeCompletSection.classList.add('hidden');
+    if (coursConfig) coursConfig.classList.remove('hidden');
+    populateCoursCatSelect();
+    renderSlots();
+  }
+}
+
+function filterSaeComplet() {
+  var container = document.getElementById('sae-complet-results');
+  if (!container) return;
+
+  var duree = parseInt(document.getElementById('sae-complet-duree')?.value || '0');
+  var search = (document.getElementById('sae-complet-search')?.value || '').toLowerCase().trim();
+
+  if (!duree) {
+    container.innerHTML = '<p class="cours-browser-hint">Selectionne un nombre de cours pour voir les SAE disponibles.</p>';
+    return;
+  }
+
+  var results = allSAE.filter(function(s) {
+    return s.duree_periodes === duree;
+  });
+
+  if (search) {
+    results = results.filter(function(s) {
+      var text = [s.titre, s.nom, s.description, s.contexte_apprentissage, s.moyen_action, s.competence_pfeq, s.cycle].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(search);
+    });
+  }
+
+  container.innerHTML = '';
+
+  var countDiv = document.createElement('div');
+  countDiv.className = 'cours-browser-count';
+  countDiv.innerHTML = '<strong>' + results.length + '</strong> SAE de ' + duree + ' cours disponible' + (results.length > 1 ? 's' : '');
+  container.appendChild(countDiv);
+
+  if (results.length === 0) {
+    var hint = document.createElement('p');
+    hint.className = 'cours-browser-hint';
+    hint.textContent = 'Aucune SAE trouvee avec ' + duree + ' cours.';
+    container.appendChild(hint);
+    return;
+  }
+
+  results.forEach(function(s) {
+    var item = document.createElement('div');
+    item.className = 'cours-browse-item';
+    item.innerHTML =
+      '<div class="cours-browse-item-info">' +
+        '<div class="cours-browse-item-title">' + escapeHtml(s.titre || s.nom || '') + '</div>' +
+        '<div class="cours-browse-item-meta">' +
+          '<span>' + escapeHtml(s.cycle || s.niveau || '') + '</span>' +
+          '<span>' + escapeHtml(s.competence_pfeq || '') + '</span>' +
+          '<span>' + escapeHtml(s.moyen_action || '') + '</span>' +
+          '<span>\u23F1 ' + duree + ' cours</span>' +
+        '</div>' +
+      '</div>' +
+      '<button class="cours-browse-add-btn">👁 Voir</button>';
+
+    var info = item.querySelector('.cours-browse-item-info');
+    info.style.cursor = 'pointer';
+    info.addEventListener('click', function() { openModal(s); });
+
+    var btn = item.querySelector('.cours-browse-add-btn');
+    btn.addEventListener('click', function() { openModal(s); });
+
+    container.appendChild(item);
+  });
 }
 
 function fetchEducatifs(catKey) {
@@ -1125,11 +1206,8 @@ function openCours() {
 
   // Restore mode
   _planMode = config.mode || 'educatifs';
-  document.getElementById('mode-btn-educatifs')?.classList.toggle('active', _planMode === 'educatifs');
-  document.getElementById('mode-btn-sae')?.classList.toggle('active', _planMode === 'sae');
+  setCoursMode(_planMode);
 
-  populateCoursCatSelect();
-  renderSlots();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

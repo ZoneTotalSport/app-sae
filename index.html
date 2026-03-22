@@ -349,12 +349,44 @@
         </div>
       </div>
 
-      <!-- ETAPE 2 : Cases par cours -->
+      <!-- ETAPE 2a : Cases par cours (mode Educatifs) -->
       <div id="cours-slots-section" class="cours-slots-section hidden">
         <h3 class="cours-section-title">📅 Planification par cours</h3>
-        <p class="cours-section-hint">Clique sur chaque cours pour y assigner une SAE depuis la banque.</p>
+        <p class="cours-section-hint">Clique sur chaque cours pour y assigner un educatif depuis la banque.</p>
         <div id="cours-slots" class="cours-slots">
           <!-- Rempli par JS -->
+        </div>
+      </div>
+
+      <!-- ETAPE 2b : Browser SAE complet (mode SAE complet) -->
+      <div id="sae-complet-section" class="sae-complet-section hidden">
+        <h3 class="cours-section-title">📚 Choisir une SAE complete</h3>
+        <p class="cours-section-hint">Selectionne le nombre de cours souhaite pour filtrer les SAE disponibles.</p>
+        <div class="sae-complet-filters">
+          <div class="cours-field">
+            <label class="cours-label">Nombre de cours pour la SAE</label>
+            <select id="sae-complet-duree" class="cours-select" onchange="filterSaeComplet()">
+              <option value="">Choisir...</option>
+              <option value="2">2 cours</option>
+              <option value="3">3 cours</option>
+              <option value="4">4 cours</option>
+              <option value="5">5 cours</option>
+              <option value="6">6 cours</option>
+              <option value="7">7 cours</option>
+              <option value="8">8 cours</option>
+              <option value="9">9 cours</option>
+              <option value="10">10 cours</option>
+              <option value="11">11 cours</option>
+              <option value="12">12 cours</option>
+            </select>
+          </div>
+          <div class="cours-field">
+            <label class="cours-label">Recherche rapide</label>
+            <input type="text" id="sae-complet-search" class="cours-input" placeholder="Filtrer par mot-cle..." oninput="filterSaeComplet()" />
+          </div>
+        </div>
+        <div id="sae-complet-results" class="cours-browser-results">
+          <p class="cours-browser-hint">Selectionne un nombre de cours pour voir les SAE disponibles.</p>
         </div>
       </div>
 

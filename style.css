@@ -2122,6 +2122,24 @@ ul li {
   }
 }
 
+/* SAE complet browser */
+.sae-complet-section {
+  margin-bottom: 28px;
+}
+
+.sae-complet-filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .sae-complet-filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 /* Section titles dans conception */
 .cours-section-title {
   font-family: 'Fredoka', sans-serif;
