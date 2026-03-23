@@ -31,6 +31,12 @@ const SAE_SOURCES = [
   { key: 'cooperation_gen', path: 'data/sae/cooperation_gen.json', label: 'Cooperation (generation)', cycle: 'Mat → Sec 5' },
   { key: 'poursuite_gen', path: 'data/sae/poursuite_gen.json', label: 'Poursuite (generation)', cycle: 'Mat → Sec 5' },
   { key: 'prescolaire_primaire_gen', path: 'data/sae/prescolaire_primaire_gen.json', label: 'Prescolaire-Primaire (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'manipulation_bonus', path: 'data/sae/manipulation_bonus.json', label: 'Manipulation (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'locomotion_bonus', path: 'data/sae/locomotion_bonus.json', label: 'Locomotion (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'stabilisation_bonus', path: 'data/sae/stabilisation_bonus.json', label: 'Stabilisation (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'opposition_bonus', path: 'data/sae/opposition_bonus.json', label: 'Opposition (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_bonus', path: 'data/sae/cooperation_bonus.json', label: 'Coopération (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'expression_bonus', path: 'data/sae/expression_bonus.json', label: 'Expression (bonus)', cycle: 'Mat → Sec 5' },
 ];
 
 const MOYENS_ACTION = [
@@ -524,6 +530,26 @@ function openModal(s) {
           : `<ul>${(Array.isArray(s.deroulement) ? s.deroulement : Object.values(s.deroulement))
               .map(d => `<li>${escapeHtml(typeof d === 'string' ? d : JSON.stringify(d))}</li>`).join('')}</ul>`
         }
+      </div>`,
+    s.cours && Array.isArray(s.cours) && s.cours.length > 0 && `
+      <div class="modal-section modal-cours-section">
+        <h3>📅 Planification cours par cours (${s.cours.length} cours${s.duree_par_cours ? ' — ' + escapeHtml(s.duree_par_cours) + ' chacun' : ''})</h3>
+        <div class="modal-cours-timeline">
+          ${s.cours.map(function(c) {
+            return '<div class="modal-cours-item">' +
+              '<div class="modal-cours-num">' + c.numero + '</div>' +
+              '<div class="modal-cours-body">' +
+                '<h4 class="modal-cours-titre">' + escapeHtml(c.titre) + '</h4>' +
+                '<p class="modal-cours-objectif"><strong>Objectif :</strong> ' + escapeHtml(c.objectif) + '</p>' +
+                '<div class="modal-cours-phases">' +
+                  '<div class="modal-cours-phase phase-echauf"><span class="phase-label">Echauffement</span><p>' + escapeHtml(c.echauffement) + '</p></div>' +
+                  '<div class="modal-cours-phase phase-principal"><span class="phase-label">Activite principale</span><p>' + escapeHtml(c.activite_principale) + '</p></div>' +
+                  '<div class="modal-cours-phase phase-retour"><span class="phase-label">Retour au calme</span><p>' + escapeHtml(c.retour_au_calme) + '</p></div>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+          }).join('')}
+        </div>
       </div>`,
     s.criteres_evaluation && `
       <div class="modal-section">
