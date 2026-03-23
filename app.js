@@ -150,6 +150,10 @@ function filterByMoyen(key) {
   document.querySelectorAll('.moyen-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.key === activeMoyen);
   });
+  // Reset composante and repopulate when moyen category changes
+  const compSel = document.getElementById('sae-composante');
+  if (compSel) compSel.value = '';
+  populateComposantes();
   applyFilters();
 
   if (activeMoyen) {
@@ -162,14 +166,55 @@ function filterByMoyen(key) {
 // ===== FILTRES =====
 
 function setupFilters() {
-  ['sae-cycle', 'sae-moyen', 'sae-competence', 'sae-clientele'].forEach(id => {
+  ['sae-cycle', 'sae-competence', 'sae-clientele', 'sae-composante'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('change', applyFilters);
   });
+  // Moyen d'action: also populate composante dropdown when changed
+  const moyenEl = document.getElementById('sae-moyen');
+  if (moyenEl) moyenEl.addEventListener('change', () => { populateComposantes(); applyFilters(); });
   const searchEl = document.getElementById('sae-search');
   if (searchEl) {
     searchEl.addEventListener('input', debounce(applyFilters, 250));
   }
+  // Initial populate
+  populateComposantes();
+}
+
+// Build composante dropdown from actual moyen_action values in data
+function populateComposantes() {
+  const sel = document.getElementById('sae-composante');
+  if (!sel) return;
+  const moyen = document.getElementById('sae-moyen')?.value || '';
+  const moyenCat = activeMoyen || '';
+
+  // Collect unique moyen_action values that match current moyen filter
+  const vals = new Set();
+  allSAE.forEach(s => {
+    const ma = s.moyen_action || '';
+    if (!ma) return;
+    // If a moyen category filter is active, only include matching
+    if (moyen || moyenCat) {
+      const text = [ma, s.moyens_action, s._source, ...(s.tags || []), s.titre, s.nom].filter(Boolean).join(' ').toLowerCase();
+      if (moyen && !text.includes(moyen.toLowerCase())) return;
+      if (moyenCat) {
+        const m = MOYENS_ACTION.find(x => x.key === moyenCat);
+        if (m && !m.keywords.some(kw => text.includes(kw))) return;
+      }
+    }
+    vals.add(ma);
+  });
+
+  // Sort and populate
+  const sorted = [...vals].sort((a, b) => a.localeCompare(b, 'fr'));
+  sel.innerHTML = '<option value="">Toutes les composantes</option>';
+  sorted.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v;
+    // Shorten display if too long
+    opt.textContent = v.length > 55 ? v.substring(0, 52) + '…' : v;
+    sel.appendChild(opt);
+  });
 }
 
 function debounce(fn, delay) {
@@ -180,10 +225,61 @@ function debounce(fn, delay) {
   };
 }
 
+function matchCycle(sae, cycleFilter) {
+  const c = [sae.cycle, sae.niveau, sae._cycle].filter(Boolean).join(' ').toLowerCase();
+  const cf = cycleFilter.toLowerCase();
+
+  // Exact or substring match
+  if (c.includes(cf)) return true;
+
+  // Normalize common patterns
+  if (cf === 'prescolaire' || cf === 'préscolaire') {
+    return c.includes('presco') || c.includes('maternelle');
+  }
+  if (cf === 'cycle 1') {
+    return c.includes('1er cycle') || c.includes('cycle 1');
+  }
+  if (cf === 'cycle 2') {
+    return c.includes('2e cycle') || c.includes('cycle 2');
+  }
+  if (cf === 'cycle 3') {
+    return c.includes('3e cycle') || c.includes('cycle 3');
+  }
+  // "Secondaire 1" should match "Secondaire 1", "Secondaire 1-2", "Secondaire 1-3", "1er cycle secondaire"
+  const secMatch = cf.match(/secondaire (\d)/);
+  if (secMatch) {
+    const n = secMatch[1];
+    // Match exact "secondaire N" or ranges like "secondaire 1-3" containing N
+    if (c.includes('secondaire ' + n)) return true;
+    if (c.includes('secondaire') || c.includes('sec')) {
+      // Check ranges like "1-3", "2-4"
+      const rangeMatch = c.match(/(\d)-(\d)/);
+      if (rangeMatch) {
+        const lo = parseInt(rangeMatch[1]), hi = parseInt(rangeMatch[2]);
+        if (parseInt(n) >= lo && parseInt(n) <= hi) return true;
+      }
+    }
+    // "1er cycle secondaire" = sec 1-2
+    if (n <= 2 && c.includes('1er cycle sec')) return true;
+    // "2e cycle secondaire" = sec 3-5
+    if (n >= 3 && c.includes('2e cycle sec')) return true;
+    return false;
+  }
+  if (cf === '1er cycle secondaire') {
+    return c.includes('1er cycle sec') || c.includes('secondaire 1') || c.includes('secondaire 2') || c.includes('secondaire 1-2');
+  }
+  if (cf === '2e cycle secondaire') {
+    return c.includes('2e cycle sec') || c.includes('secondaire 3') || c.includes('secondaire 4') || c.includes('secondaire 5') || /secondaire [3-5]/.test(c);
+  }
+
+  return false;
+}
+
 function applyFilters() {
   const search = (document.getElementById('sae-search')?.value || '').toLowerCase().trim();
   const cycle = document.getElementById('sae-cycle')?.value || '';
   const moyen = document.getElementById('sae-moyen')?.value || '';
+  const composante = document.getElementById('sae-composante')?.value || '';
   const competence = document.getElementById('sae-competence')?.value || '';
   const clientele = document.getElementById('sae-clientele')?.value || '';
 
@@ -204,8 +300,7 @@ function applyFilters() {
     }
 
     if (cycle) {
-      const c = [s.cycle, s.niveau, s._cycle].filter(Boolean).join(' ');
-      if (!c.includes(cycle)) return false;
+      if (!matchCycle(s, cycle)) return false;
     }
 
     if (moyen) {
@@ -214,6 +309,11 @@ function applyFilters() {
         ...(s.tags || []), s.titre, s.nom
       ].filter(Boolean).join(' ').toLowerCase();
       if (!moyenStr.includes(moyen.toLowerCase())) return false;
+    }
+
+    // Composante: exact match on moyen_action
+    if (composante) {
+      if ((s.moyen_action || '') !== composante) return false;
     }
 
     if (competence) {
@@ -1024,6 +1124,41 @@ function setCoursMode(mode) {
   }
 }
 
+// Sous-categories par moyen d'action
+var SOUS_CATEGORIES = {
+  manipulation: [
+    'Lancer', 'Attraper', 'Dribble main', 'Dribble pied', 'Frapper', 'Jongler',
+    'Botter', 'Rouler', 'Pousser', 'Tirer', 'Passe', 'Réception',
+    'Ballon', 'Balle', 'Raquette', 'Bâton', 'Frisbee', 'Corde', 'Cerceau', 'Foulard', 'Sac de sable'
+  ],
+  locomotion: [
+    'Courir', 'Sauter', 'Galoper', 'Ramper', 'Glisser', 'Esquiver',
+    'Grimper', 'Rouler', 'Se déplacer', 'Sprint', 'Endurance', 'Poursuite',
+    'Course à relais', 'Parcours', 'Pas chassés'
+  ],
+  stabilisation: [
+    'Équilibre statique', 'Équilibre dynamique', 'Gainage', 'Souplesse',
+    'Coordination', 'Yoga', 'Force', 'Flexibilité', 'Posture',
+    'Conditionnement', 'Rotation', 'Appui'
+  ],
+  opposition: [
+    'Duel', 'Territoire', 'Lutte', 'Dodgeball', 'Ballon chasseur',
+    'Feinte', 'Défense', 'Attaque', 'Combat', 'Confrontation',
+    'Esquive', 'Stratégie défensive'
+  ],
+  cooperation: [
+    'Basketball', 'Volleyball', 'Handball', 'Soccer', 'Flag-football',
+    'Spikeball', 'Ultimate', 'Kin-Ball', 'Tchoukball',
+    'Jeux coopératifs', 'Construction', 'Communication', 'Stratégie d\'équipe',
+    'Parachute', 'Relais coopératif'
+  ],
+  expression: [
+    'Danse', 'Mime', 'Acrosport', 'Gymnastique', 'Cirque',
+    'Création', 'Rythme', 'Chorégraphie', 'Expression corporelle',
+    'Mouvement expressif', 'Enchaînement'
+  ]
+};
+
 function populateSaeCompletMoyenSelect() {
   var select = document.getElementById('sae-complet-moyen');
   if (!select) return;
@@ -1036,23 +1171,59 @@ function populateSaeCompletMoyenSelect() {
   });
 }
 
+function onSaeCompletMoyenChange() {
+  populateSaeCompletSousSelect();
+  filterSaeComplet();
+}
+
+function populateSaeCompletSousSelect() {
+  var select = document.getElementById('sae-complet-sous');
+  if (!select) return;
+  var moyenKey = document.getElementById('sae-complet-moyen')?.value || '';
+  select.innerHTML = '<option value="">Toutes les sous-catégories</option>';
+
+  if (moyenKey && SOUS_CATEGORIES[moyenKey]) {
+    SOUS_CATEGORIES[moyenKey].forEach(function(sc) {
+      var opt = document.createElement('option');
+      opt.value = sc.toLowerCase();
+      opt.textContent = sc;
+      select.appendChild(opt);
+    });
+  }
+}
+
 function filterSaeComplet() {
   var container = document.getElementById('sae-complet-results');
   if (!container) return;
 
+  var cycleVal = document.getElementById('sae-complet-cycle')?.value || '';
   var duree = parseInt(document.getElementById('sae-complet-duree')?.value || '0');
+  var moyenKey = document.getElementById('sae-complet-moyen')?.value || '';
+  var sousVal = document.getElementById('sae-complet-sous')?.value || '';
 
-  if (!duree) {
-    container.innerHTML = '';
+  // Need at least cycle or duree or moyen selected
+  if (!duree && !cycleVal && !moyenKey) {
+    container.innerHTML = '<p class="cours-browser-hint">Sélectionne un cycle, un nombre de cours ou un moyen d\'action pour voir les SAÉ.</p>';
     return;
   }
 
-  var moyenKey = document.getElementById('sae-complet-moyen')?.value || '';
+  var results = allSAE.slice();
 
-  var results = allSAE.filter(function(s) {
-    return s.duree_periodes === duree;
-  });
+  // Filter by cycle
+  if (cycleVal) {
+    results = results.filter(function(s) {
+      return matchCycle(s, cycleVal);
+    });
+  }
 
+  // Filter by duree
+  if (duree) {
+    results = results.filter(function(s) {
+      return s.duree_periodes === duree;
+    });
+  }
+
+  // Filter by moyen d'action category
   if (moyenKey) {
     var m = MOYENS_ACTION.find(function(x) { return x.key === moyenKey; });
     if (m) {
@@ -1066,16 +1237,27 @@ function filterSaeComplet() {
     }
   }
 
+  // Filter by sous-categorie
+  if (sousVal) {
+    results = results.filter(function(s) {
+      var text = [
+        s.titre, s.nom, s.moyen_action, s.moyens_action, s.description,
+        ...(s.tags || [])
+      ].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(sousVal);
+    });
+  }
+
   container.innerHTML = '';
 
   if (results.length === 0) {
-    container.innerHTML = '<p class="cours-browser-hint">Aucune SAE trouvee avec ' + duree + ' cours.</p>';
+    container.innerHTML = '<p class="cours-browser-hint">Aucune SAÉ trouvée avec ces critères.</p>';
     return;
   }
 
   var countDiv = document.createElement('div');
   countDiv.className = 'sae-complet-count';
-  countDiv.innerHTML = '<strong>' + results.length + '</strong> SAE disponible' + (results.length > 1 ? 's' : '');
+  countDiv.innerHTML = '<strong>' + results.length + '</strong> SAÉ disponible' + (results.length > 1 ? 's' : '');
   container.appendChild(countDiv);
 
   var grid = document.createElement('div');
@@ -1084,9 +1266,11 @@ function filterSaeComplet() {
   results.forEach(function(s) {
     var card = document.createElement('div');
     card.className = 'sae-complet-card';
+    var cycleLabel = s.cycle || s.niveau || '';
     card.innerHTML =
       '<div class="sae-complet-card-title">' + escapeHtml(s.titre || s.nom || '') + '</div>' +
-      '<div class="sae-complet-card-moyen">' + escapeHtml(s.moyen_action || s.moyens_action || '') + '</div>';
+      '<div class="sae-complet-card-moyen">' + escapeHtml(s.moyen_action || s.moyens_action || '') + '</div>' +
+      (cycleLabel ? '<div class="sae-complet-card-cycle">' + escapeHtml(cycleLabel) + '</div>' : '');
     card.addEventListener('click', function() { openModal(s); });
     grid.appendChild(card);
   });

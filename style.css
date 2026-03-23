@@ -1296,6 +1296,123 @@ ul li {
   display: block;
 }
 
+/* Modal — Cours par cours timeline */
+.modal-cours-section {
+  margin-top: 16px;
+}
+
+.modal-cours-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 12px;
+}
+
+.modal-cours-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,119,204,0.1);
+}
+
+.modal-cours-item:last-child {
+  border-bottom: none;
+}
+
+.modal-cours-num {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
+.modal-cours-body {
+  flex: 1;
+}
+
+.modal-cours-titre {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.modal-cours-objectif {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.modal-cours-phases {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-cours-phase {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.modal-cours-phase p {
+  margin: 4px 0 0;
+}
+
+.phase-label {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.phase-echauf {
+  background: rgba(255, 152, 0, 0.08);
+  border-left: 3px solid #FF9800;
+}
+.phase-echauf .phase-label { color: #E65100; }
+
+.phase-principal {
+  background: rgba(0, 119, 204, 0.06);
+  border-left: 3px solid var(--primary);
+}
+.phase-principal .phase-label { color: var(--primary); }
+
+.phase-retour {
+  background: rgba(46, 125, 50, 0.06);
+  border-left: 3px solid var(--green);
+}
+.phase-retour .phase-label { color: var(--green); }
+
+@media (max-width: 600px) {
+  .modal-cours-item {
+    gap: 10px;
+    padding: 12px 0;
+  }
+  .modal-cours-num {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    font-size: 0.85rem;
+  }
+}
+
 @keyframes modalFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -2129,8 +2246,13 @@ ul li {
 
 .sae-complet-filter-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 20px;
+}
+.sae-complet-filter-bar .cours-field {
+  flex: 1;
+  min-width: 200px;
 }
 
 @media (max-width: 600px) {
@@ -2187,6 +2309,18 @@ ul li {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary);
+}
+
+.sae-complet-card-cycle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--primary);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 4px;
 }
 
 @media (max-width: 600px) {
@@ -3080,3 +3214,7 @@ a:focus-visible {
     font-size: 0.8rem;
   }
 }
+
+/* ===== LANG SELECTOR ===== */
+.lang-selector{margin-left:8px;}
+.lang-select{font-family:'Bangers';font-size:0.8rem;padding:2px 6px;border-radius:6px;border:2px solid rgba(255,255,255,0.3);background:rgba(0,0,0,0.3);color:#fff;cursor:pointer;}

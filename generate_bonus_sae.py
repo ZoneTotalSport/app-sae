@@ -1005,76 +1005,65 @@ def get_age_key(cycle_info):
 
 
 def generate_sae(cat, idx, cycle_info, used_titles):
-    """Generate a single SAÉ entry."""
+    """Generate a single SAÉ entry with 1000+ words of rich content."""
     prefix = cat["prefix"]
     moyen = pick(cat["moyens_action"])
     age_key = get_age_key(cycle_info)
+    m = moyen.lower()
 
     title = generate_title(cat, moyen, idx, used_titles)
 
-    # Pick content from banks
-    criteres = pick_n(cat["criteres_bank"], 3)
-    savoirs = pick_n(cat["savoirs_bank"], 3)
-    materiel = pick_n(cat["materiel_bank"], random.randint(3, 5))
+    # Pick content from banks — more items for richer content
+    criteres = pick_n(cat["criteres_bank"], 5)
+    savoirs = pick_n(cat["savoirs_bank"], 5)
+    materiel = pick_n(cat["materiel_bank"], random.randint(5, 8))
 
     echauffement_act = pick(cat["echauffement_bank"][age_key])
     apprentissage_act = pick(cat["apprentissage_bank"][age_key])
     mise_en_action_act = pick(cat["mise_en_action_bank"][age_key])
     retour_act = pick(cat["retour_bank"][age_key])
 
-    # Role enseignant templates per phase
+    # ======== ROLE ENSEIGNANT (expanded) ========
     roles_echauffement = [
-        "Donner les consignes clairement et s'assurer que tous participent.",
-        "Animer avec enthousiasme, observer les élèves et corriger les postures.",
-        "Démontrer les mouvements, circuler et encourager les élèves timides.",
-        "Gérer le rythme et les transitions, assurer la sécurité.",
-        "Varier le tempo, donner des défis supplémentaires aux plus avancés.",
+        f"Donner les consignes clairement et s'assurer que tous les élèves participent activement. Circuler dans l'espace pour vérifier la compréhension des consignes. Encourager les élèves plus réservés à s'engager dans l'activité. Ajuster le rythme selon l'énergie du groupe et la température ambiante.",
+        f"Animer avec enthousiasme en utilisant un ton dynamique et encourageant. Observer attentivement les élèves et corriger les postures inadéquates pour prévenir les blessures. Proposer des alternatives pour les élèves qui éprouvent des difficultés. Maintenir un rythme soutenu tout en respectant les capacités de chacun.",
+        f"Démontrer les mouvements attendus de façon claire et visible par tous. Circuler activement dans le gymnase et encourager les élèves timides ou moins confiants à participer. Utiliser le renforcement positif pour valoriser les efforts. S'assurer que l'espace est sécuritaire et que le matériel est bien disposé.",
+        f"Gérer le rythme et les transitions entre les exercices de façon fluide. Assurer la sécurité en vérifiant l'espacement entre les élèves. Utiliser des signaux sonores ou visuels clairs pour les changements d'activité. Adapter l'intensité selon les besoins observés dans le groupe.",
     ]
     roles_apprentissage = [
-        "Démontrer la technique, offrir des rétroactions individuelles.",
-        "Circuler parmi les ateliers, corriger les gestes et valoriser les progrès.",
-        "Expliquer les critères de réussite, donner des exemples et contre-exemples.",
-        "Guider les exercices étape par étape, adapter le niveau de difficulté.",
-        "Observer, questionner les élèves sur leurs choix et encourager la persévérance.",
+        f"Démontrer la technique de façon détaillée en décomposant les mouvements. Offrir des rétroactions individuelles précises et constructives. Utiliser des mots-clés simples pour guider l'exécution. Prévoir des ateliers de niveaux différents pour respecter le rythme d'apprentissage de chaque élève. Observer attentivement et noter les progrès pour l'évaluation formative.",
+        f"Circuler parmi les ateliers en accordant une attention particulière aux élèves en difficulté. Corriger les gestes techniques avec bienveillance et valoriser les progrès, même petits. Proposer des défis supplémentaires aux élèves qui maîtrisent déjà les éléments de base. Documenter les observations pour le suivi des apprentissages.",
+        f"Expliquer les critères de réussite de façon explicite en donnant des exemples concrets et des contre-exemples. Utiliser des démonstrations visuelles et des repères spatiaux. Permettre aux élèves de s'autoévaluer à l'aide de grilles simples. Encourager l'entraide entre pairs pour favoriser l'apprentissage coopératif.",
+        f"Guider les exercices étape par étape en vérifiant la compréhension à chaque transition. Adapter le niveau de difficulté en temps réel selon les réponses des élèves. Utiliser le questionnement pour amener les élèves à réfléchir sur leurs actions. Proposer des situations de complexité croissante pour maintenir la motivation.",
     ]
     roles_mise_en_action = [
-        "Arbitrer, gérer les rotations et s'assurer que les règles sont respectées.",
-        "Observer les stratégies utilisées, encourager la communication entre coéquipiers.",
-        "Superviser la sécurité, offrir des défis bonus aux équipes rapides.",
-        "Circuler, prendre des notes d'observation pour l'évaluation formative.",
-        "Encourager la participation de tous, adapter les règles si nécessaire.",
+        f"Arbitrer les activités de façon juste et cohérente. Gérer les rotations entre les équipes ou les ateliers pour maximiser le temps d'engagement moteur. S'assurer que les règles sont comprises et respectées par tous. Intervenir rapidement en cas de conflit ou de situation d'insécurité. Encourager l'esprit sportif et le fair-play.",
+        f"Observer les stratégies utilisées par les élèves et noter les comportements significatifs. Encourager la communication verbale et non verbale entre coéquipiers. Proposer des ajustements tactiques ou techniques lorsque nécessaire. Valoriser la créativité et la prise d'initiative dans les solutions proposées par les élèves.",
+        f"Superviser la sécurité de façon constante en anticipant les situations à risque. Offrir des défis bonus aux équipes ou individus qui terminent rapidement. Maintenir un niveau d'engagement élevé en variant les consignes. Prendre des notes d'observation structurées pour l'évaluation formative et sommative.",
+        f"Circuler dans tout l'espace de jeu pour avoir une vue d'ensemble. Encourager la participation active de tous les élèves, incluant ceux qui tendent à rester en retrait. Adapter les règles si nécessaire pour maintenir l'équilibre entre les équipes. Utiliser le chronomètre pour structurer les périodes de jeu et de repos.",
     ]
     roles_retour = [
-        "Guider les étirements et animer la discussion de retour.",
-        "Poser des questions de réflexion et valoriser les apprentissages observés.",
-        "Créer une ambiance calme, guider la respiration et la relaxation.",
-        "Faire un bilan verbal, annoncer les objectifs de la prochaine séance.",
+        f"Guider les étirements en nommant les groupes musculaires sollicités et en expliquant leur importance. Animer une discussion de retour en posant des questions ouvertes sur les apprentissages réalisés. Créer une atmosphère calme et respectueuse pour favoriser la réflexion. Féliciter le groupe pour les efforts et les comportements positifs observés.",
+        f"Poser des questions de réflexion variées pour amener les élèves à verbaliser ce qu'ils ont appris. Valoriser les apprentissages observés en donnant des exemples concrets tirés de la séance. Encourager les élèves à identifier un élément qu'ils souhaitent améliorer à la prochaine séance. Faire le lien entre l'activité vécue et la vie quotidienne.",
+        f"Créer une ambiance calme propice à la récupération physique et mentale. Guider la respiration et la relaxation en utilisant des exercices de retour au calme progressifs. Inviter les élèves à évaluer leur propre performance sur une échelle simple. Annoncer brièvement le contenu de la prochaine séance pour maintenir la motivation.",
+        f"Faire un bilan verbal structuré en revenant sur les objectifs de la séance. Demander aux élèves de partager un moment fort ou une difficulté rencontrée. Annoncer les objectifs de la prochaine séance et faire un lien avec ce qui a été appris aujourd'hui. Superviser le rangement du matériel en le transformant en activité éducative.",
     ]
 
-    # Description templates
+    # ======== DESCRIPTION (expanded to 5+ sentences) ========
     desc_templates_young = [
-        f"Les enfants découvrent le {moyen.lower()} à travers des activités ludiques et imaginaires. "
-        f"Ils développent leurs habiletés motrices de base dans un contexte sécurisant et amusant.",
-        f"Dans un univers imaginaire, les élèves explorent le {moyen.lower()} en variant les approches. "
-        f"L'accent est mis sur le plaisir de bouger et la découverte de nouvelles façons de bouger.",
-        f"Activité ludique de {moyen.lower()} adaptée aux tout-petits. Les enfants explorent, essaient "
-        f"et découvrent à leur rythme dans un climat de confiance.",
+        f"Les enfants découvrent le {m} à travers des activités ludiques et imaginaires qui stimulent leur curiosité naturelle. Ils développent leurs habiletés motrices de base dans un contexte sécurisant et amusant, où chaque enfant peut progresser à son propre rythme. L'enseignant crée un environnement bienveillant qui favorise l'exploration libre et la prise de risques calculés. Les consignes sont données sous forme de jeux et d'histoires pour capter l'attention des tout-petits. L'accent est mis sur le plaisir de bouger, la socialisation et la construction d'une image positive de l'activité physique. Chaque enfant est encouragé à essayer, à persévérer et à célébrer ses réussites, aussi petites soient-elles.",
+        f"Dans un univers imaginaire soigneusement préparé par l'enseignant, les élèves explorent le {m} en variant les approches et les solutions motrices. L'activité est conçue pour stimuler tous les sens et encourager la créativité dans le mouvement. Les enfants apprennent à écouter leur corps, à respecter celui des autres et à coopérer avec leurs camarades. L'accent est mis sur le plaisir de bouger et la découverte de nouvelles façons de s'exprimer par le mouvement. Des repères visuels colorés et du matériel adapté à la taille des enfants sont utilisés pour faciliter la compréhension des tâches. L'enseignant valorise chaque tentative et guide doucement vers l'acquisition des habiletés fondamentales.",
+        f"Activité ludique de {m} spécialement adaptée aux tout-petits, où le jeu est le principal vecteur d'apprentissage. Les enfants explorent, essaient et découvrent à leur rythme dans un climat de confiance et de bienveillance. L'environnement est aménagé de façon à offrir différentes zones de complexité croissante. Les transitions entre les activités sont fluides et accompagnées de comptines ou de signaux musicaux. L'enseignant utilise le renforcement positif abondamment et adapte ses interventions au niveau de développement de chaque enfant. La séance se termine par un moment calme qui aide les enfants à faire le bilan de leurs découvertes.",
     ]
     desc_templates_mid = [
-        f"Les élèves approfondissent leurs habiletés en {moyen.lower()} à travers des exercices structurés "
-        f"et des situations de jeu adaptées. L'accent est mis sur la technique et la progression.",
-        f"Séance de {moyen.lower()} combinant apprentissage technique et mise en situation. Les élèves "
-        f"développent leur autonomie et leur capacité à s'autoévaluer.",
-        f"Par des ateliers variés de {moyen.lower()}, les élèves renforcent leurs compétences tout en "
-        f"développant leur esprit sportif et leur sens de la coopération.",
+        f"Les élèves approfondissent leurs habiletés en {m} à travers des exercices structurés et des situations de jeu authentiques adaptées à leur niveau de développement. L'accent est mis sur la technique, la progression et l'acquisition de stratégies efficaces. Des ateliers de niveaux différents permettent à chaque élève de travailler dans sa zone proximale de développement. L'enseignant utilise des démonstrations, des rétroactions ciblées et des grilles d'autoévaluation pour guider les apprentissages. Les élèves sont amenés à verbaliser leurs choix et à justifier leurs stratégies auprès de leurs pairs. La séance intègre des moments de pratique individuelle, en dyade et en petit groupe pour varier les contextes d'apprentissage.",
+        f"Séance de {m} soigneusement planifiée, combinant apprentissage technique rigoureux et mises en situation motivantes. Les élèves développent leur autonomie et leur capacité à s'autoévaluer grâce à des critères de réussite explicites. L'enseignant propose des défis progressifs qui maintiennent un haut niveau de motivation tout en assurant un taux de réussite suffisant. Les élèves apprennent à recevoir et donner des rétroactions constructives à leurs pairs. Des outils visuels (affiches, pictogrammes, vidéos) soutiennent la compréhension des éléments techniques clés. La coopération et l'esprit sportif sont valorisés tout au long de la séance.",
+        f"Par des ateliers variés de {m}, les élèves renforcent leurs compétences motrices tout en développant leur esprit sportif, leur sens de la coopération et leur capacité à résoudre des problèmes moteurs. L'enseignant structure la séance de façon à offrir un temps d'engagement moteur maximal. Les transitions sont efficaces et les consignes claires pour minimiser les temps d'attente. Chaque atelier présente un défi adapté avec des possibilités de régulation. Les élèves sont encouragés à expérimenter différentes approches et à identifier celles qui sont les plus efficaces pour eux.",
     ]
     desc_templates_old = [
-        f"Séance avancée de {moyen.lower()} intégrant des dimensions tactiques et stratégiques. "
-        f"Les élèves font preuve d'autonomie dans leur apprentissage et leur évaluation.",
-        f"Les élèves perfectionnent leurs habiletés en {moyen.lower()} dans des situations complexes. "
-        f"L'analyse, la prise de décision et l'autorégulation sont au cœur de la séance.",
-        f"Activité de {moyen.lower()} de niveau avancé avec objectifs de performance individuels et "
-        f"collectifs. Les élèves développent leur leadership et leur esprit critique.",
+        f"Séance avancée de {m} intégrant des dimensions tactiques, stratégiques et réflexives qui préparent les élèves à devenir des pratiquants autonomes et engagés. Les élèves font preuve d'autonomie dans leur apprentissage et leur évaluation, en utilisant des grilles critériées et des outils d'autoévaluation sophistiqués. L'enseignant adopte un rôle de facilitateur et de coach, laissant plus de responsabilités aux élèves dans la gestion de leur pratique. Les situations proposées sont complexes et requièrent la mobilisation simultanée de plusieurs compétences. Les élèves analysent leurs performances à l'aide de données objectives et ajustent leurs stratégies en conséquence. La dimension éthique du sport et de l'activité physique est abordée à travers des discussions et des mises en situation.",
+        f"Les élèves perfectionnent leurs habiletés en {m} dans des situations complexes et authentiques qui simulent les exigences de la pratique sportive réelle. L'analyse critique, la prise de décision rapide et l'autorégulation sont au cœur de la séance. L'enseignant propose des situations-problèmes qui obligent les élèves à mobiliser leurs connaissances théoriques et pratiques. Le travail d'équipe est valorisé et les rôles sont distribués de façon à développer le leadership partagé. Les élèves documentent leur progression et fixent des objectifs personnels réalistes. La séance inclut des moments de réflexion métacognitive sur les processus d'apprentissage utilisés.",
+        f"Activité de {m} de niveau avancé avec objectifs de performance individuels et collectifs ambitieux mais réalistes. Les élèves développent leur leadership, leur esprit critique et leur capacité à coacher leurs pairs. L'enseignant crée un environnement d'apprentissage qui valorise la prise de risques calculés et l'innovation dans les solutions motrices. Les données de performance sont collectées et analysées pour guider la planification des séances suivantes. Les élèves sont invités à concevoir des variantes d'exercices et à proposer des améliorations. La dimension santé et bien-être est intégrée à travers la compréhension des principes d'entraînement et de récupération.",
     ]
 
     if age_key == "young":
@@ -1084,31 +1073,28 @@ def generate_sae(cat, idx, cycle_info, used_titles):
     else:
         desc = pick(desc_templates_old)
 
-    # Contexte templates
+    # ======== CONTEXTE (expanded) ========
     contexte_templates = [
-        f"En contexte de {moyen.lower()}, les élèves vivent des situations d'apprentissage progressives "
-        f"adaptées à leur niveau de développement.",
-        f"L'activité se déroule dans un environnement structuré où les élèves peuvent explorer "
-        f"le {moyen.lower()} de façon sécuritaire et stimulante.",
-        f"Les élèves sont amenés à développer leurs compétences en {moyen.lower()} à travers des "
-        f"défis adaptés et des situations authentiques.",
+        f"En contexte de {m}, les élèves vivent des situations d'apprentissage progressives soigneusement adaptées à leur niveau de développement moteur, cognitif et social. L'enseignant a préparé l'environnement de façon à maximiser le temps d'engagement moteur et à minimiser les temps d'attente. Les consignes sont claires, concises et accompagnées de démonstrations visuelles. Le matériel est disposé de manière stratégique pour faciliter les transitions entre les activités. L'atmosphère est positive et encourage la prise de risques calculés dans un cadre sécuritaire.",
+        f"L'activité se déroule dans un environnement soigneusement structuré et sécuritaire où les élèves peuvent explorer le {m} de façon stimulante et progressive. L'enseignant a identifié les prérequis nécessaires et a planifié des activités de complexité croissante. Le climat d'apprentissage favorise l'entraide, le respect mutuel et la valorisation des différences individuelles. Les élèves sont informés des objectifs de la séance et des critères de réussite dès le début. Des adaptations sont prévues pour répondre aux besoins particuliers de certains élèves.",
+        f"Les élèves sont amenés à développer leurs compétences en {m} à travers des défis adaptés, des situations authentiques et des jeux structurés qui donnent du sens aux apprentissages. L'enseignant utilise une approche pédagogique différenciée qui tient compte des forces et des défis de chaque élève. Le regroupement des élèves varie au cours de la séance pour favoriser différents types d'interactions. L'évaluation formative est intégrée de façon continue pour ajuster l'enseignement en temps réel.",
     ]
 
-    # Tâche complexe templates
+    # ======== TÂCHE COMPLEXE (expanded) ========
     tache_templates_young = [
-        f"L'élève réalise un parcours de {moyen.lower()} en enchaînant 3 actions différentes.",
-        f"L'élève participe à une activité de {moyen.lower()} en respectant les consignes et en variant ses mouvements.",
-        f"L'élève explore le {moyen.lower()} en essayant au moins 3 façons différentes de bouger.",
+        f"L'élève réalise un parcours de {m} en enchaînant au moins 3 actions différentes avec fluidité. Il doit démontrer qu'il comprend les consignes en adaptant ses mouvements à chaque station. L'enseignant observe la qualité de l'exécution, la capacité à maintenir l'effort et le respect des règles de sécurité. L'élève est invité à nommer les actions qu'il réalise et à identifier celles qu'il préfère.",
+        f"L'élève participe activement à une activité de {m} en respectant les consignes données et en variant ses mouvements de façon créative. Il explore différentes façons de réaliser la tâche et choisit celles qui lui conviennent le mieux. L'enseignant évalue la participation, l'engagement et la variété des réponses motrices. L'élève démontre sa capacité à coopérer avec ses pairs et à attendre son tour.",
+        f"L'élève explore le {m} en essayant au moins 3 façons différentes de bouger et en identifiant verbalement ses préférences. Il démontre sa capacité à utiliser le matériel de façon sécuritaire et appropriée. L'enseignant note la créativité, la persévérance et la capacité de l'élève à s'adapter aux consignes changeantes. L'élève partage ses découvertes avec un camarade et écoute les idées des autres.",
     ]
     tache_templates_mid = [
-        f"L'élève exécute une séquence de {moyen.lower()} en démontrant au moins 3 éléments techniques maîtrisés.",
-        f"L'élève adapte ses actions de {moyen.lower()} à différentes situations de jeu en faisant des choix tactiques.",
-        f"L'élève participe à une situation de {moyen.lower()} en combinant habiletés techniques et prise de décision.",
+        f"L'élève exécute une séquence de {m} en démontrant la maîtrise d'au moins 3 éléments techniques clés avec précision et contrôle. Il adapte sa performance en fonction des rétroactions reçues de l'enseignant et de ses pairs. L'évaluation porte sur la qualité d'exécution, la capacité d'autoévaluation et la progression démontrée au cours de la séance. L'élève utilise une grille d'observation pour évaluer un camarade et offrir des conseils constructifs.",
+        f"L'élève adapte ses actions de {m} à différentes situations de jeu en faisant des choix tactiques éclairés et en justifiant ses décisions. Il démontre sa capacité à lire le jeu, à anticiper les actions des autres et à réagir de façon appropriée. L'enseignant évalue la pertinence des choix tactiques, la communication avec les coéquipiers et la capacité à ajuster sa stratégie. L'élève fait un retour réflexif sur ses performances et identifie des pistes d'amélioration.",
+        f"L'élève participe à une situation complexe de {m} en combinant habiletés techniques, prise de décision et communication efficace avec ses coéquipiers. Il démontre sa compréhension des principes de jeu et sa capacité à les appliquer dans des contextes variés. L'évaluation porte sur la qualité technique, l'efficacité tactique et la contribution au jeu collectif. L'élève remplit une fiche d'autoévaluation après l'activité.",
     ]
     tache_templates_old = [
-        f"L'élève analyse et adapte sa stratégie de {moyen.lower()} en fonction des réponses de l'adversaire ou de l'environnement.",
-        f"L'élève crée et présente un enchaînement de {moyen.lower()} intégrant des éléments techniques avancés et des transitions fluides.",
-        f"L'élève démontre une maîtrise avancée du {moyen.lower()} en situation complexe avec prise de décision autonome.",
+        f"L'élève analyse et adapte sa stratégie de {m} en fonction des réponses de l'adversaire ou de l'environnement, démontrant une pensée tactique avancée. Il documente sa démarche d'amélioration en utilisant des outils d'analyse (vidéo, statistiques, grilles). L'évaluation porte sur la profondeur de l'analyse, la pertinence des ajustements et la capacité à transférer ses apprentissages dans de nouveaux contextes. L'élève prend en charge l'échauffement ou le retour au calme d'un sous-groupe.",
+        f"L'élève crée et présente un enchaînement de {m} intégrant des éléments techniques avancés, des transitions fluides et une dimension esthétique ou stratégique. Il justifie ses choix en s'appuyant sur des principes biomécaniques et tactiques. L'évaluation tient compte de l'originalité, de la maîtrise technique, de la capacité d'analyse et de la qualité de la présentation. L'élève offre des rétroactions structurées à ses pairs en utilisant un vocabulaire technique approprié.",
+        f"L'élève démontre une maîtrise avancée du {m} en situation complexe avec prise de décision autonome et autorégulation. Il assume un rôle de leader en guidant ses coéquipiers et en proposant des ajustements stratégiques. L'évaluation porte sur l'autonomie, le leadership, la qualité d'exécution et la capacité à gérer la pression. L'élève établit un plan d'entraînement personnel pour poursuivre sa progression en dehors des cours.",
     ]
 
     if age_key == "young":
@@ -1118,14 +1104,152 @@ def generate_sae(cat, idx, cycle_info, used_titles):
     else:
         tache = pick(tache_templates_old)
 
+    # ======== VARIANTES (3-5 per SAÉ) ========
+    variantes_bank_young = [
+        f"Simplifier la tâche en réduisant le nombre d'actions à enchaîner ou en augmentant la taille des cibles. Utiliser des repères visuels au sol (cônes colorés, lignes) pour guider les déplacements.",
+        f"Ajouter un thème imaginaire (animaux de la jungle, astronautes, pirates) pour stimuler la motivation et la créativité dans les réponses motrices.",
+        f"Proposer l'activité en musique en variant le tempo pour explorer différentes vitesses d'exécution. Alterner entre mouvements lents et rapides.",
+        f"Remplacer le matériel standard par des objets inusités (foulards, ballons de baudruche, rubans) pour varier les sensations et les défis moteurs.",
+        f"Organiser l'activité en parcours à stations avec des durées courtes (2-3 minutes) pour maintenir l'attention et la motivation des tout-petits.",
+        f"Intégrer des pauses actives sous forme de jeux de devinettes motrices ou de statues pour travailler l'équilibre et l'écoute.",
+        f"Permettre aux enfants de créer leur propre parcours en choisissant parmi le matériel disponible, favorisant ainsi l'autonomie et la prise de décision.",
+    ]
+    variantes_bank_mid = [
+        f"Augmenter la complexité en ajoutant des contraintes (utiliser seulement la main non dominante, yeux fermés pour certains exercices d'équilibre, temps limité).",
+        f"Introduire un système de points ou de défis à relever pour stimuler la motivation intrinsèque et l'engagement des élèves dans la tâche.",
+        f"Proposer une version coopérative où les élèves doivent synchroniser leurs mouvements ou atteindre un objectif commun, favorisant la communication.",
+        f"Organiser un tournoi amical avec des règles adaptées pour développer l'esprit sportif, la gestion des émotions et le respect de l'adversaire.",
+        f"Offrir des choix de niveaux de difficulté (vert = facile, jaune = intermédiaire, rouge = avancé) pour favoriser l'autodifférenciation et l'autonomie.",
+        f"Intégrer un rôle d'observateur-coach où un élève observe un pair et lui offre des rétroactions à partir d'une grille simple d'observation.",
+        f"Varier les formations (individuel, en dyade, en petit groupe de 4, en grand groupe) pour développer différentes compétences sociales et motrices.",
+    ]
+    variantes_bank_old = [
+        f"Proposer aux élèves de concevoir et d'arbitrer leur propre version du jeu en modifiant les règles, les dimensions du terrain ou le système de pointage.",
+        f"Introduire l'analyse vidéo où les élèves filment leurs performances et les analysent en identifiant les forces et les points à améliorer.",
+        f"Ajouter des contraintes tactiques complexes (nombre limité de touches, zones interdites, rôles spécialisés) pour développer l'adaptabilité et la lecture du jeu.",
+        f"Proposer un défi de coaching par les pairs où chaque élève prépare et anime un exercice de 5 minutes pour un petit groupe, développant le leadership.",
+        f"Organiser une compétition intercycle ou interclasse avec un comité d'organisation élève pour développer les compétences organisationnelles et le leadership.",
+        f"Intégrer des éléments de préparation mentale (visualisation, gestion du stress, concentration) pour enrichir l'expérience sportive et préparer à la compétition.",
+        f"Proposer un projet d'entraînement sur plusieurs séances avec un carnet de bord où l'élève planifie, exécute et évalue sa progression personnelle.",
+    ]
+
+    if age_key == "young":
+        variantes = pick_n(variantes_bank_young, random.randint(3, 4))
+    elif age_key == "mid":
+        variantes = pick_n(variantes_bank_mid, random.randint(3, 5))
+    else:
+        variantes = pick_n(variantes_bank_old, random.randint(4, 5))
+
+    # ======== ADAPTATIONS HDAA ========
+    adaptation_hdaa = {
+        "Trouble du spectre de l'autisme (TSA)": pick([
+            f"Utiliser un horaire visuel avec pictogrammes pour présenter les étapes de la séance de {m}. Réduire les stimuli sensoriels (baisser la musique, limiter le bruit ambiant). Offrir un espace de retrait calme si nécessaire. Prévenir l'élève des transitions à l'avance (minuterie visuelle). Utiliser des consignes courtes et concrètes accompagnées de démonstrations. Maintenir une routine stable d'une séance à l'autre.",
+            f"Placer l'élève à proximité de l'enseignant pour faciliter la communication et la régulation. Utiliser un système de renforcement positif personnalisé (jetons, autocollants). Permettre l'utilisation d'objets sensoriels pendant les temps d'attente. Jumeler l'élève avec un pair aidant qui modélise les comportements attendus. Découper les tâches complexes en étapes simples et séquentielles. Utiliser un langage visuel et concret plutôt qu'abstrait.",
+        ]),
+        "Handicap physique ou moteur": pick([
+            f"Adapter la hauteur, la distance ou la taille des cibles selon les capacités de l'élève. Proposer des rôles actifs alternatifs (arbitre, marqueur, stratège, chronométreur) lorsque la participation physique directe est limitée. Utiliser du matériel adapté (ballons plus légers, raquettes avec poignées modifiées, surfaces antidérapantes). Modifier les règles pour assurer l'inclusion (passes obligatoires, zones protégées). Consulter l'intervenant en adaptation scolaire pour les adaptations spécifiques.",
+            f"Aménager l'espace pour assurer l'accessibilité (rampes, surfaces planes, espace de manœuvre suffisant). Permettre l'utilisation d'aides techniques (fauteuil roulant, déambulateur, orthèses). Proposer des exercices en position assise ou couchée comme alternatives. Adapter le temps de réalisation et les critères de réussite. Valoriser l'effort et la participation plutôt que la performance pure. Impliquer l'élève dans le choix de ses adaptations pour favoriser l'autonomie.",
+        ]),
+        "Trouble déficitaire de l'attention (TDA/H)": pick([
+            f"Structurer la séance avec des périodes courtes et variées pour maintenir l'attention. Utiliser des signaux clairs et multisensoriels (visuels, auditifs, kinesthésiques) pour les transitions. Placer l'élève à proximité de l'enseignant, loin des distractions. Donner une responsabilité spéciale (distribuer le matériel, être le capitaine) pour canaliser l'énergie. Répéter les consignes individuellement et demander à l'élève de les reformuler. Proposer des moments de mouvement libre entre les activités plus structurées.",
+            f"Utiliser un système de gestion du comportement positif avec des objectifs réalistes et atteignables. Prévoir des activités à haute intensité physique pour permettre une dépense d'énergie constructive. Alterner entre activités dynamiques et moments de concentration plus calmes. Offrir des choix dans les activités pour favoriser l'engagement. Établir des routines claires et prévisibles. Utiliser un minuteur visuel pour aider l'élève à gérer le temps.",
+        ]),
+        "Difficulté d'apprentissage": pick([
+            f"Simplifier les consignes en utilisant un vocabulaire de base et en les accompagnant de démonstrations visuelles. Décomposer les tâches complexes en étapes simples et progressives avec des repères concrets. Offrir plus de temps de pratique pour chaque habileté. Utiliser le tutorat par les pairs en jumelant l'élève avec un camarade patient et compétent. Fournir des repères visuels permanents (affiches, pictogrammes, couleurs) pour soutenir la mémorisation. Célébrer les progrès individuels plutôt que de comparer aux autres.",
+            f"Proposer des activités multisensorielles qui sollicitent la vue, l'ouïe et le toucher pour renforcer les apprentissages. Réduire le nombre de consignes données simultanément à 2-3 maximum. Utiliser des démonstrations entre pairs pour modéliser les comportements attendus. Prévoir des périodes de révision et de consolidation régulières. Adapter les critères d'évaluation en maintenant des attentes élevées mais réalistes. Communiquer les progrès aux parents pour renforcer la motivation.",
+        ]),
+    }
+
+    # ======== ENRICHISSEMENT ========
+    enrichissement_bank = [
+        f"Les élèves avancés peuvent créer un mini-parcours d'obstacles intégrant les habiletés travaillées et le présenter à un groupe de plus jeunes. Ils expliquent les règles, démontrent les mouvements et accompagnent les participants, développant ainsi leur leadership pédagogique.",
+        f"Proposer un défi de création chorégraphique ou de séquence de mouvements en lien avec le {m}, à présenter lors d'un spectacle de classe ou d'une journée portes ouvertes. Les élèves travaillent en équipe pour concevoir, répéter et peaufiner leur présentation.",
+        f"Inviter les élèves à tenir un journal d'apprentissage sportif dans lequel ils documentent leur progression, dessinent les mouvements clés et notent leurs objectifs personnels. Ce journal peut être utilisé lors des conférences parents-enseignant pour illustrer les apprentissages.",
+        f"Organiser un projet interdisciplinaire où les élèves fabriquent du matériel sportif à partir de matériaux recyclés (raquettes en carton, cibles, obstacles) et l'utilisent dans une séance adaptée. Ce projet intègre les arts plastiques, les sciences et l'éducation physique.",
+        f"Proposer aux élèves de documenter l'activité par la photographie ou la vidéo (avec supervision) pour créer un album ou une présentation numérique sur les apprentissages réalisés en {m}. Ce projet développe les compétences numériques et la communication.",
+        f"Inviter un athlète local, un entraîneur bénévole ou un parent sportif à venir partager son expertise et sa passion pour enrichir l'expérience des élèves. Préparer des questions d'entrevue avec les élèves pour structurer la visite.",
+    ]
+    enrichissement = pick(enrichissement_bank)
+
+    # ======== INTERDISCIPLINARITÉ ========
+    interdisciplinarite_bank = [
+        f"Mathématiques : Calculer les distances parcourues, les scores, les moyennes de performance, les angles de lancer ou les statistiques de jeu. Utiliser des graphiques pour visualiser la progression individuelle ou collective au fil des séances.",
+        f"Français : Rédiger un compte-rendu de la séance en utilisant le vocabulaire technique approprié. Pratiquer la communication orale en expliquant les règles d'un jeu à un camarade ou en présentant sa stratégie à l'équipe.",
+        f"Sciences et technologie : Explorer les principes physiques en jeu (force, vitesse, trajectoire, gravité, frottement) et les relier aux mouvements pratiqués. Observer l'effet de la force appliquée sur la trajectoire d'un objet.",
+        f"Arts : Intégrer des éléments esthétiques dans les mouvements (grâce, rythme, harmonie, expression corporelle). Créer une affiche illustrant les règles du jeu ou les mouvements clés de la séance avec des dessins et des couleurs.",
+        f"Éthique et culture religieuse : Discuter des valeurs sportives (respect, persévérance, entraide, humilité, dépassement de soi) et de leur application dans la vie quotidienne. Explorer les origines culturelles de différents sports et jeux traditionnels.",
+        f"Géographie et univers social : Découvrir l'origine géographique du sport ou du jeu pratiqué et les traditions qui y sont associées. Situer sur une carte les pays où ce type d'activité est populaire et comprendre son contexte culturel.",
+    ]
+    interdisciplinarite = pick_n(interdisciplinarite_bank, random.randint(2, 3))
+
+    # ======== NOTES ENSEIGNANT ========
+    notes_bank = [
+        f"S'assurer de vérifier l'état du matériel avant chaque séance pour prévenir les brisures et les blessures. Prévoir du matériel supplémentaire en cas de perte ou de défectuosité. Ranger le matériel de façon systématique pour faciliter la préparation des prochaines séances.",
+        f"Prévoir un plan B en cas de pluie ou d'indisponibilité du gymnase. Avoir des activités alternatives qui travaillent les mêmes compétences dans un espace réduit (corridor, classe). Adapter les consignes en conséquence pour maintenir la qualité pédagogique.",
+        f"Documenter les observations pour le bulletin en notant les progrès significatifs et les défis persistants de chaque élève. Utiliser une grille d'observation avec les critères du PFEQ pour assurer la cohérence et l'objectivité de l'évaluation.",
+        f"Communiquer avec les parents des élèves HDAA pour connaître les adaptations qui fonctionnent à la maison et en classe. Collaborer avec l'orthopédagogue et le TES pour assurer la cohérence des interventions. Tenir un dossier d'adaptation pour chaque élève.",
+        f"Planifier les groupements d'élèves à l'avance pour favoriser les interactions positives et éviter les conflits récurrents. Varier les compositions d'équipes d'une séance à l'autre. Utiliser des méthodes de formation d'équipes rapides et équitables.",
+        f"Intégrer la dimension santé en discutant brièvement de l'importance de l'hydratation, du sommeil, de la nutrition et de l'activité physique quotidienne. Faire le lien entre les activités de la séance et les habitudes de vie saine.",
+        f"Filmer occasionnellement la séance (avec les autorisations parentales) pour fins d'autoévaluation professionnelle et pour montrer aux élèves leurs progrès lors de visionnements. Cet outil est précieux pour le portfolio professionnel et les communications aux parents.",
+    ]
+    notes = " | ".join(pick_n(notes_bank, 3))
+
+    # ======== GRILLE D'ÉVALUATION ========
+    grille_evaluation = {
+        "Très bien": pick([
+            f"L'élève exécute les habiletés de {m} avec fluidité, précision et constance. Il fait preuve d'initiative et adapte ses actions de façon autonome aux situations rencontrées. Il participe activement, respecte les règles et encourage ses pairs.",
+            f"L'élève démontre une maîtrise assurée des éléments techniques de {m}. Il anticipe les situations, prend des décisions éclairées et communique efficacement avec ses coéquipiers. Son engagement est exemplaire et constant tout au long de la séance.",
+        ]),
+        "Bien": pick([
+            f"L'élève exécute les habiletés de {m} avec une qualité technique satisfaisante et un niveau de contrôle adéquat. Il participe de façon régulière et respecte généralement les consignes. Il démontre une progression par rapport à ses performances antérieures.",
+            f"L'élève maîtrise les éléments de base du {m} et commence à les combiner dans des situations plus complexes. Sa participation est active et il fait des efforts visibles pour s'améliorer. Il accepte les rétroactions et tente de les appliquer.",
+        ]),
+        "En développement": pick([
+            f"L'élève est en voie d'acquérir les habiletés de base en {m} et nécessite un soutien accru de l'enseignant. Il participe avec encouragement et démontre de la volonté à s'améliorer. Des adaptations sont mises en place pour favoriser sa progression et maintenir sa motivation.",
+            f"L'élève éprouve des difficultés avec certains éléments techniques du {m} mais montre des signes de progression avec l'aide apportée. Il a besoin de temps supplémentaire et de pratique répétée. L'enseignant offre un soutien individualisé et des situations simplifiées pour favoriser la réussite.",
+        ]),
+    }
+
+    # ======== VALEURS ÉDUCATIVES ========
+    valeurs_bank = [
+        "Respect de soi et des autres",
+        "Persévérance et dépassement de soi",
+        "Coopération et entraide",
+        "Esprit sportif et fair-play",
+        "Autonomie et responsabilisation",
+        "Engagement et participation active",
+        "Créativité et ouverture d'esprit",
+        "Plaisir de bouger et mode de vie actif",
+        "Gestion des émotions et résilience",
+        "Communication et écoute active",
+    ]
+    valeurs = pick_n(valeurs_bank, random.randint(3, 5))
+
+    # ======== CONSEILS DE SÉCURITÉ ========
+    securite_bank = [
+        f"Vérifier que les élèves portent des chaussures de sport appropriées avec des semelles non marquantes et des lacets bien attachés.",
+        f"S'assurer que l'espace de jeu est libre d'obstacles et que les surfaces sont propres et non glissantes. Baliser les zones de jeu clairement.",
+        f"Rappeler les règles de sécurité spécifiques au {m} avant le début de chaque activité. Insister sur le contrôle de soi et le respect de l'espace personnel.",
+        f"Avoir une trousse de premiers soins accessible et connaître les allergies et conditions médicales des élèves. Garder un téléphone à proximité.",
+        f"Établir un signal d'arrêt clair (sifflet, mot-clé, geste) que tous les élèves connaissent et respectent immédiatement.",
+        f"Adapter l'intensité des activités à la condition physique des élèves et prévoir des moments de récupération et d'hydratation suffisants.",
+        f"Superviser de façon active en se positionnant pour avoir une vue d'ensemble de tout le groupe. Ne jamais laisser les élèves sans surveillance.",
+    ]
+    securite = pick_n(securite_bank, random.randint(3, 4))
+
+    # ======== EXPANDED PROGRESSION (longer activity descriptions) ========
+    echauffement_expanded = f"{echauffement_act} L'enseignant s'assure que tous les élèves sont actifs et que le rythme cardiaque augmente progressivement. Il propose des variations pour maintenir l'intérêt : changer de direction, varier la vitesse, ajouter des défis moteurs simples. Les élèves qui le souhaitent peuvent proposer des mouvements au groupe."
+    apprentissage_expanded = f"{apprentissage_act} L'enseignant décompose les habiletés en éléments simples et propose une progression du plus facile au plus difficile. Il utilise des démonstrations, des repères visuels et des mots-clés pour faciliter l'apprentissage. Les élèves pratiquent d'abord individuellement, puis en dyade pour obtenir des rétroactions de leurs pairs."
+    mise_en_action_expanded = f"{mise_en_action_act} L'enseignant structure l'activité pour maximiser le temps d'engagement moteur de chaque élève. Il utilise des rotations rapides, des équipes de taille appropriée et des règles claires. Il observe et note les comportements significatifs pour l'évaluation. Des ajustements sont faits en temps réel pour maintenir le niveau de défi optimal."
+    retour_expanded = f"{retour_act} L'enseignant guide un retour au calme progressif qui inclut des étirements ciblés, une discussion réflexive et un moment de gratitude. Les élèves partagent ce qu'ils ont appris et identifient un objectif pour la prochaine séance. Le rangement du matériel est organisé de façon efficace et responsable."
+
     # Tags
     domaine_tag = cat["domaine"].split(" —")[0].lower()
     tags = [domaine_tag, moyen.lower().replace(" / ", "-").replace(" ", "-"),
             cycle_info["cycle"].lower().replace(" ", "-")]
-    # Add a couple extra tags
     extra_tags = ["pfeq", "éducation-physique", "gymnase", "actif", "santé",
                   "motricité", "habileté", "plaisir", "mouvement", "sport"]
-    tags.append(pick(extra_tags))
+    tags.extend(pick_n(extra_tags, 3))
 
     # Espace
     espaces = ["Gymnase", "Gymnase", "Gymnase", "Gymnase", "Gymnase double",
@@ -1150,31 +1274,39 @@ def generate_sae(cat, idx, cycle_info, used_titles):
             {
                 "phase": "Échauffement",
                 "duree": cycle_info["echauffement"],
-                "activite": echauffement_act,
+                "activite": echauffement_expanded,
                 "role_enseignant": pick(roles_echauffement),
             },
             {
                 "phase": "Apprentissage",
                 "duree": cycle_info["apprentissage"],
-                "activite": apprentissage_act,
+                "activite": apprentissage_expanded,
                 "role_enseignant": pick(roles_apprentissage),
             },
             {
                 "phase": "Mise en action",
                 "duree": cycle_info["mise_en_action"],
-                "activite": mise_en_action_act,
+                "activite": mise_en_action_expanded,
                 "role_enseignant": pick(roles_mise_en_action),
             },
             {
                 "phase": "Retour au calme",
                 "duree": cycle_info["retour"],
-                "activite": retour_act,
+                "activite": retour_expanded,
                 "role_enseignant": pick(roles_retour),
             },
         ],
         "materiel": materiel,
         "espace": espace,
         "tags": tags,
+        "variantes": variantes,
+        "adaptation_hdaa": adaptation_hdaa,
+        "enrichissement": enrichissement,
+        "interdisciplinarite": interdisciplinarite,
+        "notes": notes,
+        "grille_evaluation": grille_evaluation,
+        "valeurs_educatives": valeurs,
+        "securite": securite,
     }
     return sae
 
@@ -1243,11 +1375,21 @@ def main():
         for s in data["sae"]:
             cycles[s["cycle"]] = cycles.get(s["cycle"], 0) + 1
         cycle_dist = ", ".join(f"{c}: {n}" for c, n in sorted(cycles.items()))
+        # Word count
+        word_counts = []
+        for s in data["sae"]:
+            text = json.dumps(s, ensure_ascii=False)
+            wc = len(text.split())
+            word_counts.append(wc)
+        avg_wc = sum(word_counts) // len(word_counts)
+        min_wc = min(word_counts)
+        max_wc = max(word_counts)
 
         status = "OK" if n == 140 else "ERREUR"
         dup_status = f"({unique_titles} uniques)" if unique_titles < n else "(tous uniques)"
         print(f"  [{status}] {cat['file']:30s} — {n} SAÉ, IDs {first_id}..{last_id}, titres {dup_status}")
         print(f"         Distribution : {cycle_dist}")
+        print(f"         Mots : moy={avg_wc}, min={min_wc}, max={max_wc}")
 
 
 if __name__ == "__main__":

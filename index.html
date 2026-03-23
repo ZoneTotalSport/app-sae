@@ -151,11 +151,21 @@
             <label class="filter-label" for="sae-cycle">Cycle</label>
             <select id="sae-cycle" class="filter-select">
               <option value="">Tous les cycles</option>
-              <option value="Prescolaire">Prescolaire</option>
-              <option value="1er cycle">1er cycle primaire</option>
-              <option value="2e cycle">2e cycle primaire</option>
-              <option value="3e cycle">3e cycle primaire</option>
-              <option value="Secondaire">Secondaire</option>
+              <optgroup label="Primaire">
+                <option value="Prescolaire">Préscolaire / Maternelle</option>
+                <option value="Cycle 1">1er cycle primaire</option>
+                <option value="Cycle 2">2e cycle primaire</option>
+                <option value="Cycle 3">3e cycle primaire</option>
+              </optgroup>
+              <optgroup label="Secondaire">
+                <option value="Secondaire 1">Secondaire 1</option>
+                <option value="Secondaire 2">Secondaire 2</option>
+                <option value="Secondaire 3">Secondaire 3</option>
+                <option value="Secondaire 4">Secondaire 4</option>
+                <option value="Secondaire 5">Secondaire 5</option>
+                <option value="1er cycle secondaire">1er cycle sec. (1-2)</option>
+                <option value="2e cycle secondaire">2e cycle sec. (3-5)</option>
+              </optgroup>
             </select>
           </div>
 
@@ -188,6 +198,14 @@
                 <option value="expression">Expression corporelle</option>
                 <option value="artistique">Expression artistique</option>
               </optgroup>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="sae-composante">Composante</label>
+            <select id="sae-composante" class="filter-select">
+              <option value="">Toutes les composantes</option>
+              <!-- Rempli dynamiquement par JS -->
             </select>
           </div>
 
@@ -315,12 +333,19 @@
             <label class="cours-label">Niveau scolaire</label>
             <select id="cours-niveau" class="cours-select">
               <option value="">Selectionner un niveau</option>
-              <option value="Prescolaire">Prescolaire</option>
-              <option value="1er cycle">1er cycle</option>
-              <option value="2e cycle">2e cycle</option>
-              <option value="3e cycle">3e cycle</option>
-              <option value="Secondaire 1-2">Secondaire 1-2</option>
-              <option value="Secondaire 3-5">Secondaire 3-5</option>
+              <optgroup label="Primaire">
+                <option value="Prescolaire">Préscolaire / Maternelle</option>
+                <option value="Cycle 1">1er cycle primaire</option>
+                <option value="Cycle 2">2e cycle primaire</option>
+                <option value="Cycle 3">3e cycle primaire</option>
+              </optgroup>
+              <optgroup label="Secondaire">
+                <option value="Secondaire 1">Secondaire 1</option>
+                <option value="Secondaire 2">Secondaire 2</option>
+                <option value="Secondaire 3">Secondaire 3</option>
+                <option value="Secondaire 4">Secondaire 4</option>
+                <option value="Secondaire 5">Secondaire 5</option>
+              </optgroup>
             </select>
           </div>
           <div class="cours-field">
@@ -362,6 +387,25 @@
       <div id="sae-complet-section" class="sae-complet-section hidden">
         <div class="sae-complet-filter-bar">
           <div class="cours-field">
+            <label class="cours-label">Cycle / Niveau</label>
+            <select id="sae-complet-cycle" class="cours-select" onchange="filterSaeComplet()">
+              <option value="">Tous les cycles</option>
+              <optgroup label="Primaire">
+                <option value="Prescolaire">Préscolaire / Maternelle</option>
+                <option value="Cycle 1">1er cycle primaire</option>
+                <option value="Cycle 2">2e cycle primaire</option>
+                <option value="Cycle 3">3e cycle primaire</option>
+              </optgroup>
+              <optgroup label="Secondaire">
+                <option value="Secondaire 1">Secondaire 1</option>
+                <option value="Secondaire 2">Secondaire 2</option>
+                <option value="Secondaire 3">Secondaire 3</option>
+                <option value="Secondaire 4">Secondaire 4</option>
+                <option value="Secondaire 5">Secondaire 5</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="cours-field">
             <label class="cours-label">Nombre de cours souhaite</label>
             <select id="sae-complet-duree" class="cours-select" onchange="filterSaeComplet()">
               <option value="">Choisir...</option>
@@ -380,8 +424,15 @@
           </div>
           <div class="cours-field">
             <label class="cours-label">Moyen d'action</label>
-            <select id="sae-complet-moyen" class="cours-select" onchange="filterSaeComplet()">
+            <select id="sae-complet-moyen" class="cours-select" onchange="onSaeCompletMoyenChange()">
               <option value="">Tous les moyens</option>
+            </select>
+          </div>
+          <div class="cours-field">
+            <label class="cours-label">Sous-categorie</label>
+            <select id="sae-complet-sous" class="cours-select" onchange="filterSaeComplet()">
+              <option value="">Toutes les sous-categories</option>
+              <!-- Rempli dynamiquement par JS -->
             </select>
           </div>
         </div>
@@ -486,6 +537,8 @@
   <!-- TOAST NOTIFICATION -->
   <div id="toast" class="toast hidden">Lien copie !</div>
 
+  <script src="../i18n.js"></script>
+  <script src="lang/translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
