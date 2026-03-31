@@ -49,7 +49,7 @@ html {
 body {
   background-color: #f5f5dc;
   color: var(--text);
-  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  font-family: 'Schoolbell', system-ui, -apple-system, sans-serif;
   font-weight: 600;
   line-height: 1.7;
   min-height: 100vh;
@@ -163,7 +163,7 @@ ul li {
 }
 
 .loading-text {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   color: var(--primary);
   font-size: 1rem;
   font-weight: 600;
@@ -239,7 +239,7 @@ ul li {
 }
 
 .brand-name {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   background: linear-gradient(135deg, #0077CC, #E91E63, #FF8C00, #2E7D32);
@@ -286,7 +286,7 @@ ul li {
 .hstat:nth-child(3) { border-color: var(--secondary); background: rgba(255, 140, 0, 0.1); }
 
 .hstat-num {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--accent);
@@ -313,7 +313,7 @@ ul li {
 .nav-link {
   padding: 6px 14px;
   border-radius: var(--radius-sm);
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -386,7 +386,7 @@ ul li {
   background: rgba(0, 119, 204, 0.08);
   border: 1px solid rgba(0, 119, 204, 0.3);
   border-radius: 20px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--primary);
@@ -395,7 +395,7 @@ ul li {
 }
 
 .hero-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: clamp(2.4rem, 6vw, 4.5rem);
   font-weight: 700;
   line-height: 1.05;
@@ -449,7 +449,7 @@ ul li {
   border-radius: 12px;
   padding: 10px 16px;
   color: #1a1a1a;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   transition: var(--transition);
@@ -487,7 +487,7 @@ ul li {
 }
 
 .counter-num {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--primary);
@@ -518,7 +518,7 @@ ul li {
 .btn-primary {
   background: linear-gradient(135deg, #FF8C00, #E91E63);
   color: #fff;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   padding: 14px 28px;
@@ -544,7 +544,7 @@ ul li {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #1a1a1a;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   padding: 14px 24px;
@@ -587,7 +587,7 @@ ul li {
 }
 
 .section-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 700;
   color: var(--secondary);
@@ -624,7 +624,7 @@ ul li {
   cursor: pointer;
   transition: var(--transition);
   color: var(--text);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   backdrop-filter: blur(8px);
@@ -653,7 +653,7 @@ ul li {
 .moyen-label {
   text-align: center;
   line-height: 1.3;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 600;
 }
 
@@ -702,7 +702,7 @@ ul li {
 }
 
 .filter-label {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -717,7 +717,7 @@ ul li {
   border: 2px solid rgba(0, 119, 204, 0.25);
   border-radius: var(--radius-sm);
   color: var(--text);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   transition: var(--transition);
@@ -740,7 +740,7 @@ ul li {
   border: 2px solid rgba(0, 119, 204, 0.25);
   border-radius: var(--radius-sm);
   color: var(--text);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   transition: var(--transition);
@@ -780,7 +780,7 @@ ul li {
   background: rgba(0, 119, 204, 0.08);
   border: 2px solid rgba(0, 119, 204, 0.3);
   border-radius: 100px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--primary);
@@ -876,7 +876,7 @@ ul li {
   right: 14px;
   background: var(--secondary);
   color: #fff;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
   padding: 4px 10px;
@@ -890,7 +890,7 @@ ul li {
   display: inline-block;
   padding: 4px 14px;
   border-radius: 12px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 4px;
@@ -916,7 +916,7 @@ ul li {
 
 /* ===== CONTENU CARTE ===== */
 .card-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   margin: 10px 0 6px;
@@ -1049,7 +1049,7 @@ ul li {
   border: 2px solid rgba(0, 119, 204, 0.15);
   border-radius: var(--radius-sm);
   color: var(--text-muted);
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -1176,7 +1176,7 @@ ul li {
 }
 
 .modal-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: #FFD700;
@@ -1220,7 +1220,7 @@ ul li {
   align-items: center;
   padding: 5px 16px;
   border-radius: 12px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: #111;
@@ -1243,7 +1243,7 @@ ul li {
 }
 
 .modal-section h3 {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: #66BB6A;
@@ -1329,7 +1329,7 @@ ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   margin-top: 2px;
@@ -1340,7 +1340,7 @@ ul li {
 }
 
 .modal-cours-titre {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--primary);
@@ -1348,7 +1348,7 @@ ul li {
 }
 
 .modal-cours-objectif {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.88rem;
   color: var(--text-muted);
   margin-bottom: 10px;
@@ -1364,7 +1364,7 @@ ul li {
 .modal-cours-phase {
   border-radius: 10px;
   padding: 10px 14px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   line-height: 1.5;
   color: var(--text);
@@ -1375,7 +1375,7 @@ ul li {
 }
 
 .phase-label {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 600;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -1467,7 +1467,7 @@ ul li {
 }
 
 .footer-name {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--text);
@@ -1530,7 +1530,7 @@ ul li {
 /* ===== FAVORIS FILTER BUTTON ===== */
 .favoris-filter-btn {
   cursor: pointer;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   transition: var(--transition);
 }
 
@@ -1564,7 +1564,7 @@ ul li {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 10px;
   color: #fff;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
@@ -1593,7 +1593,7 @@ ul li {
   color: #fff;
   padding: 14px 28px;
   border-radius: var(--radius-sm);
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   z-index: 9999;
@@ -1688,7 +1688,7 @@ ul li {
   border-radius: 11px;
   background: var(--red);
   color: #fff;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   display: flex;
@@ -1727,7 +1727,7 @@ ul li {
 }
 
 .cours-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: var(--primary);
@@ -1735,7 +1735,7 @@ ul li {
 }
 
 .cours-subtitle {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   color: var(--text-muted);
   font-size: 1rem;
 }
@@ -1765,7 +1765,7 @@ ul li {
 }
 
 .cours-label {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--primary);
@@ -1774,7 +1774,7 @@ ul li {
 }
 
 .cours-input, .cours-select, .cours-textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.95rem;
   padding: 10px 14px;
   border: 2px solid rgba(0,119,204,0.2);
@@ -1808,14 +1808,14 @@ ul li {
 }
 
 .cours-list-header h3 {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--text);
 }
 
 .cours-clear-btn {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   background: rgba(211,47,47,0.1);
@@ -1844,7 +1844,7 @@ ul li {
   text-align: center;
   padding: 40px 20px;
   color: var(--text-muted);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
 }
 
 .cours-empty-icon {
@@ -1873,7 +1873,7 @@ ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
@@ -1895,7 +1895,7 @@ ul li {
 }
 
 .cours-item-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
@@ -1908,7 +1908,7 @@ ul li {
 }
 
 .cours-item-meta {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.8rem;
   color: var(--text-muted);
   display: flex;
@@ -1921,7 +1921,7 @@ ul li {
 }
 
 .cours-item-note input {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   padding: 5px 10px;
   border: 1px dashed rgba(0,119,204,0.3);
@@ -1984,7 +1984,7 @@ ul li {
 }
 
 .cours-total-duration {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1rem;
   color: var(--text);
 }
@@ -1996,7 +1996,7 @@ ul li {
 }
 
 .cours-btn {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   padding: 10px 20px;
@@ -2049,7 +2049,7 @@ ul li {
 }
 
 .cours-browser-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--primary);
@@ -2088,13 +2088,13 @@ ul li {
 .cours-browser-hint {
   text-align: center;
   color: var(--text-muted);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.9rem;
   padding: 20px;
 }
 
 .cours-browser-count {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 8px;
@@ -2127,7 +2127,7 @@ ul li {
 }
 
 .cours-browse-item-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text);
@@ -2137,7 +2137,7 @@ ul li {
 }
 
 .cours-browse-item-meta {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.78rem;
   color: var(--text-muted);
   display: flex;
@@ -2152,7 +2152,7 @@ ul li {
   border: 2px solid var(--primary);
   background: rgba(0,119,204,0.08);
   color: var(--primary);
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
@@ -2216,14 +2216,14 @@ ul li {
 }
 
 .cours-mode-label {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--text);
 }
 
 .cours-mode-desc {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.3;
@@ -2267,7 +2267,7 @@ ul li {
 }
 
 .sae-complet-count {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.95rem;
   color: var(--text-muted);
   margin-bottom: 14px;
@@ -2296,7 +2296,7 @@ ul li {
 }
 
 .sae-complet-card-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--text);
@@ -2305,14 +2305,14 @@ ul li {
 }
 
 .sae-complet-card-moyen {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary);
 }
 
 .sae-complet-card-cycle {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   color: #fff;
@@ -2331,7 +2331,7 @@ ul li {
 
 /* Section titles dans conception */
 .cours-section-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary);
@@ -2339,7 +2339,7 @@ ul li {
 }
 
 .cours-section-hint {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 16px;
@@ -2394,7 +2394,7 @@ ul li {
   left: 14px;
   background: var(--primary);
   color: #fff;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   padding: 2px 12px;
@@ -2407,7 +2407,7 @@ ul li {
 
 .cours-slot-empty {
   color: var(--text-muted);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.9rem;
 }
 
@@ -2417,7 +2417,7 @@ ul li {
 }
 
 .cours-slot-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: var(--text);
@@ -2426,7 +2426,7 @@ ul li {
 }
 
 .cours-slot-meta {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.8rem;
   color: var(--text-muted);
   display: flex;
@@ -2441,7 +2441,7 @@ ul li {
 }
 
 .cours-slot-note input {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.82rem;
   padding: 5px 10px;
   border: 1px dashed rgba(0,119,204,0.3);
@@ -2484,7 +2484,7 @@ ul li {
 }
 
 .cours-slot-change {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.75rem;
   color: var(--primary);
   cursor: pointer;
@@ -2511,7 +2511,7 @@ ul li {
 }
 
 .cours-slot-sae-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 0.92rem;
   color: var(--text);
@@ -2524,7 +2524,7 @@ ul li {
 }
 
 .cours-slot-duree {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 600;
   font-size: 0.78rem;
   color: var(--text-muted);
@@ -2553,7 +2553,7 @@ ul li {
 }
 
 .cours-slot-add-more {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--primary);
@@ -2591,7 +2591,7 @@ ul li {
 }
 
 .slot-browser-header h3 {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary);
@@ -2636,7 +2636,7 @@ ul li {
 }
 
 .eval-sub-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
@@ -2675,7 +2675,7 @@ ul li {
 }
 
 .eval-observable-text {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.9rem;
   color: var(--text);
   line-height: 1.5;
@@ -2683,7 +2683,7 @@ ul li {
 }
 
 .eval-observable-source {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.72rem;
   color: var(--text-faint);
   white-space: nowrap;
@@ -2704,7 +2704,7 @@ ul li {
 }
 
 .eval-add-btn {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   padding: 8px 18px;
@@ -2741,7 +2741,7 @@ ul li {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text);
@@ -2782,7 +2782,7 @@ ul li {
 }
 
 .eval-scale-label {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--primary);
@@ -2791,7 +2791,7 @@ ul li {
 }
 
 .eval-scale-desc {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.88rem;
   padding: 6px 12px;
   border: 1px dashed rgba(0,119,204,0.25);
@@ -2847,7 +2847,7 @@ ul li {
 }
 
 .eval-intention-text {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-size: 0.88rem;
   color: var(--text);
   line-height: 1.4;
@@ -2883,7 +2883,7 @@ ul li {
   color: var(--primary);
   border-radius: 50px;
   padding: 8px 18px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Schoolbell', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   transition: var(--transition);
@@ -3217,4 +3217,4 @@ a:focus-visible {
 
 /* ===== LANG SELECTOR ===== */
 .lang-selector{margin-left:8px;}
-.lang-select{font-family:'Bangers';font-size:0.8rem;padding:2px 6px;border-radius:6px;border:2px solid rgba(255,255,255,0.3);background:rgba(0,0,0,0.3);color:#fff;cursor:pointer;}
+.lang-select{font-family:'Luckiest Guy';font-size:0.8rem;padding:2px 6px;border-radius:6px;border:2px solid rgba(255,255,255,0.3);background:rgba(0,0,0,0.3);color:#fff;cursor:pointer;}
