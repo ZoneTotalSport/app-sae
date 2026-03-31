@@ -1165,8 +1165,6 @@ ul li {
 
 #modal-body {
   padding: 28px 32px 40px;
-  background: rgba(15, 30, 50, 0.75);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
 .modal-header {
