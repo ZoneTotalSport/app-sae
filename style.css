@@ -1138,7 +1138,7 @@ ul li {
 .modal-container {
   position: relative;
   z-index: 1;
-  background: rgba(15, 30, 50, 0.92);
+  background: url('img/gym-bg-roots.jpg') center/cover no-repeat;
   border: 3px solid #FFD700;
   border-radius: var(--radius-lg);
   width: 100%;
@@ -1165,6 +1165,8 @@ ul li {
 
 #modal-body {
   padding: 28px 32px 40px;
+  background: rgba(15, 30, 50, 0.75);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
 .modal-header {
@@ -1236,8 +1238,8 @@ ul li {
 .modal-section {
   margin-bottom: 24px;
   padding: 18px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 2px solid rgba(255, 255, 255, 0.06);
+  background: rgba(15, 30, 50, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-sm);
   border-left: 4px solid var(--primary);
 }
