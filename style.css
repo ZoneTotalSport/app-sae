@@ -1173,15 +1173,19 @@ ul li {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .modal-title {
-  font-family: 'Luckiest Guy', sans-serif;
+  font-family: 'Luckiest Guy', cursive;
   font-size: 1.8rem;
-  font-weight: 700;
-  color: #FFD700;
+  font-weight: 400;
+  color: #0F0F2E;
   line-height: 1.3;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  text-shadow: none;
 }
 
 .modal-close {
@@ -1236,25 +1240,32 @@ ul li {
 .modal-section {
   margin-bottom: 24px;
   padding: 18px 20px;
-  background: rgba(15, 30, 50, 0.85);
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-sm);
-  border-left: 4px solid var(--primary);
+  border-left: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+.modal-section:nth-child(6n+1) h3 { color: #00E5FF; }
+.modal-section:nth-child(6n+2) h3 { color: #FFD700; }
+.modal-section:nth-child(6n+3) h3 { color: #FF6B00; }
+.modal-section:nth-child(6n+4) h3 { color: #00E676; }
+.modal-section:nth-child(6n+5) h3 { color: #FF2A7A; }
+.modal-section:nth-child(6n+6) h3 { color: #8B5CF6; }
+
 .modal-section h3 {
-  font-family: 'Schoolbell', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #66BB6A;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.2rem;
+  font-weight: 400;
   margin-bottom: 10px;
-  letter-spacing: 0.3px;
-  border-bottom: 2px dashed rgba(255, 255, 255, 0.08);
+  letter-spacing: 1px;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
   padding-bottom: 8px;
 }
 
 .modal-section p {
-  color: #f0f0f0;
+  color: #1a1a1a;
   font-size: 0.95rem;
   line-height: 1.7;
 }
@@ -1267,7 +1278,7 @@ ul li {
 .modal-section li {
   list-style: disc;
   margin-bottom: 6px;
-  color: #f0f0f0;
+  color: #1a1a1a;
 }
 
 .modal-footer-logo {
@@ -1553,6 +1564,10 @@ ul li {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .modal-action-btn {
@@ -1560,8 +1575,8 @@ ul li {
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(15, 30, 50, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   color: #fff;
   font-family: 'Schoolbell', sans-serif;
