@@ -877,18 +877,18 @@ function handlePDF() {
   const printWin = window.open('', '_blank');
   printWin.document.write(`<!DOCTYPE html>
 <html><head><title>${escapeHtml(titre)} — Zone Total Sport</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Bangers&family=Schoolbell&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Nunito', sans-serif; margin: 40px; color: #222; }
-  h1 { font-family: 'Fredoka', sans-serif; font-size: 2rem; color: #0077CC; margin-bottom: 8px; }
-  .badges span { display: inline-block; padding: 4px 14px; border-radius: 20px; font-family: 'Fredoka', sans-serif; font-size: 0.9rem; font-weight: 700; margin-right: 8px; }
+  body { font-family: 'Schoolbell', cursive; margin: 40px; color: #222; }
+  h1 { font-family: 'Bangers', cursive; font-size: 2rem; color: #0077CC; margin-bottom: 8px; }
+  .badges span { display: inline-block; padding: 4px 14px; border-radius: 20px; font-family: 'Bangers', cursive; font-size: 0.9rem; font-weight: 700; margin-right: 8px; }
   .badge-blue { background: #E3F2FD; color: #0D47A1; border: 2px solid #42A5F5; }
   .badge-orange { background: #FFF3E0; color: #E65100; border: 2px solid #FF9800; }
-  h2 { font-family: 'Fredoka', sans-serif; font-size: 1.2rem; color: #E91E63; margin-top: 24px; margin-bottom: 8px; border-bottom: 2px solid #E91E63; padding-bottom: 4px; }
+  h2 { font-family: 'Bangers', cursive; font-size: 1.2rem; color: #E91E63; margin-top: 24px; margin-bottom: 8px; border-bottom: 2px solid #E91E63; padding-bottom: 4px; }
   p { font-size: 1rem; line-height: 1.8; }
   ul { padding-left: 20px; }
   li { margin-bottom: 6px; }
-  .footer { margin-top: 40px; text-align: center; color: #999; font-size: 0.9rem; font-family: 'Fredoka', sans-serif; }
+  .footer { margin-top: 40px; text-align: center; color: #999; font-size: 0.9rem; font-family: 'Bangers', cursive; }
 </style></head><body>
 <h1>📚 ${escapeHtml(titre)}</h1>
 <div class="badges">
@@ -1802,13 +1802,13 @@ function openEducatifPreview(edu) {
       '<div style="text-align:center; margin-bottom:16px;">' +
         '<span style="font-size:2rem;">🏃</span>' +
       '</div>' +
-      '<h2 style="font-family:\'Fredoka\',sans-serif; font-size:1.5rem; color:var(--primary); text-align:center; margin-bottom:4px;">' + escapeHtml(edu.titre) + '</h2>' +
+      '<h2 style="font-family:\'Bangers\',cursive; font-size:1.5rem; color:var(--primary); text-align:center; margin-bottom:4px;">' + escapeHtml(edu.titre) + '</h2>' +
       '<div style="text-align:center; margin-bottom:16px;">' +
         '<span class="badge" style="background:var(--primary); color:#fff; padding:3px 10px; border-radius:20px; font-size:0.8rem; margin:0 4px;">' + escapeHtml(edu.niveau || '') + '</span>' +
         '<span class="badge" style="background:var(--secondary); color:#fff; padding:3px 10px; border-radius:20px; font-size:0.8rem; margin:0 4px;">' + escapeHtml(edu.competence || '') + '</span>' +
         (edu.duree ? '<span class="badge" style="background:var(--green); color:#fff; padding:3px 10px; border-radius:20px; font-size:0.8rem; margin:0 4px;">\u23F1 ' + edu.duree + ' min</span>' : '') +
       '</div>' +
-      '<div style="font-family:\'Nunito\',sans-serif; font-size:0.95rem; line-height:1.7; color:var(--text);">' +
+      '<div style="font-family:\'Schoolbell\',cursive; font-size:0.95rem; line-height:1.7; color:var(--text);">' +
         '<p>' + escapeHtml(edu.desc || '') + '</p>' +
         materielHTML +
         (edu.variantes ? '<div style="margin-top:12px;"><strong>Variantes :</strong> ' + escapeHtml(edu.variantes) + '</div>' : '') +
@@ -2049,13 +2049,13 @@ function buildCoursHTML() {
       var dureeStr = sae.duree_periodes ? ' <span style="font-weight:400; color:#666; font-size:0.9rem;">(' + sae.duree_periodes + ')</span>' : '';
       saesLinksHTML +=
         '<div style="padding:3px 0;">' +
-          '<a href="' + saeUrl + '" target="_blank" style="font-family:\'Fredoka\',sans-serif; font-size:1rem; font-weight:700; color:#0077CC; text-decoration:none; border-bottom:1px dashed #0077CC;">' + escapeHtml(sae.titre) + '</a>' +
+          '<a href="' + saeUrl + '" target="_blank" style="font-family:\'Bangers\',cursive; font-size:1rem; font-weight:700; color:#0077CC; text-decoration:none; border-bottom:1px dashed #0077CC;">' + escapeHtml(sae.titre) + '</a>' +
           dureeStr +
         '</div>';
     });
     coursHTML +=
       '<div style="display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid #eee;">' +
-        '<div style="width:32px; height:32px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Fredoka\',sans-serif; font-weight:700; font-size:0.95rem; flex-shrink:0; margin-top:2px;">' + (i + 1) + '</div>' +
+        '<div style="width:32px; height:32px; border-radius:50%; background:#0077CC; color:#fff; display:flex; align-items:center; justify-content:center; font-family:\'Bangers\',cursive; font-weight:700; font-size:0.95rem; flex-shrink:0; margin-top:2px;">' + (i + 1) + '</div>' +
         '<div>' + saesLinksHTML + '</div>' +
       '</div>';
   });
@@ -2066,8 +2066,8 @@ function buildCoursHTML() {
   if (checkedIntentions.length > 0) {
     intentionsHTML =
       '<div style="page-break-inside:avoid; margin-top:20px;">' +
-        '<h2 style="font-family:\'Fredoka\',sans-serif; font-size:1.4rem; color:#E91E63; margin-bottom:10px; border-bottom:2px solid #E91E63; padding-bottom:6px;">\uD83C\uDFAF Intentions pedagogiques</h2>' +
-        '<ul style="padding-left:20px; font-family:\'Nunito\',sans-serif; font-size:0.95rem; line-height:1.8;">' +
+        '<h2 style="font-family:\'Bangers\',cursive; font-size:1.4rem; color:#E91E63; margin-bottom:10px; border-bottom:2px solid #E91E63; padding-bottom:6px;">\uD83C\uDFAF Intentions pedagogiques</h2>' +
+        '<ul style="padding-left:20px; font-family:\'Schoolbell\',cursive; font-size:0.95rem; line-height:1.8;">' +
           checkedIntentions.map(function(i) { return '<li>' + escapeHtml(i) + '</li>'; }).join('') +
         '</ul>' +
       '</div>';
@@ -2081,7 +2081,7 @@ function buildCoursHTML() {
     var scaleItems = SCALES[scaleType] || SCALES.ABCDE;
     var customDescs = evalCfg.scaleDescs || {};
 
-    var legendHTML = '<div style="margin-bottom:14px; font-family:\'Nunito\',sans-serif; font-size:0.85rem; color:#555;">';
+    var legendHTML = '<div style="margin-bottom:14px; font-family:\'Schoolbell\',cursive; font-size:0.85rem; color:#555;">';
     scaleItems.forEach(function(s) {
       var desc = customDescs[s.label] || s.desc;
       legendHTML += '<strong>' + s.label + '</strong> = ' + escapeHtml(desc) + ' &nbsp;|&nbsp; ';
@@ -2090,23 +2090,23 @@ function buildCoursHTML() {
 
     var filledCours = cours.filter(function(s) { return s && s.titre; });
     var colHeaders = filledCours.map(function(_, i) {
-      return '<th style="padding:8px 6px; font-family:\'Fredoka\',sans-serif; font-size:0.8rem; color:#0077CC; min-width:50px; text-align:center;">El. ' + (i + 1) + '</th>';
+      return '<th style="padding:8px 6px; font-family:\'Bangers\',cursive; font-size:0.8rem; color:#0077CC; min-width:50px; text-align:center;">El. ' + (i + 1) + '</th>';
     }).join('');
 
     var rows = '';
     checkedObs.forEach(function(obs) {
       var emptyCols = filledCours.map(function() { return '<td style="border:1px solid #ddd; padding:6px; text-align:center; min-width:50px;"></td>'; }).join('');
-      rows += '<tr><td style="border:1px solid #ddd; padding:8px 12px; font-family:\'Nunito\',sans-serif; font-size:0.85rem; color:#333;">' + escapeHtml(obs) + '</td>' + emptyCols + '</tr>';
+      rows += '<tr><td style="border:1px solid #ddd; padding:8px 12px; font-family:\'Schoolbell\',cursive; font-size:0.85rem; color:#333;">' + escapeHtml(obs) + '</td>' + emptyCols + '</tr>';
     });
 
     evalHTML =
       '<div style="page-break-before:always; margin-top:24px;">' +
-        '<h2 style="font-family:\'Fredoka\',sans-serif; font-size:1.4rem; color:#2E7D32; margin-bottom:10px; border-bottom:2px solid #2E7D32; padding-bottom:6px;">\uD83D\uDCCA Grille d\'evaluation</h2>' +
+        '<h2 style="font-family:\'Bangers\',cursive; font-size:1.4rem; color:#2E7D32; margin-bottom:10px; border-bottom:2px solid #2E7D32; padding-bottom:6px;">\uD83D\uDCCA Grille d\'evaluation</h2>' +
         legendHTML +
         '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">' +
           '<thead>' +
             '<tr style="background:#f0f7ff;">' +
-              '<th style="padding:10px 12px; text-align:left; font-family:\'Fredoka\',sans-serif; font-size:0.9rem; color:#222; border:1px solid #ddd;">Observable</th>' +
+              '<th style="padding:10px 12px; text-align:left; font-family:\'Bangers\',cursive; font-size:0.9rem; color:#222; border:1px solid #ddd;">Observable</th>' +
               colHeaders +
             '</tr>' +
           '</thead>' +
@@ -2120,17 +2120,17 @@ function buildCoursHTML() {
   return '<!DOCTYPE html>' +
 '<html lang="fr"><head><meta charset="UTF-8">' +
 '<title>' + escapeHtml(config.titre || 'Ma SAE') + ' \u2014 Zone Total Sport</title>' +
-'<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">' +
+'<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Bangers&family=Schoolbell&display=swap" rel="stylesheet">' +
 '<style>' +
 '  @page { margin: 15mm 12mm 20mm 12mm; }' +
-'  body { font-family: \'Nunito\', sans-serif; margin: 0; padding: 24px; color: #222; }' +
+'  body { font-family: \'Schoolbell\', cursive; margin: 0; padding: 24px; color: #222; }' +
 '  .header { text-align: center; margin-bottom: 20px; border-bottom: 3px solid #0077CC; padding-bottom: 14px; }' +
-'  .header h1 { font-family: \'Fredoka\', sans-serif; font-size: 2rem; color: #0077CC; margin: 0 0 6px; }' +
+'  .header h1 { font-family: \'Bangers\', cursive; font-size: 2rem; color: #0077CC; margin: 0 0 6px; }' +
 '  .header .info { font-size: 0.9rem; color: #555; }' +
 '  .header .info strong { color: #333; }' +
 '  .notes { background: #f0f7ff; border: 1px solid #b3d4fc; border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.9rem; line-height: 1.6; }' +
-'  .notes-label { font-family: \'Fredoka\', sans-serif; font-weight: 700; color: #0077CC; margin-bottom: 4px; }' +
-'  .footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-family: \'Fredoka\', sans-serif; font-size: 0.8rem; color: #999; padding: 8px; border-top: 1px solid #ddd; background: #fff; }' +
+'  .notes-label { font-family: \'Bangers\', cursive; font-weight: 700; color: #0077CC; margin-bottom: 4px; }' +
+'  .footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-family: \'Bangers\', cursive; font-size: 0.8rem; color: #999; padding: 8px; border-top: 1px solid #ddd; background: #fff; }' +
 '  .footer a { color: #0077CC; text-decoration: none; }' +
 '  @media print { .footer { position: fixed; bottom: 0; } }' +
 '</style></head><body>' +
