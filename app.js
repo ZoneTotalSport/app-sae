@@ -4,7 +4,8 @@
 
 'use strict';
 
-const SAE_SOURCES = [
+// Priority 1: core files (small, loaded first for fast startup)
+const SAE_SOURCES_CORE = [
   { key: 'prescolaire', path: 'data/sae/prescolaire.json', label: 'Prescolaire', cycle: 'Prescolaire' },
   { key: 'primaire', path: 'data/sae/primaire.json', label: 'Primaire', cycle: 'Primaire' },
   { key: 'secondaire', path: 'data/sae/secondaire.json', label: 'Secondaire', cycle: 'Secondaire' },
@@ -18,19 +19,23 @@ const SAE_SOURCES = [
   { key: 'duel', path: 'data/sae/duel.json', label: 'Duel / Opposition', cycle: 'Primaire/Secondaire' },
   { key: 'conditionnement', path: 'data/sae/conditionnement.json', label: 'Conditionnement', cycle: 'Primaire/Secondaire' },
   { key: 'expression_corporelle', path: 'data/sae/expression_corporelle.json', label: 'Expression corporelle', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_extra', path: 'data/sae/cooperation_extra.json', label: 'Cooperation (extra)', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_gen', path: 'data/sae/cooperation_gen.json', label: 'Cooperation (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'poursuite_gen', path: 'data/sae/poursuite_gen.json', label: 'Poursuite (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'prescolaire_primaire_gen', path: 'data/sae/prescolaire_primaire_gen.json', label: 'Prescolaire-Primaire (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'individuelles_part8', path: 'data/sae/individuelles_part8.json', label: 'Individuelles', cycle: 'Mat → Sec 5' },
+  { key: 'nonloc_gainage', path: 'data/sae/nonloc_gainage.json', label: 'Gainage et non-locomoteur', cycle: 'Mat → Sec 5' },
+  { key: 'variees_extra', path: 'data/sae/variees_extra.json', label: 'Variees (extra)', cycle: 'Mat → Sec 5' },
+];
+
+// Priority 2: larger files (loaded in background after UI is ready)
+const SAE_SOURCES_BONUS = [
   { key: 'sports_collectifs_sae', path: 'data/sae/sports_collectifs_sae.json', label: 'Sports collectifs', cycle: 'Primaire → Sec 5' },
   { key: 'manipulation_new', path: 'data/sae/manipulation_new.json', label: "Manipulation d'objets", cycle: 'Mat → Sec 5' },
   { key: 'locomotion_new', path: 'data/sae/locomotion_new.json', label: 'Locomotion', cycle: 'Mat → Sec 5' },
   { key: 'expression_artistique', path: 'data/sae/expression_artistique.json', label: 'Expression artistique', cycle: 'Mat → Sec 5' },
   { key: 'adresse_individuel', path: 'data/sae/adresse_individuel.json', label: 'Adresse et sports individuels', cycle: 'Mat → Sec 5' },
   { key: 'cooperation_new', path: 'data/sae/cooperation_new.json', label: 'Cooperation (nouveaux)', cycle: 'Mat → Sec 5' },
-  { key: 'cooperation_extra', path: 'data/sae/cooperation_extra.json', label: 'Cooperation (extra)', cycle: 'Mat → Sec 5' },
-  { key: 'individuelles_part8', path: 'data/sae/individuelles_part8.json', label: 'Individuelles', cycle: 'Mat → Sec 5' },
-  { key: 'nonloc_gainage', path: 'data/sae/nonloc_gainage.json', label: 'Gainage et non-locomoteur', cycle: 'Mat → Sec 5' },
-  { key: 'variees_extra', path: 'data/sae/variees_extra.json', label: 'Variees (extra)', cycle: 'Mat → Sec 5' },
-  { key: 'cooperation_gen', path: 'data/sae/cooperation_gen.json', label: 'Cooperation (generation)', cycle: 'Mat → Sec 5' },
-  { key: 'poursuite_gen', path: 'data/sae/poursuite_gen.json', label: 'Poursuite (generation)', cycle: 'Mat → Sec 5' },
-  { key: 'prescolaire_primaire_gen', path: 'data/sae/prescolaire_primaire_gen.json', label: 'Prescolaire-Primaire (generation)', cycle: 'Mat → Sec 5' },
   { key: 'manipulation_bonus', path: 'data/sae/manipulation_bonus.json', label: 'Manipulation (bonus)', cycle: 'Mat → Sec 5' },
   { key: 'locomotion_bonus', path: 'data/sae/locomotion_bonus.json', label: 'Locomotion (bonus)', cycle: 'Mat → Sec 5' },
   { key: 'stabilisation_bonus', path: 'data/sae/stabilisation_bonus.json', label: 'Stabilisation (bonus)', cycle: 'Mat → Sec 5' },
@@ -38,6 +43,8 @@ const SAE_SOURCES = [
   { key: 'cooperation_bonus', path: 'data/sae/cooperation_bonus.json', label: 'Coopération (bonus)', cycle: 'Mat → Sec 5' },
   { key: 'expression_bonus', path: 'data/sae/expression_bonus.json', label: 'Expression (bonus)', cycle: 'Mat → Sec 5' },
 ];
+
+const SAE_SOURCES = [...SAE_SOURCES_CORE, ...SAE_SOURCES_BONUS];
 
 const MOYENS_ACTION = [
   { key: 'manipulation', label: '🎯 Manipulation', emoji: '🎯', keywords: ['balle', 'ballon', 'raquette', 'baton', 'corde', 'cerceau', 'frisbee', 'cirque', 'foulard', 'manipulation', 'objet', 'jonglerie'] },
@@ -61,7 +68,8 @@ const safetyTimer = setTimeout(hideLoading, 8000);
 document.addEventListener('DOMContentLoaded', async () => {
   initCanvas();
   renderMoyensAction();
-  await loadAllSAE();
+  // Phase 1: load core files for fast startup
+  await loadSAEBatch(SAE_SOURCES_CORE);
   setupFilters();
   renderSAE();
   hideLoading();
@@ -69,19 +77,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   updateCoursFab();
   checkDeepLink();
   checkCoursDeepLink();
+  // Phase 2: load bonus files in background
+  loadSAEBatch(SAE_SOURCES_BONUS).then(() => {
+    filtered = [...allSAE];
+    applyFilters();
+  });
 });
 
 // ===== CHARGEMENT DES DONNEES =====
 
-async function loadAllSAE() {
+async function loadSAEBatch(sources) {
   const results = await Promise.allSettled(
-    SAE_SOURCES.map(source =>
+    sources.map(source =>
       fetch(source.path)
         .then(r => {
-          if (!r.ok) {
-            console.warn(`⚠️ Fichier non trouve: ${source.path}`);
-            throw new Error(`404: ${source.path}`);
-          }
+          if (!r.ok) throw new Error(`404: ${source.path}`);
           return r.json();
         })
         .then(data => ({ source, data }))
@@ -93,8 +103,6 @@ async function loadAllSAE() {
   );
 
   let loaded = 0;
-  let skipped = 0;
-
   results.forEach(result => {
     if (result.status === 'fulfilled') {
       const { source, data } = result.value;
@@ -103,12 +111,10 @@ async function loadAllSAE() {
       saes = saes.map(s => ({ ...s, _source: source.key, _cycle: source.cycle }));
       allSAE.push(...saes);
       loaded++;
-    } else {
-      skipped++;
     }
   });
 
-  console.log(`✅ ${loaded} fichiers charges, ${skipped} ignores — ${allSAE.length} SAE au total`);
+  console.log(`✅ ${loaded}/${sources.length} fichiers charges — ${allSAE.length} SAE au total`);
   filtered = [...allSAE];
   clearTimeout(safetyTimer);
 }
@@ -674,27 +680,36 @@ function openModal(s) {
     s.tache_complexe && `
       <div class="modal-section">
         <h3>🎯 Tache complexe</h3>
-        <p>${escapeHtml(typeof s.tache_complexe === 'string' ? s.tache_complexe : JSON.stringify(s.tache_complexe))}</p>
+        <div>${smartRender(s.tache_complexe)}</div>
       </div>`,
     s.objectifs && `
       <div class="modal-section">
         <h3>🎓 Objectifs</h3>
-        <ul>${(Array.isArray(s.objectifs) ? s.objectifs : [s.objectifs])
-          .map(o => `<li>${escapeHtml(typeof o === 'string' ? o : JSON.stringify(o))}</li>`).join('')}</ul>
+        ${smartRender(Array.isArray(s.objectifs) ? s.objectifs : [s.objectifs])}
       </div>`,
     s.materiel && `
       <div class="modal-section">
         <h3>🎒 Materiel requis</h3>
-        <ul>${(Array.isArray(s.materiel) ? s.materiel : [s.materiel])
-          .map(m => `<li>${escapeHtml(typeof m === 'string' ? m : JSON.stringify(m))}</li>`).join('')}</ul>
+        ${smartRender(Array.isArray(s.materiel) ? s.materiel : [s.materiel])}
       </div>`,
     s.deroulement && `
       <div class="modal-section">
         <h3>📝 Deroulement</h3>
         ${typeof s.deroulement === 'string'
           ? `<p>${escapeHtml(s.deroulement)}</p>`
-          : `<ul>${(Array.isArray(s.deroulement) ? s.deroulement : Object.values(s.deroulement))
-              .map(d => `<li>${escapeHtml(typeof d === 'string' ? d : JSON.stringify(d))}</li>`).join('')}</ul>`
+          : (function() {
+              if (Array.isArray(s.deroulement)) return smartRender(s.deroulement);
+              return Object.entries(s.deroulement).map(function([k, v]) {
+                var label = k.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+                return '<div style="margin:8px 0;padding:8px 12px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid #4FC3F7">' +
+                  '<strong style="color:#4FC3F7">' + escapeHtml(label) + '</strong>' +
+                  (typeof v === 'string' ? '<p style="margin:4px 0">' + escapeHtml(v) + '</p>'
+                    : (v && v.duree ? '<small style="color:#999"> (' + escapeHtml(v.duree || v.duree_min + ' min') + ')</small>' : '') +
+                      (v && v.description ? '<p style="margin:4px 0">' + escapeHtml(v.description) + '</p>' : '') +
+                      (v && !v.description && typeof v === 'object' ? smartRender(v) : '')) +
+                  '</div>';
+              }).join('');
+            })()
         }
       </div>`,
     s.cours && Array.isArray(s.cours) && s.cours.length > 0 && `
@@ -723,34 +738,44 @@ function openModal(s) {
     s.criteres_evaluation && `
       <div class="modal-section">
         <h3>📊 Criteres d'evaluation</h3>
-        <ul>${(Array.isArray(s.criteres_evaluation) ? s.criteres_evaluation : [s.criteres_evaluation])
-          .map(c => `<li>${escapeHtml(typeof c === 'string' ? c : (c.critere || JSON.stringify(c)))}</li>`).join('')}</ul>
+        ${smartRender(Array.isArray(s.criteres_evaluation) ? s.criteres_evaluation : [s.criteres_evaluation])}
+      </div>`,
+    s.grille_evaluation && `
+      <div class="modal-section">
+        <h3>📋 Grille d'evaluation</h3>
+        ${smartRender(s.grille_evaluation)}
       </div>`,
     s.progression && `
       <div class="modal-section">
         <h3>📈 Progression</h3>
-        <p>${escapeHtml(typeof s.progression === 'string' ? s.progression : JSON.stringify(s.progression, null, 2))}</p>
+        <div>${smartRender(s.progression)}</div>
       </div>`,
     s.variantes && `
       <div class="modal-section">
         <h3>🔄 Variantes et differenciation</h3>
-        ${typeof s.variantes === 'string'
-          ? `<p>${escapeHtml(s.variantes)}</p>`
-          : `<ul>${(Array.isArray(s.variantes) ? s.variantes : [s.variantes])
-              .map(v => `<li>${escapeHtml(typeof v === 'string' ? v : JSON.stringify(v))}</li>`).join('')}</ul>`
-        }
+        <div>${smartRender(s.variantes)}</div>
+      </div>`,
+    s.adaptations && `
+      <div class="modal-section">
+        <h3>🔧 Adaptations</h3>
+        ${smartRender(s.adaptations)}
       </div>`,
     s.adaptation_hdaa && Object.keys(s.adaptation_hdaa).length > 0 && `
       <div class="modal-section">
         <h3>♿ Adaptations HDAA</h3>
         ${Object.entries(s.adaptation_hdaa)
-          .map(([k, v]) => `<p><strong style="color:#FFD700">${escapeHtml(k)} :</strong> ${escapeHtml(typeof v === 'string' ? v : JSON.stringify(v))}</p>`)
+          .map(([k, v]) => `<p><strong style="color:#FFD700">${escapeHtml(k)} :</strong> ${typeof v === 'string' ? escapeHtml(v) : smartRender(v)}</p>`)
           .join('')}
       </div>`,
-    (s.notes || s.remarques) && `
+    s.origine_mondiale && `
+      <div class="modal-section">
+        <h3>🌍 Origine mondiale</h3>
+        ${smartRender(s.origine_mondiale)}
+      </div>`,
+    (s.notes || s.remarques || s.notes_enseignant) && `
       <div class="modal-section">
         <h3>💡 Notes pedagogiques</h3>
-        <p>${escapeHtml(s.notes || s.remarques)}</p>
+        <p>${escapeHtml(s.notes || s.remarques || s.notes_enseignant)}</p>
       </div>`,
   ].filter(Boolean).join('');
 
@@ -917,6 +942,25 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+// Convert any value to readable HTML (no more [object Object])
+function smartRender(val) {
+  if (val == null) return '';
+  if (typeof val === 'string') return escapeHtml(val);
+  if (typeof val === 'number' || typeof val === 'boolean') return String(val);
+  if (Array.isArray(val)) {
+    return '<ul>' + val.map(v => '<li>' + smartRender(v) + '</li>').join('') + '</ul>';
+  }
+  // Object: render as labeled list
+  return Object.entries(val)
+    .filter(([, v]) => v != null && v !== '')
+    .map(([k, v]) => {
+      const label = k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      if (typeof v === 'string') return '<p><strong>' + escapeHtml(label) + ' :</strong> ' + escapeHtml(v) + '</p>';
+      if (typeof v === 'number') return '<p><strong>' + escapeHtml(label) + ' :</strong> ' + v + '</p>';
+      return '<div style="margin:4px 0"><strong>' + escapeHtml(label) + ' :</strong> ' + smartRender(v) + '</div>';
+    }).join('');
+}
+
 // ===== MODAL ACTIONS =====
 
 function handleModalFavori() {
@@ -967,10 +1011,12 @@ function handlePDF() {
 </div>
 ${s.description ? '<h2>📋 Description</h2><p>' + escapeHtml(s.description) + '</p>' : ''}
 ${s.contexte_apprentissage ? '<h2>🏫 Contexte</h2><p>' + escapeHtml(s.contexte_apprentissage) + '</p>' : ''}
-${s.objectifs ? '<h2>🎓 Objectifs</h2><ul>' + (Array.isArray(s.objectifs) ? s.objectifs : [s.objectifs]).map(o => '<li>' + escapeHtml(typeof o === 'string' ? o : JSON.stringify(o)) + '</li>').join('') + '</ul>' : ''}
-${s.materiel ? '<h2>🎒 Materiel</h2><ul>' + (Array.isArray(s.materiel) ? s.materiel : [s.materiel]).map(m => '<li>' + escapeHtml(typeof m === 'string' ? m : JSON.stringify(m)) + '</li>').join('') + '</ul>' : ''}
-${s.variantes ? '<h2>🔄 Variantes</h2><p>' + escapeHtml(typeof s.variantes === 'string' ? s.variantes : JSON.stringify(s.variantes)) + '</p>' : ''}
-${s.adaptation_hdaa && Object.keys(s.adaptation_hdaa).length > 0 ? '<h2>♿ Adaptations HDAA</h2>' + Object.entries(s.adaptation_hdaa).map(([k,v]) => '<p><strong>' + escapeHtml(k) + ' :</strong> ' + escapeHtml(typeof v === 'string' ? v : JSON.stringify(v)) + '</p>').join('') : ''}
+${s.objectifs ? '<h2>🎓 Objectifs</h2>' + smartRender(Array.isArray(s.objectifs) ? s.objectifs : [s.objectifs]) : ''}
+${s.materiel ? '<h2>🎒 Materiel</h2>' + smartRender(Array.isArray(s.materiel) ? s.materiel : [s.materiel]) : ''}
+${s.deroulement ? '<h2>📝 Deroulement</h2>' + smartRender(s.deroulement) : ''}
+${s.variantes ? '<h2>🔄 Variantes</h2>' + smartRender(s.variantes) : ''}
+${s.adaptations ? '<h2>🔧 Adaptations</h2>' + smartRender(s.adaptations) : ''}
+${s.adaptation_hdaa && Object.keys(s.adaptation_hdaa).length > 0 ? '<h2>♿ Adaptations HDAA</h2>' + smartRender(s.adaptation_hdaa) : ''}
 <div class="footer"><a href="https://zonetotalsport.ca" target="_blank" style="display:inline-block; background:#fff; border-radius:12px; padding:10px 20px;"><img src="${window.location.origin + '/img/logo-zonetotalsport.png'}" alt="ZoneTotalSport.ca" style="max-width:260px; height:auto; display:block;" /></a><br><a href="https://zonetotalsport.ca" target="_blank">zonetotalsport.ca</a> — SAE PFEQ</div>
 </body></html>`);
   printWin.document.close();
