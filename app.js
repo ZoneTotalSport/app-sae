@@ -594,6 +594,72 @@ function openModal(s) {
 
   const titre = s.titre || s.nom || 'SAE';
 
+  function renderPhase(phase, label, cssClass) {
+    if (!phase) return '';
+    if (typeof phase === 'string') {
+      return '<div class="modal-cours-phase ' + cssClass + '"><span class="phase-label">' + escapeHtml(label) + '</span><p>' + escapeHtml(phase) + '</p></div>';
+    }
+    var html = '<div class="modal-cours-phase ' + cssClass + '"><span class="phase-label">' + escapeHtml(label);
+    if (phase.duree_min) html += ' <small>(' + phase.duree_min + ' min)</small>';
+    html += '</span>';
+    if (phase.description) html += '<p>' + escapeHtml(phase.description) + '</p>';
+    if (phase.organisation) html += '<p style="font-style:italic;color:#b0b0b0;margin-top:4px"><strong>Organisation :</strong> ' + escapeHtml(phase.organisation) + '</p>';
+    if (phase.consignes_cles) html += '<p style="color:#FFD700;margin-top:4px"><strong>Consignes :</strong> ' + escapeHtml(phase.consignes_cles) + '</p>';
+    if (phase.exercices && Array.isArray(phase.exercices)) {
+      html += '<ul style="margin:6px 0 0 16px;padding:0">';
+      phase.exercices.forEach(function(ex) { html += '<li style="margin:2px 0">' + escapeHtml(ex) + '</li>'; });
+      html += '</ul>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function renderEducatifs(educatifs) {
+    if (!educatifs || !Array.isArray(educatifs) || educatifs.length === 0) return '';
+    var html = '<div class="modal-cours-phase phase-educatifs"><span class="phase-label">Éducatifs (' + educatifs.length + ')</span>';
+    html += '<div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">';
+    educatifs.forEach(function(ed, i) {
+      if (typeof ed === 'string') { html += '<p>' + escapeHtml(ed) + '</p>'; return; }
+      html += '<div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:8px 10px;border-left:3px solid #4FC3F7">';
+      html += '<strong style="color:#4FC3F7">' + escapeHtml(ed.nom || ('Éducatif ' + (i+1))) + '</strong>';
+      if (ed.duree_min) html += ' <small style="color:#999">(' + ed.duree_min + ' min)</small>';
+      if (ed.description) html += '<p style="margin:4px 0">' + escapeHtml(ed.description) + '</p>';
+      if (ed.consignes) html += '<p style="margin:2px 0;color:#81C784"><strong>Consignes :</strong> ' + escapeHtml(ed.consignes) + '</p>';
+      if (ed.variante) html += '<p style="margin:2px 0;color:#FFB74D"><strong>Variante :</strong> ' + escapeHtml(ed.variante) + '</p>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderProgressions(progressions) {
+    if (!progressions || !Array.isArray(progressions) || progressions.length === 0) return '';
+    var html = '<div class="modal-cours-phase" style="border-left-color:#AB47BC"><span class="phase-label" style="background:#AB47BC">Progressions</span>';
+    html += '<ol style="margin:6px 0 0 20px;padding:0">';
+    progressions.forEach(function(p) { html += '<li style="margin:3px 0">' + escapeHtml(typeof p === 'string' ? p : JSON.stringify(p)) + '</li>'; });
+    html += '</ol></div>';
+    return html;
+  }
+
+  function renderGrille(grille) {
+    if (!grille || !grille.criteres) return '';
+    var html = '<div class="modal-cours-phase" style="border-left-color:#FF7043"><span class="phase-label" style="background:#FF7043">Grille d\'observation</span>';
+    html += '<table style="width:100%;border-collapse:collapse;margin-top:6px;font-size:0.85em">';
+    html += '<thead><tr><th style="text-align:left;padding:4px;border-bottom:1px solid #555;color:#FF7043">Critère</th></tr></thead><tbody>';
+    grille.criteres.forEach(function(cr) { html += '<tr><td style="padding:3px 4px;border-bottom:1px solid #333">' + escapeHtml(cr) + '</td></tr>'; });
+    html += '</tbody></table>';
+    if (grille.echelle) {
+      html += '<div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap">';
+      Object.entries(grille.echelle).forEach(function(e) {
+        var colors = {A:'#4CAF50',B:'#8BC34A',C:'#FFC107',D:'#F44336'};
+        html += '<span style="background:' + (colors[e[0]] || '#666') + ';color:#fff;padding:2px 8px;border-radius:10px;font-size:0.8em"><strong>' + e[0] + '</strong> ' + escapeHtml(e[1]) + '</span>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
   const sections = [
     s.description && `
       <div class="modal-section">
@@ -642,9 +708,12 @@ function openModal(s) {
                 '<h4 class="modal-cours-titre">' + escapeHtml(c.titre) + '</h4>' +
                 '<p class="modal-cours-objectif"><strong>Objectif :</strong> ' + escapeHtml(c.objectif) + '</p>' +
                 '<div class="modal-cours-phases">' +
-                  '<div class="modal-cours-phase phase-echauf"><span class="phase-label">Echauffement</span><p>' + escapeHtml(c.echauffement) + '</p></div>' +
-                  '<div class="modal-cours-phase phase-principal"><span class="phase-label">Activite principale</span><p>' + escapeHtml(c.activite_principale) + '</p></div>' +
-                  '<div class="modal-cours-phase phase-retour"><span class="phase-label">Retour au calme</span><p>' + escapeHtml(c.retour_au_calme) + '</p></div>' +
+                  renderPhase(c.echauffement, 'Échauffement', 'phase-echauf') +
+                  renderEducatifs(c.educatifs) +
+                  renderPhase(c.activite_principale, 'Activité principale', 'phase-principal') +
+                  renderProgressions(c.progressions) +
+                  renderPhase(c.retour_au_calme, 'Retour au calme', 'phase-retour') +
+                  renderGrille(c.grille_observation) +
                 '</div>' +
               '</div>' +
             '</div>';
