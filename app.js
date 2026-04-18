@@ -4,47 +4,43 @@
 
 'use strict';
 
-// Priority 1: core files (small, loaded first for fast startup)
-const SAE_SOURCES_CORE = [
-  { key: 'prescolaire', path: 'data/sae/prescolaire.json', label: 'Prescolaire', cycle: 'Prescolaire' },
-  { key: 'primaire', path: 'data/sae/primaire.json', label: 'Primaire', cycle: 'Primaire' },
-  { key: 'secondaire', path: 'data/sae/secondaire.json', label: 'Secondaire', cycle: 'Secondaire' },
-  { key: 'cooperation', path: 'data/sae/cooperation.json', label: 'Cooperation', cycle: 'Primaire', arrayKey: 'saes' },
-  { key: 'collectifs', path: 'data/sae/collectifs.json', label: 'Sports Collectifs', cycle: 'Secondaire', arrayKey: 'saes' },
-  { key: 'opposition', path: 'data/sae/opposition.json', label: 'Opposition', cycle: 'Secondaire' },
-  { key: 'dodgeball', path: 'data/sae/dodgeball.json', label: 'Ballon Chasseur', cycle: 'Primaire/Secondaire' },
-  { key: 'locomotion', path: 'data/sae/locomotion.json', label: 'Locomotion', cycle: 'Primaire' },
-  { key: 'mobilite', path: 'data/sae/mobilite.json', label: 'Mobilite', cycle: 'Primaire/Secondaire' },
-  { key: 'poursuite', path: 'data/sae/poursuite.json', label: 'Jeux de poursuite', cycle: 'Maternelle → Sec 5' },
-  { key: 'duel', path: 'data/sae/duel.json', label: 'Duel / Opposition', cycle: 'Primaire/Secondaire' },
-  { key: 'conditionnement', path: 'data/sae/conditionnement.json', label: 'Conditionnement', cycle: 'Primaire/Secondaire' },
-  { key: 'expression_corporelle', path: 'data/sae/expression_corporelle.json', label: 'Expression corporelle', cycle: 'Mat → Sec 5' },
-  { key: 'cooperation_extra', path: 'data/sae/cooperation_extra.json', label: 'Cooperation (extra)', cycle: 'Mat → Sec 5' },
-  { key: 'cooperation_gen', path: 'data/sae/cooperation_gen.json', label: 'Cooperation (generation)', cycle: 'Mat → Sec 5' },
-  { key: 'poursuite_gen', path: 'data/sae/poursuite_gen.json', label: 'Poursuite (generation)', cycle: 'Mat → Sec 5' },
-  { key: 'prescolaire_primaire_gen', path: 'data/sae/prescolaire_primaire_gen.json', label: 'Prescolaire-Primaire (generation)', cycle: 'Mat → Sec 5' },
-  { key: 'individuelles_part8', path: 'data/sae/individuelles_part8.json', label: 'Individuelles', cycle: 'Mat → Sec 5' },
-  { key: 'nonloc_gainage', path: 'data/sae/nonloc_gainage.json', label: 'Gainage et non-locomoteur', cycle: 'Mat → Sec 5' },
-  { key: 'variees_extra', path: 'data/sae/variees_extra.json', label: 'Variees (extra)', cycle: 'Mat → Sec 5' },
+const SAE_SOURCES = [
+  { key: 'prescolaire', file: 'prescolaire.json', label: 'Prescolaire', cycle: 'Prescolaire' },
+  { key: 'primaire', file: 'primaire.json', label: 'Primaire', cycle: 'Primaire' },
+  { key: 'secondaire', file: 'secondaire.json', label: 'Secondaire', cycle: 'Secondaire' },
+  { key: 'cooperation', file: 'cooperation.json', label: 'Cooperation', cycle: 'Primaire', arrayKey: 'saes' },
+  { key: 'collectifs', file: 'collectifs.json', label: 'Sports Collectifs', cycle: 'Secondaire', arrayKey: 'saes' },
+  { key: 'opposition', file: 'opposition.json', label: 'Opposition', cycle: 'Secondaire' },
+  { key: 'dodgeball', file: 'dodgeball.json', label: 'Ballon Chasseur', cycle: 'Primaire/Secondaire' },
+  { key: 'locomotion', file: 'locomotion.json', label: 'Locomotion', cycle: 'Primaire' },
+  { key: 'mobilite', file: 'mobilite.json', label: 'Mobilite', cycle: 'Primaire/Secondaire' },
+  { key: 'poursuite', file: 'poursuite.json', label: 'Jeux de poursuite', cycle: 'Maternelle → Sec 5' },
+  { key: 'duel', file: 'duel.json', label: 'Duel / Opposition', cycle: 'Primaire/Secondaire' },
+  { key: 'conditionnement', file: 'conditionnement.json', label: 'Conditionnement', cycle: 'Primaire/Secondaire' },
+  { key: 'expression_corporelle', file: 'expression_corporelle.json', label: 'Expression corporelle', cycle: 'Mat → Sec 5' },
+  { key: 'sports_collectifs_sae', file: 'sports_collectifs_sae.json', label: 'Sports collectifs', cycle: 'Primaire → Sec 5' },
+  { key: 'manipulation_new', file: 'manipulation_new.json', label: "Manipulation d'objets", cycle: 'Mat → Sec 5' },
+  { key: 'locomotion_new', file: 'locomotion_new.json', label: 'Locomotion', cycle: 'Mat → Sec 5' },
+  { key: 'expression_artistique', file: 'expression_artistique.json', label: 'Expression artistique', cycle: 'Mat → Sec 5' },
+  { key: 'adresse_individuel', file: 'adresse_individuel.json', label: 'Adresse et sports individuels', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_new', file: 'cooperation_new.json', label: 'Cooperation (nouveaux)', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_extra', file: 'cooperation_extra.json', label: 'Cooperation (extra)', cycle: 'Mat → Sec 5' },
+  { key: 'individuelles_part8', file: 'individuelles_part8.json', label: 'Individuelles', cycle: 'Mat → Sec 5' },
+  { key: 'nonloc_gainage', file: 'nonloc_gainage.json', label: 'Gainage et non-locomoteur', cycle: 'Mat → Sec 5' },
+  { key: 'variees_extra', file: 'variees_extra.json', label: 'Variees (extra)', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_gen', file: 'cooperation_gen.json', label: 'Cooperation (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'poursuite_gen', file: 'poursuite_gen.json', label: 'Poursuite (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'prescolaire_primaire_gen', file: 'prescolaire_primaire_gen.json', label: 'Prescolaire-Primaire (generation)', cycle: 'Mat → Sec 5' },
+  { key: 'manipulation_bonus', file: 'manipulation_bonus.json', label: 'Manipulation (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'locomotion_bonus', file: 'locomotion_bonus.json', label: 'Locomotion (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'stabilisation_bonus', file: 'stabilisation_bonus.json', label: 'Stabilisation (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'opposition_bonus', file: 'opposition_bonus.json', label: 'Opposition (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'cooperation_bonus', file: 'cooperation_bonus.json', label: 'Coopération (bonus)', cycle: 'Mat → Sec 5' },
+  { key: 'expression_bonus', file: 'expression_bonus.json', label: 'Expression (bonus)', cycle: 'Mat → Sec 5' },
 ];
 
-// Priority 2: larger files (loaded in background after UI is ready)
-const SAE_SOURCES_BONUS = [
-  { key: 'sports_collectifs_sae', path: 'data/sae/sports_collectifs_sae.json', label: 'Sports collectifs', cycle: 'Primaire → Sec 5' },
-  { key: 'manipulation_new', path: 'data/sae/manipulation_new.json', label: "Manipulation d'objets", cycle: 'Mat → Sec 5' },
-  { key: 'locomotion_new', path: 'data/sae/locomotion_new.json', label: 'Locomotion', cycle: 'Mat → Sec 5' },
-  { key: 'expression_artistique', path: 'data/sae/expression_artistique.json', label: 'Expression artistique', cycle: 'Mat → Sec 5' },
-  { key: 'adresse_individuel', path: 'data/sae/adresse_individuel.json', label: 'Adresse et sports individuels', cycle: 'Mat → Sec 5' },
-  { key: 'cooperation_new', path: 'data/sae/cooperation_new.json', label: 'Cooperation (nouveaux)', cycle: 'Mat → Sec 5' },
-  { key: 'manipulation_bonus', path: 'data/sae/manipulation_bonus.json', label: 'Manipulation (bonus)', cycle: 'Mat → Sec 5' },
-  { key: 'locomotion_bonus', path: 'data/sae/locomotion_bonus.json', label: 'Locomotion (bonus)', cycle: 'Mat → Sec 5' },
-  { key: 'stabilisation_bonus', path: 'data/sae/stabilisation_bonus.json', label: 'Stabilisation (bonus)', cycle: 'Mat → Sec 5' },
-  { key: 'opposition_bonus', path: 'data/sae/opposition_bonus.json', label: 'Opposition (bonus)', cycle: 'Mat → Sec 5' },
-  { key: 'cooperation_bonus', path: 'data/sae/cooperation_bonus.json', label: 'Coopération (bonus)', cycle: 'Mat → Sec 5' },
-  { key: 'expression_bonus', path: 'data/sae/expression_bonus.json', label: 'Expression (bonus)', cycle: 'Mat → Sec 5' },
-];
-
-const SAE_SOURCES = [...SAE_SOURCES_CORE, ...SAE_SOURCES_BONUS];
+// Detail cache: loaded on-demand when user opens a modal
+const _detailCache = {};
 
 const MOYENS_ACTION = [
   { key: 'manipulation', label: '🎯 Manipulation', emoji: '🎯', keywords: ['balle', 'ballon', 'raquette', 'baton', 'corde', 'cerceau', 'frisbee', 'cirque', 'foulard', 'manipulation', 'objet', 'jonglerie'] },
@@ -68,8 +64,7 @@ const safetyTimer = setTimeout(hideLoading, 8000);
 document.addEventListener('DOMContentLoaded', async () => {
   initCanvas();
   renderMoyensAction();
-  // Phase 1: load core files for fast startup
-  await loadSAEBatch(SAE_SOURCES_CORE);
+  await loadAllSAELight();
   setupFilters();
   renderSAE();
   hideLoading();
@@ -77,26 +72,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   updateCoursFab();
   checkDeepLink();
   checkCoursDeepLink();
-  // Phase 2: load bonus files in background
-  loadSAEBatch(SAE_SOURCES_BONUS).then(() => {
-    filtered = [...allSAE];
-    applyFilters();
-  });
 });
 
 // ===== CHARGEMENT DES DONNEES =====
 
-async function loadSAEBatch(sources) {
+async function loadAllSAELight() {
   const results = await Promise.allSettled(
-    sources.map(source =>
-      fetch(source.path)
+    SAE_SOURCES.map(source =>
+      fetch('data/sae-light/' + source.file)
         .then(r => {
-          if (!r.ok) throw new Error(`404: ${source.path}`);
+          if (!r.ok) throw new Error('404: ' + source.file);
           return r.json();
         })
         .then(data => ({ source, data }))
         .catch(err => {
-          console.warn(`Erreur chargement ${source.path}:`, err.message);
+          console.warn('Erreur chargement ' + source.file + ':', err.message);
           throw err;
         })
     )
@@ -108,15 +98,39 @@ async function loadSAEBatch(sources) {
       const { source, data } = result.value;
       let saes = extractSAEs(data, source);
       saes = saes.filter(s => s && (s.titre || s.nom));
-      saes = saes.map(s => ({ ...s, _source: source.key, _cycle: source.cycle }));
+      saes = saes.map(s => ({ ...s, _source: source.key, _file: source.file, _cycle: source.cycle }));
       allSAE.push(...saes);
       loaded++;
     }
   });
 
-  console.log(`✅ ${loaded}/${sources.length} fichiers charges — ${allSAE.length} SAE au total`);
+  console.log('✅ ' + loaded + '/' + SAE_SOURCES.length + ' fichiers charges — ' + allSAE.length + ' SAE au total');
   filtered = [...allSAE];
   clearTimeout(safetyTimer);
+}
+
+// Load full detail for a SAÉ on-demand (when modal opens)
+async function loadDetail(sae) {
+  const file = sae._file;
+  const idx = sae._idx;
+  if (file == null || idx == null) return sae;
+
+  if (!_detailCache[file]) {
+    try {
+      const r = await fetch('data/sae-detail/' + file);
+      if (!r.ok) return sae;
+      _detailCache[file] = await r.json();
+    } catch (e) {
+      console.warn('Detail load failed:', file, e);
+      return sae;
+    }
+  }
+
+  const detail = _detailCache[file][idx];
+  if (detail) {
+    Object.assign(sae, detail);
+  }
+  return sae;
 }
 
 function extractSAEs(data, source) {
@@ -593,10 +607,18 @@ function updateStats() {
 
 // ===== MODAL =====
 
-function openModal(s) {
+async function openModal(s) {
   const modal = document.getElementById('modal');
   const body = document.getElementById('modal-body');
   if (!modal || !body) return;
+
+  // Show modal immediately with loading state
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  body.innerHTML = '<div style="text-align:center;padding:40px;color:#999"><div style="font-size:2rem;margin-bottom:12px">⏳</div>Chargement...</div>';
+
+  // Load full detail data on-demand
+  await loadDetail(s);
 
   const titre = s.titre || s.nom || 'SAE';
 
@@ -816,9 +838,6 @@ function openModal(s) {
   `;
 
   window._currentModalSAE = s;
-
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
 
   setTimeout(() => {
     body.querySelector('.modal-close')?.focus();
