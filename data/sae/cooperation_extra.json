@@ -30,7 +30,7 @@
       "niveau": "Préscolaire",
       "cycle": "Préscolaire",
       "duree_periodes": 1,
-      "duree_par_periode": "30 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Agir dans divers contextes de pratique d'activités physiques",
       "composante": "Exécuter des mouvements locomoteurs en coopération",
       "moyen_action": "Jeux coopératifs d'imitation et locomotion",
@@ -90,7 +90,114 @@
         "animaux",
         "locomotion",
         "synchronisation"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Les animaux en équipe — Imiter et coopérer comme les animaux",
+          "objectif": "En équipe de 4, les enfants doivent imiter le déplacement d'un animal pigé au hasard (kangourou, crabe, serpent, ours, etc.) et traverser la forêt (parcours de cônes) ensemble, en restant synchronisés",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Jeux coopératifs d'imitation et locomotion. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Jeux coopératifs d'imitation et locomotion",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Jeux coopératifs d'imitation et locomotion",
+              "description": "Pratiquer les gestes de base du Jeux coopératifs d'imitation et locomotion de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Jeux coopératifs d'imitation et locomotion.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Jeux coopératifs d'imitation et locomotion.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Jeux coopératifs d'imitation et locomotion.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Mise en application des habiletés de Jeux coopératifs d'imitation et locomotion dans un jeu adapté au niveau Préscolaire.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés au niveau Préscolaire, rotation au signal.",
+            "consignes_cles": "Sécurité, fair-play, participation active. Adapter la difficulté au niveau de chacun."
+          },
+          "progressions": [
+            "Découvrir les règles de base du Jeux coopératifs d'imitation et locomotion",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu simplifié",
+            "Jouer un match/activité complète avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'enfant imite le déplacement de l'animal de façon reconnaissable",
+              "L'enfant ajuste sa vitesse pour rester avec son équipe",
+              "L'enfant encourage ses coéquipiers pendant la traversée",
+              "L'enfant participe activement à la résolution de la tâche collective"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Les animaux en équipe — Imiter et coopérer comme les animaux",
+        "teaching_intentions": [
+          "Develop fundamental skills in Jeux coopératifs d'imitation et locomotion",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 4, les enfants doivent imiter le déplacement d'un animal pigé au hasard (kangourou, crabe, serpent, ours, etc.) et traverser la forêt (parcours de cônes) ensemble, en restant synchronisés",
+        "departure_situation": "Students explore Jeux coopératifs d'imitation et locomotion through progressive challenges.",
+        "materials": [
+          "Pictogrammes d'animaux plastifiés (8 à 10 animaux)",
+          "Musique douce de nature et bruits d'animaux",
+          "Cerceaux (1 par équipe, servant de tanière)",
+          "Foulards de couleur (1 par élève)",
+          "Cônes pour délimiter les zones"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Les animaux en équipe — Imiter et coopérer comme les animaux",
+            "summary": "En équipe de 4, les enfants doivent imiter le déplacement d'un animal pigé au hasard (kangourou, crabe, serpent, ours, etc.) et traverser la forêt (parcours de cônes) ensemble, en restant synchronisés"
+          }
+        ]
+      }
     },
     {
       "id": "COOP-062",
@@ -103,7 +210,7 @@
       "niveau": "Primaire",
       "cycle": "Cycle 1 Primaire",
       "duree_periodes": 2,
-      "duree_par_periode": "40 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Agir dans divers contextes de pratique d'activités physiques",
       "composante": "Exécuter des actions de coopération avec synchronisation",
       "moyen_action": "Jeux coopératifs avec parachute",
@@ -164,7 +271,200 @@
         "primaire",
         "coordination",
         "rythme"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Jeux coopératifs avec parachute",
+          "objectif": "Découvrir les bases du Jeux coopératifs avec parachute : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Jeux coopératifs avec parachute. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Jeux coopératifs avec parachute",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Jeux coopératifs avec parachute",
+              "description": "Pratiquer les gestes de base du Jeux coopératifs avec parachute de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Jeux coopératifs avec parachute.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Jeux coopératifs avec parachute.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Jeux coopératifs avec parachute.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Jeux coopératifs avec parachute dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève synchronise ses mouvements avec ceux du groupe et le rythme musical",
+              "L'élève ajuste l'amplitude de ses gestes selon le défi demandé",
+              "L'élève maintient sa prise sur le parachute tout au long des activités",
+              "L'élève contribue positivement à la réussite collective"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Match et application",
+          "objectif": "Appliquer les habiletés du Jeux coopératifs avec parachute en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Jeux coopératifs avec parachute. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Jeux coopératifs avec parachute",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Jeux coopératifs avec parachute",
+              "description": "Pratiquer les gestes de base du Jeux coopératifs avec parachute de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Jeux coopératifs avec parachute.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Jeux coopératifs avec parachute.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Jeux coopératifs avec parachute.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Jeux coopératifs avec parachute dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève synchronise ses mouvements avec ceux du groupe et le rythme musical",
+              "L'élève ajuste l'amplitude de ses gestes selon le défi demandé",
+              "L'élève maintient sa prise sur le parachute tout au long des activités",
+              "L'élève contribue positivement à la réussite collective"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le parachute musical — Jeux de parachute avec musique et défis",
+        "teaching_intentions": [
+          "Develop fundamental skills in Jeux coopératifs avec parachute",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En grand groupe (toute la classe), réaliser une chorégraphie de parachute synchronisée sur 3 musiques différentes (lente, modérée, rapide), en intégrant des défis coopératifs (faire voler des balles, ",
+        "departure_situation": "Students explore Jeux coopératifs avec parachute through progressive challenges.",
+        "materials": [
+          "Parachute de jeu (6 mètres ou plus)",
+          "Balles en mousse (4 à 6)",
+          "Haut-parleur Bluetooth et musique variée (lente, rapide, arrêts)",
+          "Foulards légers (10)",
+          "Sifflet"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Jeux coopératifs avec parachute",
+            "summary": "Découvrir les bases du Jeux coopératifs avec parachute : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Game Application",
+            "summary": "Appliquer les habiletés du Jeux coopératifs avec parachute en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-063",
@@ -177,7 +477,7 @@
       "niveau": "Primaire",
       "cycle": "Cycle 2 Primaire",
       "duree_periodes": 3,
-      "duree_par_periode": "50 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Interagir dans divers contextes de pratique d'activités physiques",
       "composante": "Élaborer un plan d'action collectif et l'exécuter",
       "moyen_action": "Conception coopérative de parcours moteurs",
@@ -242,7 +542,287 @@
         "primaire",
         "créativité",
         "négociation"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Conception coopérative de parcours moteurs",
+          "objectif": "Découvrir les bases du Conception coopérative de parcours moteurs : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Conception coopérative de parcours moteurs. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Conception coopérative de parcours moteurs",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Conception coopérative de parcours moteurs",
+              "description": "Pratiquer les gestes de base du Conception coopérative de parcours moteurs de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Conception coopérative de parcours moteurs.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Conception coopérative de parcours moteurs.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Conception coopérative de parcours moteurs.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Conception coopérative de parcours moteurs dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue activement à la conception du parcours (idées, dessin, discussion)",
+              "L'élève négocie et accepte les compromis dans les décisions d'équipe",
+              "L'élève exécute les habiletés motrices du parcours avec contrôle",
+              "L'élève offre des rétroactions constructives aux autres équipes"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Conception coopérative de parcours moteurs et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Conception coopérative de parcours moteurs. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Conception coopérative de parcours moteurs",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Conception coopérative de parcours moteurs",
+              "description": "Pratiquer les gestes de base du Conception coopérative de parcours moteurs de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Conception coopérative de parcours moteurs.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Conception coopérative de parcours moteurs.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Conception coopérative de parcours moteurs.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Conception coopérative de parcours moteurs dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue activement à la conception du parcours (idées, dessin, discussion)",
+              "L'élève négocie et accepte les compromis dans les décisions d'équipe",
+              "L'élève exécute les habiletés motrices du parcours avec contrôle",
+              "L'élève offre des rétroactions constructives aux autres équipes"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Match et application",
+          "objectif": "Appliquer les habiletés du Conception coopérative de parcours moteurs en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Conception coopérative de parcours moteurs. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Conception coopérative de parcours moteurs",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Conception coopérative de parcours moteurs",
+              "description": "Pratiquer les gestes de base du Conception coopérative de parcours moteurs de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Conception coopérative de parcours moteurs.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Conception coopérative de parcours moteurs.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Conception coopérative de parcours moteurs.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Conception coopérative de parcours moteurs dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue activement à la conception du parcours (idées, dessin, discussion)",
+              "L'élève négocie et accepte les compromis dans les décisions d'équipe",
+              "L'élève exécute les habiletés motrices du parcours avec contrôle",
+              "L'élève offre des rétroactions constructives aux autres équipes"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Les architectes du parcours — Concevoir et tester un parcours en équipe",
+        "teaching_intentions": [
+          "Develop fundamental skills in Conception coopérative de parcours moteurs",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 5-6, concevoir un parcours de 6 stations minimum sur papier, le construire avec le matériel attribué, le tester en équipe puis l'offrir aux autres équipes. Le parcours doit inclure au moi",
+        "departure_situation": "Students explore Conception coopérative de parcours moteurs through progressive challenges.",
+        "materials": [
+          "Bancs suédois (3)",
+          "Tapis de gymnastique (6)",
+          "Cerceaux (15)",
+          "Cônes variés (20)",
+          "Cordes à sauter (6)",
+          "Poutres d'équilibre basses (2)"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Conception coopérative de parcours moteurs",
+            "summary": "Découvrir les bases du Conception coopérative de parcours moteurs : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Conception coopérative de parcours moteurs et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Game Application",
+            "summary": "Appliquer les habiletés du Conception coopérative de parcours moteurs en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-064",
@@ -255,7 +835,7 @@
       "niveau": "Primaire",
       "cycle": "Cycle 3 Primaire",
       "duree_periodes": 4,
-      "duree_par_periode": "50 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Interagir dans divers contextes de pratique d'activités physiques",
       "composante": "Coopérer avec ses coéquipiers dans un jeu collectif",
       "moyen_action": "Flag-football adapté avec règles coopératives",
@@ -317,7 +897,373 @@
         "sport collectif",
         "stratégie",
         "inclusion"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Flag-football adapté avec règles coopératives",
+          "objectif": "Découvrir les bases du Flag-football adapté avec règles coopératives : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Flag-football adapté avec règles coopératives",
+              "description": "Pratiquer les gestes de base du Flag-football adapté avec règles coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Flag-football adapté avec règles coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Flag-football adapté avec règles coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute des passes précises à ses coéquipiers en situation de jeu",
+              "L'élève se démarque et offre des lignes de passe à ses coéquipiers",
+              "L'élève inclut activement tous les membres dans les séquences de jeu",
+              "L'élève adapte ses stratégies en fonction de la défense adverse"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Flag-football adapté avec règles coopératives et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Flag-football adapté avec règles coopératives",
+              "description": "Pratiquer les gestes de base du Flag-football adapté avec règles coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Flag-football adapté avec règles coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Flag-football adapté avec règles coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute des passes précises à ses coéquipiers en situation de jeu",
+              "L'élève se démarque et offre des lignes de passe à ses coéquipiers",
+              "L'élève inclut activement tous les membres dans les séquences de jeu",
+              "L'élève adapte ses stratégies en fonction de la défense adverse"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Flag-football adapté avec règles coopératives et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Flag-football adapté avec règles coopératives",
+              "description": "Pratiquer les gestes de base du Flag-football adapté avec règles coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Flag-football adapté avec règles coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Flag-football adapté avec règles coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute des passes précises à ses coéquipiers en situation de jeu",
+              "L'élève se démarque et offre des lignes de passe à ses coéquipiers",
+              "L'élève inclut activement tous les membres dans les séquences de jeu",
+              "L'élève adapte ses stratégies en fonction de la défense adverse"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 4,
+          "titre": "Cours 4 — Match et application",
+          "objectif": "Appliquer les habiletés du Flag-football adapté avec règles coopératives en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Flag-football adapté avec règles coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Flag-football adapté avec règles coopératives",
+              "description": "Pratiquer les gestes de base du Flag-football adapté avec règles coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Flag-football adapté avec règles coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Flag-football adapté avec règles coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Flag-football adapté avec règles coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Primaire.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute des passes précises à ses coéquipiers en situation de jeu",
+              "L'élève se démarque et offre des lignes de passe à ses coéquipiers",
+              "L'élève inclut activement tous les membres dans les séquences de jeu",
+              "L'élève adapte ses stratégies en fonction de la défense adverse"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le flag-football coopératif — 4 passes obligatoires",
+        "teaching_intentions": [
+          "Develop fundamental skills in Flag-football adapté avec règles coopératives",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 6, orchestrer des séquences offensives où le ballon passe par au moins 4 joueurs différents avant de marquer un touché, tout en respectant les règles du flag-football et en s'adaptant à l",
+        "departure_situation": "Students explore Flag-football adapté avec règles coopératives through progressive challenges.",
+        "materials": [
+          "Ballons de football en mousse (4)",
+          "Ceintures de flag-football (1 par élève)",
+          "Cônes (20)",
+          "Dossards de 4 couleurs",
+          "Sifflet",
+          "Tableau blanc portatif et marqueur"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Flag-football adapté avec règles coopératives",
+            "summary": "Découvrir les bases du Flag-football adapté avec règles coopératives : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Flag-football adapté avec règles coopératives et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Flag-football adapté avec règles coopératives et les appliquer en situation progressive."
+          },
+          {
+            "numero": 4,
+            "title": "Course 4 — Game Application",
+            "summary": "Appliquer les habiletés du Flag-football adapté avec règles coopératives en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-065",
@@ -330,7 +1276,7 @@
       "niveau": "Secondaire 1",
       "cycle": "Secondaire 1",
       "duree_periodes": 4,
-      "duree_par_periode": "75 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Adopter un mode de vie sain et actif",
       "composante": "S'engager dans une démarche d'entraînement collectif",
       "moyen_action": "Entraînement fonctionnel coopératif (style CrossFit adapté)",
@@ -395,7 +1341,373 @@
         "force",
         "endurance",
         "motivation"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Entraînement fonctionnel coopératif (style CrossFit adapté)",
+          "objectif": "Découvrir les bases du Entraînement fonctionnel coopératif (style CrossFit adapté) : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté). Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "description": "Pratiquer les gestes de base du Entraînement fonctionnel coopératif (style CrossFit adapté) de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Entraînement fonctionnel coopératif (style CrossFit adapté) dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 1.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute les exercices avec une technique sécuritaire et efficace",
+              "L'élève contribue équitablement à l'effort collectif selon ses capacités",
+              "L'élève encourage et soutient activement ses coéquipiers pendant l'effort",
+              "L'élève participe à la planification stratégique de la répartition des tâches"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Entraînement fonctionnel coopératif (style CrossFit adapté) et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté). Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "description": "Pratiquer les gestes de base du Entraînement fonctionnel coopératif (style CrossFit adapté) de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Entraînement fonctionnel coopératif (style CrossFit adapté) dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 1.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute les exercices avec une technique sécuritaire et efficace",
+              "L'élève contribue équitablement à l'effort collectif selon ses capacités",
+              "L'élève encourage et soutient activement ses coéquipiers pendant l'effort",
+              "L'élève participe à la planification stratégique de la répartition des tâches"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Entraînement fonctionnel coopératif (style CrossFit adapté) et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté). Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "description": "Pratiquer les gestes de base du Entraînement fonctionnel coopératif (style CrossFit adapté) de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Entraînement fonctionnel coopératif (style CrossFit adapté) dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 1.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute les exercices avec une technique sécuritaire et efficace",
+              "L'élève contribue équitablement à l'effort collectif selon ses capacités",
+              "L'élève encourage et soutient activement ses coéquipiers pendant l'effort",
+              "L'élève participe à la planification stratégique de la répartition des tâches"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 4,
+          "titre": "Cours 4 — Match et application",
+          "objectif": "Appliquer les habiletés du Entraînement fonctionnel coopératif (style CrossFit adapté) en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté). Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Entraînement fonctionnel coopératif (style CrossFit adapté)",
+              "description": "Pratiquer les gestes de base du Entraînement fonctionnel coopératif (style CrossFit adapté) de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Entraînement fonctionnel coopératif (style CrossFit adapté).",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Entraînement fonctionnel coopératif (style CrossFit adapté) dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 1.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute les exercices avec une technique sécuritaire et efficace",
+              "L'élève contribue équitablement à l'effort collectif selon ses capacités",
+              "L'élève encourage et soutient activement ses coéquipiers pendant l'effort",
+              "L'élève participe à la planification stratégique de la répartition des tâches"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le CrossFit coopératif — Entraînement fonctionnel en équipe",
+        "teaching_intentions": [
+          "Develop fundamental skills in Entraînement fonctionnel coopératif (style CrossFit adapté)",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 4, compléter un WOD (Workout of the Day) coopératif où le nombre total de répétitions est partagé entre les membres. L'équipe décide de la répartition selon les forces de chacun. Le chron",
+        "departure_situation": "Students explore Entraînement fonctionnel coopératif (style CrossFit adapté) through progressive challenges.",
+        "materials": [
+          "Médecine-balls (4 de poids variés : 2 kg, 4 kg)",
+          "Cordes à sauter (8)",
+          "Cônes (20)",
+          "Tapis de sol (1 par élève)",
+          "Chronomètre visible (écran ou projecteur)",
+          "Bandes élastiques de résistance (8)"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Entraînement fonctionnel coopératif (style CrossFit adapté)",
+            "summary": "Découvrir les bases du Entraînement fonctionnel coopératif (style CrossFit adapté) : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Entraînement fonctionnel coopératif (style CrossFit adapté) et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Entraînement fonctionnel coopératif (style CrossFit adapté) et les appliquer en situation progressive."
+          },
+          {
+            "numero": 4,
+            "title": "Course 4 — Game Application",
+            "summary": "Appliquer les habiletés du Entraînement fonctionnel coopératif (style CrossFit adapté) en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-066",
@@ -408,7 +1720,7 @@
       "niveau": "Secondaire 2",
       "cycle": "Secondaire 2",
       "duree_periodes": 5,
-      "duree_par_periode": "75 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Interagir dans divers contextes de pratique d'activités physiques",
       "composante": "Élaborer et appliquer des stratégies coopératives en sport collectif",
       "moyen_action": "Ultimate frisbee avec règles d'inclusion coopératives",
@@ -471,7 +1783,459 @@
         "inclusion",
         "auto-arbitrage",
         "spirit of the game"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Ultimate frisbee avec règles d'inclusion coopératives",
+          "objectif": "Découvrir les bases du Ultimate frisbee avec règles d'inclusion coopératives : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Ultimate frisbee avec règles d'inclusion coopératives",
+              "description": "Pratiquer les gestes de base du Ultimate frisbee avec règles d'inclusion coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Ultimate frisbee avec règles d'inclusion coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 2.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute au moins 2 types de lancers avec précision en situation de jeu",
+              "L'élève se démarque activement pour offrir des options de passe à ses coéquipiers",
+              "L'élève contribue à des séquences de jeu incluant tous les membres de l'équipe",
+              "L'élève applique l'auto-arbitrage avec honnêteté et respect (Spirit of the Game)"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Ultimate frisbee avec règles d'inclusion coopératives et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Ultimate frisbee avec règles d'inclusion coopératives",
+              "description": "Pratiquer les gestes de base du Ultimate frisbee avec règles d'inclusion coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Ultimate frisbee avec règles d'inclusion coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 2.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute au moins 2 types de lancers avec précision en situation de jeu",
+              "L'élève se démarque activement pour offrir des options de passe à ses coéquipiers",
+              "L'élève contribue à des séquences de jeu incluant tous les membres de l'équipe",
+              "L'élève applique l'auto-arbitrage avec honnêteté et respect (Spirit of the Game)"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Ultimate frisbee avec règles d'inclusion coopératives et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Ultimate frisbee avec règles d'inclusion coopératives",
+              "description": "Pratiquer les gestes de base du Ultimate frisbee avec règles d'inclusion coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Ultimate frisbee avec règles d'inclusion coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 2.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute au moins 2 types de lancers avec précision en situation de jeu",
+              "L'élève se démarque activement pour offrir des options de passe à ses coéquipiers",
+              "L'élève contribue à des séquences de jeu incluant tous les membres de l'équipe",
+              "L'élève applique l'auto-arbitrage avec honnêteté et respect (Spirit of the Game)"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 4,
+          "titre": "Cours 4 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Ultimate frisbee avec règles d'inclusion coopératives et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Ultimate frisbee avec règles d'inclusion coopératives",
+              "description": "Pratiquer les gestes de base du Ultimate frisbee avec règles d'inclusion coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Ultimate frisbee avec règles d'inclusion coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 2.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute au moins 2 types de lancers avec précision en situation de jeu",
+              "L'élève se démarque activement pour offrir des options de passe à ses coéquipiers",
+              "L'élève contribue à des séquences de jeu incluant tous les membres de l'équipe",
+              "L'élève applique l'auto-arbitrage avec honnêteté et respect (Spirit of the Game)"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 5,
+          "titre": "Cours 5 — Match et application",
+          "objectif": "Appliquer les habiletés du Ultimate frisbee avec règles d'inclusion coopératives en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Ultimate frisbee avec règles d'inclusion coopératives",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Ultimate frisbee avec règles d'inclusion coopératives",
+              "description": "Pratiquer les gestes de base du Ultimate frisbee avec règles d'inclusion coopératives de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Ultimate frisbee avec règles d'inclusion coopératives.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Ultimate frisbee avec règles d'inclusion coopératives dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 2.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève exécute au moins 2 types de lancers avec précision en situation de jeu",
+              "L'élève se démarque activement pour offrir des options de passe à ses coéquipiers",
+              "L'élève contribue à des séquences de jeu incluant tous les membres de l'équipe",
+              "L'élève applique l'auto-arbitrage avec honnêteté et respect (Spirit of the Game)"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le ultimate frisbee modifié — Tous doivent toucher le disque",
+        "teaching_intentions": [
+          "Develop fundamental skills in Ultimate frisbee avec règles d'inclusion coopératives",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 7, développer et appliquer des stratégies offensives garantissant que les 7 joueurs touchent le disque avant de marquer un point dans la zone de but, tout en respectant les règles du ulti",
+        "departure_situation": "Students explore Ultimate frisbee avec règles d'inclusion coopératives through progressive challenges.",
+        "materials": [
+          "Disques volants (Frisbees) en plastique souple (8)",
+          "Cônes pour délimiter le terrain (16)",
+          "Dossards de 4 couleurs",
+          "Sifflet",
+          "Tableau tactique",
+          "Fiches d'observation par les pairs"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Ultimate frisbee avec règles d'inclusion coopératives",
+            "summary": "Découvrir les bases du Ultimate frisbee avec règles d'inclusion coopératives : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Ultimate frisbee avec règles d'inclusion coopératives et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Ultimate frisbee avec règles d'inclusion coopératives et les appliquer en situation progressive."
+          },
+          {
+            "numero": 4,
+            "title": "Course 4 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Ultimate frisbee avec règles d'inclusion coopératives et les appliquer en situation progressive."
+          },
+          {
+            "numero": 5,
+            "title": "Course 5 — Game Application",
+            "summary": "Appliquer les habiletés du Ultimate frisbee avec règles d'inclusion coopératives en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-067",
@@ -484,7 +2248,7 @@
       "niveau": "Secondaire 3",
       "cycle": "Secondaire 3",
       "duree_periodes": 3,
-      "duree_par_periode": "75 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Interagir dans divers contextes de pratique d'activités physiques",
       "composante": "Communiquer et coopérer dans le respect de la diversité",
       "moyen_action": "Défis coopératifs avec contraintes de communication",
@@ -548,7 +2312,287 @@
         "tour de Babel",
         "empathie",
         "non-verbal"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Défis coopératifs avec contraintes de communication",
+          "objectif": "Découvrir les bases du Défis coopératifs avec contraintes de communication : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Défis coopératifs avec contraintes de communication. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Défis coopératifs avec contraintes de communication",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Défis coopératifs avec contraintes de communication",
+              "description": "Pratiquer les gestes de base du Défis coopératifs avec contraintes de communication de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Défis coopératifs avec contraintes de communication.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Défis coopératifs avec contraintes de communication.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Défis coopératifs avec contraintes de communication.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Défis coopératifs avec contraintes de communication dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 3.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève développe des stratégies de communication adaptées à sa contrainte",
+              "L'élève aide ses coéquipiers à surmonter leurs propres contraintes",
+              "L'élève persévère et maintient une attitude positive malgré la frustration",
+              "L'élève fait des liens réfléchis entre l'activité et les enjeux de diversité sociale"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Défis coopératifs avec contraintes de communication et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Défis coopératifs avec contraintes de communication. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Défis coopératifs avec contraintes de communication",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Défis coopératifs avec contraintes de communication",
+              "description": "Pratiquer les gestes de base du Défis coopératifs avec contraintes de communication de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Défis coopératifs avec contraintes de communication.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Défis coopératifs avec contraintes de communication.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Défis coopératifs avec contraintes de communication.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Défis coopératifs avec contraintes de communication dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 3.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève développe des stratégies de communication adaptées à sa contrainte",
+              "L'élève aide ses coéquipiers à surmonter leurs propres contraintes",
+              "L'élève persévère et maintient une attitude positive malgré la frustration",
+              "L'élève fait des liens réfléchis entre l'activité et les enjeux de diversité sociale"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Match et application",
+          "objectif": "Appliquer les habiletés du Défis coopératifs avec contraintes de communication en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Défis coopératifs avec contraintes de communication. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Défis coopératifs avec contraintes de communication",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Défis coopératifs avec contraintes de communication",
+              "description": "Pratiquer les gestes de base du Défis coopératifs avec contraintes de communication de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Défis coopératifs avec contraintes de communication.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Défis coopératifs avec contraintes de communication.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Défis coopératifs avec contraintes de communication.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Défis coopératifs avec contraintes de communication dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 3.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève développe des stratégies de communication adaptées à sa contrainte",
+              "L'élève aide ses coéquipiers à surmonter leurs propres contraintes",
+              "L'élève persévère et maintient une attitude positive malgré la frustration",
+              "L'élève fait des liens réfléchis entre l'activité et les enjeux de diversité sociale"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le défi de la tour de Babel — Communication interculturelle en mouvement",
+        "teaching_intentions": [
+          "Develop fundamental skills in Défis coopératifs avec contraintes de communication",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 5, accomplir une série de 4 défis physiques coopératifs alors que chaque membre a une contrainte différente : un ne peut pas parler, un ne peut pas voir (bandeau), un ne peut pas entendre",
+        "departure_situation": "Students explore Défis coopératifs avec contraintes de communication through progressive challenges.",
+        "materials": [
+          "Bandeaux pour les yeux (10)",
+          "Bouchons d'oreilles ou cache-oreilles (10)",
+          "Gants épais (10 paires)",
+          "Matériel de construction : blocs de mousse, nouilles de piscine, cerceaux, cônes",
+          "Cartes de rôle plastifiées",
+          "Chronomètre"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Défis coopératifs avec contraintes de communication",
+            "summary": "Découvrir les bases du Défis coopératifs avec contraintes de communication : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Défis coopératifs avec contraintes de communication et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Game Application",
+            "summary": "Appliquer les habiletés du Défis coopératifs avec contraintes de communication en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-068",
@@ -561,7 +2605,7 @@
       "niveau": "Secondaire 4",
       "cycle": "Secondaire 4",
       "duree_periodes": 4,
-      "duree_par_periode": "75 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Adopter un mode de vie sain et actif",
       "composante": "Planifier et exécuter un programme d'entraînement coopératif combiné",
       "moyen_action": "Biathlon adapté (course et lancer de précision) en format coopératif",
@@ -626,7 +2670,373 @@
         "précision",
         "stratégie",
         "gestion effort"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Biathlon adapté (course et lancer de précision) en format coopératif",
+          "objectif": "Découvrir les bases du Biathlon adapté (course et lancer de précision) en format coopératif : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Biathlon adapté (course et lancer de précision) en format coopératif",
+              "description": "Pratiquer les gestes de base du Biathlon adapté (course et lancer de précision) en format coopératif de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Biathlon adapté (course et lancer de précision) en format coopératif dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 4.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève maintient un effort cardiovasculaire soutenu pendant sa boucle de course",
+              "L'élève exécute ses lancers avec précision même en état de fatigue",
+              "L'élève contribue à la stratégie collective (ordre, pénalités, récupération)",
+              "L'élève soutient ses coéquipiers par des encouragements et une gestion positive de la pression"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Biathlon adapté (course et lancer de précision) en format coopératif et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Biathlon adapté (course et lancer de précision) en format coopératif",
+              "description": "Pratiquer les gestes de base du Biathlon adapté (course et lancer de précision) en format coopératif de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Biathlon adapté (course et lancer de précision) en format coopératif dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 4.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève maintient un effort cardiovasculaire soutenu pendant sa boucle de course",
+              "L'élève exécute ses lancers avec précision même en état de fatigue",
+              "L'élève contribue à la stratégie collective (ordre, pénalités, récupération)",
+              "L'élève soutient ses coéquipiers par des encouragements et une gestion positive de la pression"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Biathlon adapté (course et lancer de précision) en format coopératif et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Biathlon adapté (course et lancer de précision) en format coopératif",
+              "description": "Pratiquer les gestes de base du Biathlon adapté (course et lancer de précision) en format coopératif de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Biathlon adapté (course et lancer de précision) en format coopératif dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 4.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève maintient un effort cardiovasculaire soutenu pendant sa boucle de course",
+              "L'élève exécute ses lancers avec précision même en état de fatigue",
+              "L'élève contribue à la stratégie collective (ordre, pénalités, récupération)",
+              "L'élève soutient ses coéquipiers par des encouragements et une gestion positive de la pression"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 4,
+          "titre": "Cours 4 — Match et application",
+          "objectif": "Appliquer les habiletés du Biathlon adapté (course et lancer de précision) en format coopératif en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Biathlon adapté (course et lancer de précision) en format coopératif",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Biathlon adapté (course et lancer de précision) en format coopératif",
+              "description": "Pratiquer les gestes de base du Biathlon adapté (course et lancer de précision) en format coopératif de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Biathlon adapté (course et lancer de précision) en format coopératif.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Biathlon adapté (course et lancer de précision) en format coopératif dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 4.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève maintient un effort cardiovasculaire soutenu pendant sa boucle de course",
+              "L'élève exécute ses lancers avec précision même en état de fatigue",
+              "L'élève contribue à la stratégie collective (ordre, pénalités, récupération)",
+              "L'élève soutient ses coéquipiers par des encouragements et une gestion positive de la pression"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le biathlon coopératif — Endurance et précision combinées",
+        "teaching_intentions": [
+          "Develop fundamental skills in Biathlon adapté (course et lancer de précision) en format coopératif",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 5, compléter un biathlon coopératif de 5 étapes. Chaque étape comprend une boucle de course (400 m) suivie d'un stand de tir (5 lancers sur cible). Chaque balle ratée = 1 tour de pénalité",
+        "departure_situation": "Students explore Biathlon adapté (course et lancer de précision) en format coopératif through progressive challenges.",
+        "materials": [
+          "Balles de tennis (20)",
+          "Cibles (cerceaux suspendus, seaux, paniers — 5 stations)",
+          "Cônes pour le parcours de course (30)",
+          "Chronomètres (1 par équipe)",
+          "Dossards numérotés",
+          "Fiches de stratégie d'équipe"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Biathlon adapté (course et lancer de précision) en format coopératif",
+            "summary": "Découvrir les bases du Biathlon adapté (course et lancer de précision) en format coopératif : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Biathlon adapté (course et lancer de précision) en format coopératif et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Biathlon adapté (course et lancer de précision) en format coopératif et les appliquer en situation progressive."
+          },
+          {
+            "numero": 4,
+            "title": "Course 4 — Game Application",
+            "summary": "Appliquer les habiletés du Biathlon adapté (course et lancer de précision) en format coopératif en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-069",
@@ -639,7 +3049,7 @@
       "niveau": "Secondaire 5",
       "cycle": "Secondaire 5",
       "duree_periodes": 3,
-      "duree_par_periode": "75 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Interagir dans divers contextes de pratique d'activités physiques",
       "composante": "Concevoir et mettre en œuvre un projet collectif en activité physique",
       "moyen_action": "Conception créative d'un sport et mise en pratique",
@@ -702,7 +3112,287 @@
         "conception",
         "sport original",
         "inclusion"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Conception créative d'un sport et mise en pratique",
+          "objectif": "Découvrir les bases du Conception créative d'un sport et mise en pratique : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Conception créative d'un sport et mise en pratique. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Conception créative d'un sport et mise en pratique",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Conception créative d'un sport et mise en pratique",
+              "description": "Pratiquer les gestes de base du Conception créative d'un sport et mise en pratique de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Conception créative d'un sport et mise en pratique.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Conception créative d'un sport et mise en pratique.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Conception créative d'un sport et mise en pratique.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Conception créative d'un sport et mise en pratique dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue activement à toutes les phases du hackathon (idéation, conception, test, présentation)",
+              "L'élève intègre des éléments coopératifs et inclusifs dans la conception du sport",
+              "L'élève fait preuve de pensée critique en évaluant et ajustant les règles après les tests",
+              "L'élève communique clairement les règles et démontre le sport efficacement"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Conception créative d'un sport et mise en pratique et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Conception créative d'un sport et mise en pratique. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Conception créative d'un sport et mise en pratique",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Conception créative d'un sport et mise en pratique",
+              "description": "Pratiquer les gestes de base du Conception créative d'un sport et mise en pratique de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Conception créative d'un sport et mise en pratique.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Conception créative d'un sport et mise en pratique.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Conception créative d'un sport et mise en pratique.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Conception créative d'un sport et mise en pratique dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue activement à toutes les phases du hackathon (idéation, conception, test, présentation)",
+              "L'élève intègre des éléments coopératifs et inclusifs dans la conception du sport",
+              "L'élève fait preuve de pensée critique en évaluant et ajustant les règles après les tests",
+              "L'élève communique clairement les règles et démontre le sport efficacement"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Match et application",
+          "objectif": "Appliquer les habiletés du Conception créative d'un sport et mise en pratique en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Conception créative d'un sport et mise en pratique. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Conception créative d'un sport et mise en pratique",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Conception créative d'un sport et mise en pratique",
+              "description": "Pratiquer les gestes de base du Conception créative d'un sport et mise en pratique de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Conception créative d'un sport et mise en pratique.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Conception créative d'un sport et mise en pratique.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Conception créative d'un sport et mise en pratique.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Conception créative d'un sport et mise en pratique dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue activement à toutes les phases du hackathon (idéation, conception, test, présentation)",
+              "L'élève intègre des éléments coopératifs et inclusifs dans la conception du sport",
+              "L'élève fait preuve de pensée critique en évaluant et ajustant les règles après les tests",
+              "L'élève communique clairement les règles et démontre le sport efficacement"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le hackathon sportif — Inventer un nouveau sport en 60 minutes",
+        "teaching_intentions": [
+          "Develop fundamental skills in Conception créative d'un sport et mise en pratique",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 6, créer un sport original comprenant : un nom, des règles claires, un terrain défini, un système de pointage, une dimension coopérative obligatoire, et au moins une règle d'inclusion (to",
+        "departure_situation": "Students explore Conception créative d'un sport et mise en pratique through progressive challenges.",
+        "materials": [
+          "Tout le matériel du gymnase disponible (ballons variés, raquettes, filets, cônes, cerceaux, tapis, etc.)",
+          "Grandes feuilles de papier et marqueurs pour la conception",
+          "Chronomètre visible",
+          "Caméra ou tablette pour filmer les prototypes",
+          "Grilles d'évaluation par les pairs",
+          "Sifflet"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Conception créative d'un sport et mise en pratique",
+            "summary": "Découvrir les bases du Conception créative d'un sport et mise en pratique : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Conception créative d'un sport et mise en pratique et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Game Application",
+            "summary": "Appliquer les habiletés du Conception créative d'un sport et mise en pratique en situation de jeu/match."
+          }
+        ]
+      }
     },
     {
       "id": "COOP-070",
@@ -715,7 +3405,7 @@
       "niveau": "Secondaire 5",
       "cycle": "Secondaire 5",
       "duree_periodes": 6,
-      "duree_par_periode": "75 minutes",
+      "duree_par_periode": "60 minutes",
       "competence_pfeq": "Adopter un mode de vie sain et actif",
       "composante": "Concevoir et piloter un projet collectif favorisant un mode de vie sain et actif dans la communauté scolaire",
       "moyen_action": "Projet d'héritage sportif coopératif — gestion de projet appliquée",
@@ -779,7 +3469,545 @@
         "leadership",
         "communauté",
         "fin de parcours"
-      ]
+      ],
+      "cours": [
+        {
+          "numero": 1,
+          "titre": "Cours 1 — Découverte du Projet d'héritage sportif coopératif — gestion de projet appliquée",
+          "objectif": "Découvrir les bases du Projet d'héritage sportif coopératif — gestion de projet appliquée : règles, sécurité, gestes fondamentaux.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "description": "Pratiquer les gestes de base du Projet d'héritage sportif coopératif — gestion de projet appliquée de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Projet d'héritage sportif coopératif — gestion de projet appliquée dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue de manière significative à chaque phase du projet (conception, planification, réalisation, présentation)",
+              "L'élève exerce un leadership partagé en assumant des responsabilités et en soutenant ses coéquipiers",
+              "L'élève conçoit un projet inclusif, réaliste et ayant un potentiel de durabilité",
+              "L'élève fait preuve de réflexion critique sur le rôle de l'activité physique dans le bien-être communautaire"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 2,
+          "titre": "Cours 2 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "description": "Pratiquer les gestes de base du Projet d'héritage sportif coopératif — gestion de projet appliquée de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Projet d'héritage sportif coopératif — gestion de projet appliquée dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue de manière significative à chaque phase du projet (conception, planification, réalisation, présentation)",
+              "L'élève exerce un leadership partagé en assumant des responsabilités et en soutenant ses coéquipiers",
+              "L'élève conçoit un projet inclusif, réaliste et ayant un potentiel de durabilité",
+              "L'élève fait preuve de réflexion critique sur le rôle de l'activité physique dans le bien-être communautaire"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 3,
+          "titre": "Cours 3 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "description": "Pratiquer les gestes de base du Projet d'héritage sportif coopératif — gestion de projet appliquée de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Projet d'héritage sportif coopératif — gestion de projet appliquée dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue de manière significative à chaque phase du projet (conception, planification, réalisation, présentation)",
+              "L'élève exerce un leadership partagé en assumant des responsabilités et en soutenant ses coéquipiers",
+              "L'élève conçoit un projet inclusif, réaliste et ayant un potentiel de durabilité",
+              "L'élève fait preuve de réflexion critique sur le rôle de l'activité physique dans le bien-être communautaire"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 4,
+          "titre": "Cours 4 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "description": "Pratiquer les gestes de base du Projet d'héritage sportif coopératif — gestion de projet appliquée de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Projet d'héritage sportif coopératif — gestion de projet appliquée dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue de manière significative à chaque phase du projet (conception, planification, réalisation, présentation)",
+              "L'élève exerce un leadership partagé en assumant des responsabilités et en soutenant ses coéquipiers",
+              "L'élève conçoit un projet inclusif, réaliste et ayant un potentiel de durabilité",
+              "L'élève fait preuve de réflexion critique sur le rôle de l'activité physique dans le bien-être communautaire"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 5,
+          "titre": "Cours 5 — Consolidation et progression",
+          "objectif": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "description": "Pratiquer les gestes de base du Projet d'héritage sportif coopératif — gestion de projet appliquée de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Projet d'héritage sportif coopératif — gestion de projet appliquée dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue de manière significative à chaque phase du projet (conception, planification, réalisation, présentation)",
+              "L'élève exerce un leadership partagé en assumant des responsabilités et en soutenant ses coéquipiers",
+              "L'élève conçoit un projet inclusif, réaliste et ayant un potentiel de durabilité",
+              "L'élève fait preuve de réflexion critique sur le rôle de l'activité physique dans le bien-être communautaire"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        },
+        {
+          "numero": 6,
+          "titre": "Cours 6 — Match et application",
+          "objectif": "Appliquer les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée en situation de jeu/match.",
+          "echauffement": {
+            "description": "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée. Activation cardio progressive avec mouvements spécifiques.",
+            "duree_min": 8,
+            "exercices": [
+              "Échauffement dynamique adapté au Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "Activation cardio progressive avec mouvements spécifiques.",
+              "S'arrêter en équilibre au signal",
+              "Respiration profonde × 3"
+            ]
+          },
+          "educatifs": [
+            {
+              "nom": "Éducatif technique Projet d'héritage sportif coopératif — gestion de projet appliquée",
+              "description": "Pratiquer les gestes de base du Projet d'héritage sportif coopératif — gestion de projet appliquée de façon progressive.",
+              "duree_min": 5,
+              "consignes": "Observer la démonstration puis reproduire le geste.",
+              "variante": "Varier la vitesse d'exécution."
+            },
+            {
+              "nom": "Exercice en dyade",
+              "description": "Par deux, pratiquer les échanges et la coopération dans le contexte du Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Communiquer avec son partenaire. Encourager et s'entraider.",
+              "variante": "Changer de partenaire au signal."
+            },
+            {
+              "nom": "Défi progressif",
+              "description": "Relever un défi de difficulté croissante en Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 4,
+              "consignes": "Commencer au niveau 1, avancer seulement quand le niveau est maîtrisé.",
+              "variante": "Chronométrer pour battre son record personnel."
+            },
+            {
+              "nom": "Jeu d'application",
+              "description": "Appliquer les habiletés travaillées dans un mini-jeu de Projet d'héritage sportif coopératif — gestion de projet appliquée.",
+              "duree_min": 5,
+              "consignes": "Respecter les règles. Fair-play et esprit sportif.",
+              "variante": "Modifier les règles pour augmenter le défi."
+            }
+          ],
+          "activite_principale": {
+            "description": "Application progressive des habiletés de Projet d'héritage sportif coopératif — gestion de projet appliquée dans un contexte adapté.",
+            "duree_min": 22,
+            "organisation": "Groupes adaptés, rotation au signal, niveau Secondaire 5.",
+            "consignes_cles": "Sécurité, fair-play, participation active."
+          },
+          "progressions": [
+            "Découvrir les règles de base",
+            "Pratiquer les gestes fondamentaux",
+            "Appliquer en situation de jeu",
+            "Jouer avec toutes les règles"
+          ],
+          "retour_au_calme": {
+            "description": "Retour au calme : étirements doux et bilan de la séance. Partage des apprentissages.",
+            "duree_min": 8,
+            "exercices": [
+              "Retour au calme",
+              "Étirements doux et bilan de la séance",
+              "Partage des apprentissages.",
+              "Respiration profonde × 3"
+            ]
+          },
+          "grille_observation": {
+            "criteres": [
+              "L'élève contribue de manière significative à chaque phase du projet (conception, planification, réalisation, présentation)",
+              "L'élève exerce un leadership partagé en assumant des responsabilités et en soutenant ses coéquipiers",
+              "L'élève conçoit un projet inclusif, réaliste et ayant un potentiel de durabilité",
+              "L'élève fait preuve de réflexion critique sur le rôle de l'activité physique dans le bien-être communautaire"
+            ],
+            "echelle": {
+              "A": "Fait avec aisance et constance",
+              "B": "Fait correctement la plupart du temps",
+              "C": "Fait avec aide ou rappel",
+              "D": "Difficulté marquée, besoin d'accompagnement"
+            }
+          }
+        }
+      ],
+      "english": {
+        "title": "Le legs sportif — Créer un héritage pour les prochaines cohortes",
+        "teaching_intentions": [
+          "Develop fundamental skills in Projet d'héritage sportif coopératif — gestion de projet appliquée",
+          "Apply motor skills in progressive game situations",
+          "Demonstrate cooperation and fair play"
+        ],
+        "task": "En équipe de 5-6, concevoir et réaliser un projet d'héritage sportif pour l'école : cela peut être un guide d'activités, un parcours permanent, un événement récurrent, un système de mentorat sportif, ",
+        "departure_situation": "Students explore Projet d'héritage sportif coopératif — gestion de projet appliquée through progressive challenges.",
+        "materials": [
+          "Ordinateur ou tablette pour la planification (1 par équipe)",
+          "Grandes feuilles de planification (type Gantt simplifié)",
+          "Matériel variable selon les projets choisis",
+          "Caméra pour documenter le projet",
+          "Grilles d'auto-évaluation et d'évaluation par les pairs",
+          "Formulaire de sondage pour les élèves plus jeunes"
+        ],
+        "courses": [
+          {
+            "numero": 1,
+            "title": "Course 1 — Discovery du Projet d'héritage sportif coopératif — gestion de projet appliquée",
+            "summary": "Découvrir les bases du Projet d'héritage sportif coopératif — gestion de projet appliquée : règles, sécurité, gestes fondamentaux."
+          },
+          {
+            "numero": 2,
+            "title": "Course 2 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive."
+          },
+          {
+            "numero": 3,
+            "title": "Course 3 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive."
+          },
+          {
+            "numero": 4,
+            "title": "Course 4 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive."
+          },
+          {
+            "numero": 5,
+            "title": "Course 5 — Consolidation et progression",
+            "summary": "Consolider les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée et les appliquer en situation progressive."
+          },
+          {
+            "numero": 6,
+            "title": "Course 6 — Game Application",
+            "summary": "Appliquer les habiletés du Projet d'héritage sportif coopératif — gestion de projet appliquée en situation de jeu/match."
+          }
+        ]
+      }
     }
   ]
 }
