@@ -333,10 +333,11 @@ function applyFilters() {
     }
 
     if (clientele) {
-      const hdaa = JSON.stringify(s.adaptation_hdaa || {}).toLowerCase();
+      const hdaaKeys = (s._hdaa || []).join(' ').toLowerCase();
+      const hdaaFull = s.adaptation_hdaa ? JSON.stringify(s.adaptation_hdaa).toLowerCase() : '';
       const tags = (s.tags || []).join(' ').toLowerCase();
       const desc = (s.description || '').toLowerCase();
-      if (!hdaa.includes(clientele) && !tags.includes(clientele) && !desc.includes(clientele)) return false;
+      if (!hdaaKeys.includes(clientele) && !hdaaFull.includes(clientele) && !tags.includes(clientele) && !desc.includes(clientele)) return false;
     }
 
     if (activeMoyen) {
@@ -418,7 +419,7 @@ function renderCard(s) {
   const competence = s.competence_pfeq || (s.competences || [])[0] || '';
   const moyen = s.moyen_action || s.moyens_action || '';
   const duree = s.duree_periodes || s.duree || '';
-  const hasHDAA = s.adaptation_hdaa && Object.keys(s.adaptation_hdaa).length > 0;
+  const hasHDAA = s._hdaa || (s.adaptation_hdaa && Object.keys(s.adaptation_hdaa).length > 0);
 
   const div = document.createElement('div');
   div.className = 'sae-card';
@@ -1915,12 +1916,15 @@ function renderBrowserResults(container, results, type) {
         showToast('Deja dans ce cours !');
         return;
       }
-      cours[_activeSlotIndex].push(buildSlotData(s));
-      setMonCours(cours);
-      btn.textContent = '\u2713 Ajoute';
-      btn.classList.add('already-added');
-      renderSlots();
-      showToast((isEdu ? 'Educatif' : 'SAE') + ' ajoute au Cours ' + (_activeSlotIndex + 1) + ' !');
+      // Load detail if needed for criteres_evaluation
+      loadDetail(s).then(function() {
+        cours[_activeSlotIndex].push(buildSlotData(s));
+        setMonCours(cours);
+        btn.textContent = '\u2713 Ajoute';
+        btn.classList.add('already-added');
+        renderSlots();
+        showToast((isEdu ? 'Educatif' : 'SAE') + ' ajoute au Cours ' + (_activeSlotIndex + 1) + ' !');
+      });
     });
 
     container.appendChild(item);
