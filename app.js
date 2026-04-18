@@ -77,34 +77,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ===== CHARGEMENT DES DONNEES =====
 
 async function loadAllSAELight() {
-  const results = await Promise.allSettled(
-    SAE_SOURCES.map(source =>
-      fetch('data/sae-light/' + source.file)
-        .then(r => {
-          if (!r.ok) throw new Error('404: ' + source.file);
-          return r.json();
-        })
-        .then(data => ({ source, data }))
-        .catch(err => {
-          console.warn('Erreur chargement ' + source.file + ':', err.message);
-          throw err;
-        })
-    )
-  );
+  try {
+    const r = await fetch('data/sae-all-light.json');
+    if (!r.ok) throw new Error('Failed to load light data');
+    const allData = await r.json();
 
-  let loaded = 0;
-  results.forEach(result => {
-    if (result.status === 'fulfilled') {
-      const { source, data } = result.value;
+    SAE_SOURCES.forEach(source => {
+      const key = source.file.replace('.json', '');
+      const data = allData[key];
+      if (!data) return;
       let saes = extractSAEs(data, source);
       saes = saes.filter(s => s && (s.titre || s.nom));
       saes = saes.map(s => ({ ...s, _source: source.key, _file: source.file, _cycle: source.cycle }));
       allSAE.push(...saes);
-      loaded++;
-    }
-  });
+    });
+  } catch (e) {
+    console.error('Erreur chargement:', e);
+  }
 
-  console.log('✅ ' + loaded + '/' + SAE_SOURCES.length + ' fichiers charges — ' + allSAE.length + ' SAE au total');
+  console.log('✅ ' + allSAE.length + ' SAE chargees');
   filtered = [...allSAE];
   clearTimeout(safetyTimer);
 }
@@ -897,8 +888,15 @@ function initCanvas() {
   const canvas = document.getElementById('bgCanvas');
   if (!canvas) return;
 
+  // Skip canvas animation on mobile for performance
+  if (window.innerWidth < 768) {
+    canvas.style.display = 'none';
+    return;
+  }
+
   const ctx = canvas.getContext('2d');
   let particles = [];
+  let _canvasRunning = true;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -933,19 +931,30 @@ function initCanvas() {
     }
   }
 
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 25; i++) {
     const p = new Particle();
     p.life = Math.random() * p.maxLife;
     particles.push(p);
   }
 
-  function animate() {
+  let lastFrame = 0;
+  function animate(ts) {
+    if (!_canvasRunning) return;
+    // Throttle to ~20fps instead of 60fps
+    if (ts - lastFrame < 50) { requestAnimationFrame(animate); return; }
+    lastFrame = ts;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animate);
   }
 
-  animate();
+  // Pause canvas when tab not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { _canvasRunning = false; }
+    else { _canvasRunning = true; requestAnimationFrame(animate); }
+  });
+
+  animate(0);
   window.addEventListener('resize', resize);
 }
 
